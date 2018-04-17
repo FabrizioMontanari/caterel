@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html><head>
 
   <title>Esempio cartina</title>
 
@@ -11,29 +10,69 @@
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
-    
+    var map_text_data={
+	"1":"Partenza",
+	"2":"prima tappa",
+	"3":"seconda tappa",
+	"4":"terza tappa",
+	"5":"arrivo tappa",
+	}
+	function createImgUrl(step){
+		return 'https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/0'+step+'.png';
+	}
+    function MapChange(btn){
+		var step = $(btn).data("step");
+		$("#map-map").css('background-image', 'url('+createImgUrl(step)+')');
+		$("#map-txt").text(map_text_data[step]);
+		
+	}
+	
+	
+	$.fn.preload = function() {
+		this.each(function(){
+			$('<img/>')[0].src = this;
+		});
+	}
+	$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
   </script>
   <style>
     .map-map{
-	    background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/02.png);
-	    width: 300px;
-	    height: 200px;
-	    -webkit-transition: background-image 0.2s ease-in-out;
-	    transition: background-image 0.2s ease-in-out;
-	    background-position: 0;
-	    background-size: contain;
-      
+		background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png);
+		width: 100%;
+		height: 30vh;
+		-webkit-transition: background-image 0.2s ease-in-out;
+		transition: background-image 0.2s ease-in-out;
+		background-position: 0;
+		background-size: contain;
     }
+	.map-btn{
+		background-color:lightblue;
+		height:30px;
+		width:30px;
+		border:1px solid black;
+		float:left;
+    }
+	.map-txt{
+	width:100%
+	height:
+	
+	}
   </style>
 </head>
 <body style="height:100vh;margin:0;">
   <div class="map-plugin-container">
     <div class="map-control-container">
-      
+		<div class="map-btn" data-step="1" onclick="MapChange(this)">1</div>
+		<div class="map-btn" data-step="2" onclick="MapChange(this)">2</div>
+		<div class="map-btn" data-step="3" onclick="MapChange(this)">3</div>
+		<div class="map-btn" data-step="4" onclick="MapChange(this)">4</div>
+		<div class="map-btn" data-step="5" onclick="MapChange(this)">5</div>
     </div>
     <div class="map-map-container">
-      <div class="map-map"></div>
+      <div id="map-map" class="map-map"></div>
     </div>
+	<div id="map-txt"class="map-text">Partenza</div>
   </div>
-</body>
-</html>
+	
+
+</body></html>
