@@ -9,11 +9,11 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     var map_text_data={
-	"1":"Partenza",
-	"2":"prima tappa",
-	"3":"seconda tappa",
-	"4":"terza tappa",
-	"5":"arrivo tappa",
+	"1":["Partenza","Qui arriviamo in aereo."],
+	"2":["Prima tappa","Qui ci andiamo subito perché c'è il miglior ramen."],
+	"3":["Seconda tappa","Qua facciamo una breve sosta alle terme."],
+	"4":["Terza tappa","Qui c'è la statua gigante di Super Mario."],
+	"5":["Arrivo","Questo giro panoramico ci fa vistare tutti i villaggini."],
 	}
 	function createImgUrl(step){
 		return 'https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/0'+step+'.png';
@@ -21,8 +21,8 @@
     function MapChange(btn){
 		var step = $(btn).data("step");
 		$("#map-map").css('background-image', 'url('+createImgUrl(step)+')');
-		$("#map-txt").text(map_text_data[step]);
-		
+		$("#map-title").text(map_text_data[step][0]);
+		$("#map-txt").text(map_text_data[step][1]);
 	}
 	
 	
@@ -60,6 +60,12 @@
 		width:20%;
 		border:1px solid black;
     }
+	.map-title{
+		width:100%;
+		text-align:center;
+		font-size:150%;
+		font-weight:bold;
+	}
 	.map-txt{
 		width:100%;
 		text-align:center;
@@ -78,6 +84,8 @@
     <div class="map-map-container">
       <div id="map-map" class="map-map"></div>
     </div>
-	<div id="map-txt"class="map-txt">Partenza</div>
+	<div id="map-title"class="map-title">Partenza</div>
+	<div id="map-txt"class="map-txt">Qui arriviamo in aereo.</div>
   </div>
-</body></html>
+</body>
+</html>
