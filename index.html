@@ -37,24 +37,32 @@
     .map-map{
 		background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png);
 		width: 100%;
-		height: 30vh;
+		height: 50vw;
 		-webkit-transition: background-image 0.2s ease-in-out;
 		transition: background-image 0.2s ease-in-out;
-		background-position: 0;
+		background-position: 50%;
 		background-size: contain;
-	        background-repeat: no-repeat;
+	    background-repeat: no-repeat;
     }
+	.map-control-container{
+		display:flex;
+		flex-wrap: wrap;
+		justify-content:center;
+		align-items:center;
+		align-content:flex-start;
+		
+		width:100%;
+		
+	}
 	.map-btn{
 		background-color:lightblue;
 		height:30px;
-		width:30px;
+		width:20%;
 		border:1px solid black;
-		float:left;
     }
 	.map-txt{
-	width:100%
-	height:
-	
+		width:100%;
+		text-align:center;
 	}
   </style>
 </head>
@@ -70,8 +78,6 @@
     <div class="map-map-container">
       <div id="map-map" class="map-map"></div>
     </div>
-	<div id="map-txt"class="map-text">Partenza</div>
+	<div id="map-txt"class="map-txt">Partenza</div>
   </div>
-	
-
 </body></html>
