@@ -38,10 +38,6 @@ button {
     list-style: none;
 }
 
-.martini-gift__agency-address.open {
-    transition: 0.4s;
-}
-
 /*
 * plugin mappa
 */
