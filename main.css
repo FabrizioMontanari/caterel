@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffbb;
+    background-color: #ffffdd;
     text-align: center;
 }
 
@@ -7,15 +7,28 @@ h1, h2 {
     color: #880000;
 }
 
-h3, h4 {
+h3, h4, p, li {
     color: #550000;
 }
 
 button {
     color: #880000;
+    background-color: white;
 }
 
 .martini-rvsp__form > div, .martini-rvsp__menu-choices > input {
     display: block;
     margin: 0 auto;
+}
+
+.martini-gift__toggle-details {
+    font-weight: bold;
+}
+
+.martini-gift__gift-details {
+    display: none;
+}
+
+.martini-gift__agency-address {
+    list-style: none;
 }
