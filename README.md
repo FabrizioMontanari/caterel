@@ -1,2 +1,2 @@
 # caterel
-Bomberi questa repository non è privata.
+Bomberi qua ci info generali
