@@ -121,47 +121,6 @@
 		
 	});
   </script>
-  <style>
-	.hide{
-		display:none !important;
-	}
-    .map-map{
-		background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png);
-		width: 100%;
-		height: 50vw;
-		-webkit-transition: background-image 0.2s ease-in-out;
-		transition: background-image 0.2s ease-in-out;
-		background-position: 50%;
-		background-size: contain;
-	    background-repeat: no-repeat;
-    }
-	.map-control-container{
-		display:flex;
-		flex-wrap: wrap;
-		justify-content:center;
-		align-items:center;
-		align-content:flex-start;
-		
-		width:100%;
-		
-	}
-	.map-btn{
-		background-color:lightblue;
-		height:30px;
-		width:20%;
-		border:1px solid black;
-    }
-	.map-title{
-		width:100%;
-		text-align:center;
-		font-size:150%;
-		font-weight:bold;
-	}
-	.map-txt{
-		width:100%;
-		text-align:center;
-	}
-  </style>
 </head>
   <body>
   <div class="login-content">
@@ -245,12 +204,12 @@
             <div class="martini-rvsp__menu">
                 <label for="dieta">Menu</label>
                     <div class="martini-rvsp__menu-choices">
-                    <input type="checkbox" name="dieta" value="normale" />
-                    <input type="checkbox" name="dieta" value="vegetariano" />
-                    <input type="checkbox" name="dieta" value="vegano" />
-                    <input type="checkbox" name="dieta" value="no-glutine" />
-                    <input type="checkbox" name="dieta" value="no-latticini" />
-                    <input type="checkbox" name="dieta" value="altro" />
+                    <input type="checkbox" id="dieta-normale" name="dieta-normale" value="normale" />					<label for="dieta-normale">Text</label>
+                    <input type="checkbox" id="dieta-vegetariano" name="dieta-vegetarano" value="vegetariano" />		<label for="dieta-vegetariano">Text</label>
+                    <input type="checkbox" id="dieta-vegano" name="dieta-vegano" value="vegano" />						<label for="dieta-vgano">Text</label>
+                    <input type="checkbox" id="dieta-no-glutine" name="dieta-no-glutine" value="no-glutine" />			<label for="dieta-no-clutine">Text</label>
+                    <input type="checkbox" id="dieta-no-latticini" name="dieta-no-latticini" value="no-latticini" />	<label for="dieta-no-latticini">Text</label>
+                    <input type="checkbox" id="dieta-altro" name="dieta-altro" value="altro" />							<label for="dieta-altro">Text</label>
                     <label for="altro-info">Ulteriori necessita' sulla dieta</label>
                     <input type="text" name="altro-info" />
                 </div>
