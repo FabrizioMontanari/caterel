@@ -3,6 +3,7 @@
 <head>
     <title>I Martini si Sposano!</title>
     <!-- bootstrap -->
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
@@ -35,21 +36,30 @@
         </div>
     </section>
     <section class="martini-rvsp">
+        <div class="martini-rvsp__decoration"></div>
         <h2>Confermate la vostra presenza a pranzo entro il 01/09/2018</h2>
         <form class="martini-rvsp__form">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" />
-            <label for="cognome">Cognome</label>
-            <input type="text" name="cognome" />
-            <label for="dieta">Menu</label>
-            <input type="checkbox" name="dieta" value="normale" />
-            <input type="checkbox" name="dieta" value="vegetariano" />
-            <input type="checkbox" name="dieta" value="vegano" />
-            <input type="checkbox" name="dieta" value="no-glutine" />
-            <input type="checkbox" name="dieta" value="no-latticini" />
-            <input type="checkbox" name="dieta" value="altro" />
-            <label for="altro-info">Ulteriori necessita' sulla dieta</label>
-            <input type="text" name="altro-info" />
+            <div class="martini-rvsp__info">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" />
+                <label for="cognome">Cognome</label>
+                <input type="text" name="cognome" />
+                <label for="cognome">Email</label>
+                <input type="email" name="email" />
+            </div>
+            <div class="martini-rvsp__menu">
+                <label for="dieta">Menu</label>
+                    <div class="martini-rvsp__menu-choices">
+                    <input type="checkbox" name="dieta" value="normale" />
+                    <input type="checkbox" name="dieta" value="vegetariano" />
+                    <input type="checkbox" name="dieta" value="vegano" />
+                    <input type="checkbox" name="dieta" value="no-glutine" />
+                    <input type="checkbox" name="dieta" value="no-latticini" />
+                    <input type="checkbox" name="dieta" value="altro" />
+                    <label for="altro-info">Ulteriori necessita' sulla dieta</label>
+                    <input type="text" name="altro-info" />
+                </div>
+            </div>
             <button class="martini-rvsp__send">Conferma la tua presenza</button>
         </form>
         </form>

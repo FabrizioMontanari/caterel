@@ -1,0 +1,21 @@
+body {
+    background-color: #ffffbb;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #880000;
+}
+
+h3, h4 {
+    color: #550000;
+}
+
+button {
+    color: #880000;
+}
+
+.martini-rvsp__form > div, .martini-rvsp__menu-choices > input {
+    display: block;
+    margin: 0 auto;
+}
