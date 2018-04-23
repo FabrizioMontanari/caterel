@@ -1,2 +1,2 @@
 # caterel
-Bomberi qua ci info generali
+Bomberi qua ci mettiamo info generali
