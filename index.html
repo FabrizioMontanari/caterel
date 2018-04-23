@@ -7,6 +7,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		/*login dei poveri*/
+	function checkLogin(username,password){
+		if (username === "nomeutente" && password==="password"){
+			return true;
+		}
+		return false;
+	}
+	
+	function onAccediClick(){
+		var u=$("#username").val();
+		var p=$("#password").val();
+		if (checkLogin(u,p)){
+			$("login-content").addClass("hide")
+			$("site-content").removeClass("hide")
+		}
+	}
+	
+	function firstLoginCheck(){
+		var credential = getUrlVars();
+		if ( !(credential.hasOwnProperty('password') && credential.hasOwnProperty('username')) ) {
+			return;
+		}
+		else{
+			if (checkLogin(credential["username"],credential["password"])){
+				$("login-content").addClass("hide")
+				$("site-content").removeClass("hide")
+			}
+		}
+	}
+	// Read a page's GET URL variables and return them as an associative array.
+	function getUrlVars(){
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++){
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+	</script>
   <script>
     var map_text_data={
 	"1":["Partenza","Qui arriviamo in aereo."],
@@ -32,8 +74,14 @@
 		});
 	}
 	$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
+  
+	
+  
   </script>
   <style>
+	.hide{
+		display:none !important;
+	}
     .map-map{
 		background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png);
 		width: 100%;
@@ -73,19 +121,26 @@
   </style>
 </head>
 <body style="height:100vh;margin:0;">
-  <div class="map-plugin-container">
-    <div class="map-control-container">
-		<div class="map-btn" data-step="1" onclick="MapChange(this)">1</div>
-		<div class="map-btn" data-step="2" onclick="MapChange(this)">2</div>
-		<div class="map-btn" data-step="3" onclick="MapChange(this)">3</div>
-		<div class="map-btn" data-step="4" onclick="MapChange(this)">4</div>
-		<div class="map-btn" data-step="5" onclick="MapChange(this)">5</div>
-    </div>
-    <div class="map-map-container">
-      <div id="map-map" class="map-map"></div>
-    </div>
-	<div id="map-title"class="map-title">Partenza</div>
-	<div id="map-txt"class="map-txt">Qui arriviamo in aereo.</div>
+  <div class="login-content">
+  Username:<input type=text" id="username"/>
+  Password:<input type=text id="password"/>
+  <button id="login" onclick="onAccediClick();">Accedi</button>
+  </div>
+  <div class="site-content hide">
+	<div class="map-plugin-container">
+		<div class="map-control-container">
+			<div class="map-btn" data-step="1" onclick="MapChange(this)">1</div>
+			<div class="map-btn" data-step="2" onclick="MapChange(this)">2</div>
+			<div class="map-btn" data-step="3" onclick="MapChange(this)">3</div>
+			<div class="map-btn" data-step="4" onclick="MapChange(this)">4</div>
+			<div class="map-btn" data-step="5" onclick="MapChange(this)">5</div>
+		</div>
+		<div class="map-map-container">
+		  <div id="map-map" class="map-map"></div>
+		</div>
+		<div id="map-title"class="map-title">Partenza</div>
+		<div id="map-txt"class="map-txt">Qui arriviamo in aereo.</div>
+	</div>
   </div>
 </body>
 </html>
