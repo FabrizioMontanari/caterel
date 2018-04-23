@@ -25,10 +25,6 @@ button {
     font-weight: bold;
 }
 
-.martini-gift__gift-details {
-    display: none;
-}
-
 .martini-gift__agency-address {
     list-style: none;
 }
