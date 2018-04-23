@@ -1,4 +1,4 @@
-const elementIsVisible = el => el && el.maxHeight//el && el.style && el.style.display !== 'none'; 
+const elementIsVisible = el => el && el.style.maxHeight//el && el.style && el.style.display !== 'none'; 
 
 const hideElement = el => el.style.maxHeight=null;//el.style.display = 'none';
 

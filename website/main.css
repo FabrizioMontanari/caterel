@@ -28,7 +28,7 @@ button {
 .martini-gift__toggle-details {
     font-weight: bold;
 }
-.martini-gift__gift-detail{
+.martini-gift__gift-details{
 	max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;

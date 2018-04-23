@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
     <!-- bootstrap -->
-    <link rel="stylesheet" href="../caterel/website/main.css">
+    <link rel="stylesheet" href="./website/main.css">
 
-    <script src="../caterel/website/detail_toggle.js"></script>
+    <script src="./website/detail_toggle.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	
@@ -31,17 +31,20 @@
 		var u=$("#username").val();
 		var p=$("#password").val();
 		if (checkLogin(u,p)){
+			setCookie("login_done","true",200);
 			loginSuccessUptadeUI();
 		}
 	}
 	
 	function landingLoginCheck(){
 		var credential = getUrlVars();
-		if ( !(credential.hasOwnProperty('password') && credential.hasOwnProperty('username')) ) {
+		console.log("found this cookie: " +getCookie("login_done"));
+		if ( !(credential.hasOwnProperty('password') && credential.hasOwnProperty('username')) && getCookie("login_done")!=="true" ) {
 			return;
 		}
 		else{
 			if (checkLogin(credential["username"],credential["password"])){
+				setCookie("login_done","true",200);
 				loginSuccessUptadeUI();
 			}
 		}
@@ -56,6 +59,29 @@
 			vars[hash[0]] = hash[1];
 		}
 		return vars;
+	}
+	
+	function setCookie(cname, cvalue, exmins) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exmins * /*24 * 60 **/ 60 * 1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		console.log("cookie set: "+ cname + "=" + cvalue + ";" + expires + ";path=/");
+	}
+
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
 	}
 	</script>
   <script>
@@ -89,8 +115,8 @@
   </script>
   <script>
 	// Set the date we're counting down to
-	var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
-
+	var countDownDate = new Date("Sep 18, 2018 12:00:00").getTime();
+	
 	$(document).ready(function () {
 		landingLoginCheck();
 		
@@ -202,14 +228,14 @@
                 <input type="email" name="email" />
             </div>
             <div class="martini-rvsp__menu">
-                <label for="dieta">Menu</label>
+                <div>Menu</div>
                     <div class="martini-rvsp__menu-choices">
-                    <input type="checkbox" id="dieta-normale" name="dieta-normale" value="normale" />					<label for="dieta-normale">Text</label>
-                    <input type="checkbox" id="dieta-vegetariano" name="dieta-vegetarano" value="vegetariano" />		<label for="dieta-vegetariano">Text</label>
-                    <input type="checkbox" id="dieta-vegano" name="dieta-vegano" value="vegano" />						<label for="dieta-vgano">Text</label>
-                    <input type="checkbox" id="dieta-no-glutine" name="dieta-no-glutine" value="no-glutine" />			<label for="dieta-no-clutine">Text</label>
-                    <input type="checkbox" id="dieta-no-latticini" name="dieta-no-latticini" value="no-latticini" />	<label for="dieta-no-latticini">Text</label>
-                    <input type="checkbox" id="dieta-altro" name="dieta-altro" value="altro" />							<label for="dieta-altro">Text</label>
+                    <input type="checkbox" id="dieta-normale" name="dieta-normale" value="normale" />					<label for="dieta-normale">Normale</label>
+                    <input type="checkbox" id="dieta-vegetariano" name="dieta-vegetarano" value="vegetariano" />		<label for="dieta-vegetariano">Vegetariano</label>
+                    <input type="checkbox" id="dieta-vegano" name="dieta-vegano" value="vegano" />						<label for="dieta-vegano">Vegano</label>
+                    <input type="checkbox" id="dieta-no-glutine" name="dieta-no-glutine" value="no-glutine" />			<label for="dieta-no-glutine">Senza Glutine</label>
+                    <input type="checkbox" id="dieta-no-latticini" name="dieta-no-latticini" value="no-latticini" />	<label for="dieta-no-latticini">Senza Latticini</label>
+                    <input type="checkbox" id="dieta-altro" name="dieta-altro" value="altro" />							<label for="dieta-altro">Altro</label>
                     <label for="altro-info">Ulteriori necessita' sulla dieta</label>
                     <input type="text" name="altro-info" />
                 </div>
