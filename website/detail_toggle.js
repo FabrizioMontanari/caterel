@@ -1,8 +1,8 @@
-const elementIsVisible = el => el && el.style && el.style.display !== 'none'; 
+const elementIsVisible = el => el && el.maxHeight//el && el.style && el.style.display !== 'none'; 
 
-const hideElement = el => el.style.display = 'none';
+const hideElement = el => el.style.maxHeight=null;//el.style.display = 'none';
 
-const showElement = el => el.style.removeProperty('display');
+const showElement = el => el.style.maxHeight = panel.scrollHeight + "px";//el.style.removeProperty('display');
 
 const toggleVisibility = el => elementIsVisible(el) ? hideElement(el) : showElement(el);
 

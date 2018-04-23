@@ -27,11 +27,19 @@ button {
 
 .martini-gift__toggle-details {
     font-weight: bold;
-	transition:0.4;
+}
+.martini-gift__gift-detail{
+	max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
 }
 
 .martini-gift__agency-address {
     list-style: none;
+}
+
+.martini-gift__agency-address.open {
+    transition: 0.4s;
 }
 
 /*
