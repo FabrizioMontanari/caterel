@@ -11,8 +11,10 @@
 		/*login dei poveri*/
 	function checkLogin(username,password){
 		if (username === "nomeutente" && password==="password"){
+			console.log("credenziali riconosciute");
 			return true;
 		}
+		console.log("credenziali non riconosciute");
 		return false;
 	}
 	
@@ -20,8 +22,8 @@
 		var u=$("#username").val();
 		var p=$("#password").val();
 		if (checkLogin(u,p)){
-			$("login-content").addClass("hide")
-			$("site-content").removeClass("hide")
+			$(".login-content").addClass("hide");
+			$(".site-content").removeClass("hide");
 		}
 	}
 	
@@ -32,8 +34,8 @@
 		}
 		else{
 			if (checkLogin(credential["username"],credential["password"])){
-				$("login-content").addClass("hide")
-				$("site-content").removeClass("hide")
+				$(".login-content").addClass("hide")
+				$(".site-content").removeClass("hide")
 			}
 		}
 	}
