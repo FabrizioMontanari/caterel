@@ -18,24 +18,27 @@
 		return false;
 	}
 	
+	function loginSuccessUptadeUI(){
+		$(".login-content").addClass("hide");
+		$(".site-content").removeClass("hide");
+	}
+	
 	function onAccediClick(){
 		var u=$("#username").val();
 		var p=$("#password").val();
 		if (checkLogin(u,p)){
-			$(".login-content").addClass("hide");
-			$(".site-content").removeClass("hide");
+			loginSuccessUptadeUI();
 		}
 	}
 	
-	function firstLoginCheck(){
+	function landingLoginCheck(){
 		var credential = getUrlVars();
 		if ( !(credential.hasOwnProperty('password') && credential.hasOwnProperty('username')) ) {
 			return;
 		}
 		else{
 			if (checkLogin(credential["username"],credential["password"])){
-				$(".login-content").addClass("hide")
-				$(".site-content").removeClass("hide")
+				loginSuccessUptadeUI();
 			}
 		}
 	}
@@ -79,6 +82,11 @@
   
 	
   
+  </script>
+  <script>
+  $(document).ready(function () {
+	landingLoginCheck();
+  })
   </script>
   <style>
 	.hide{
