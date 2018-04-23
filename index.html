@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html><head>
+
+  <title>Esempio cartina</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	
+	<script>
+		/*login dei poveri*/
+	function checkLogin(username,password){
+		if (username === "nomeutente" && password==="password"){
+			console.log("credenziali riconosciute");
+			return true;
+		}
+		console.log("credenziali non riconosciute");
+		return false;
+	}
+	
+	function loginSuccessUptadeUI(){
+		$(".login-content").addClass("hide");
+		$(".site-content").removeClass("hide");
+	}
+	
+	function onAccediClick(){
+		var u=$("#username").val();
+		var p=$("#password").val();
+		if (checkLogin(u,p)){
+			loginSuccessUptadeUI();
+		}
+	}
+	
+	function landingLoginCheck(){
+		var credential = getUrlVars();
+		if ( !(credential.hasOwnProperty('password') && credential.hasOwnProperty('username')) ) {
+			return;
+		}
+		else{
+			if (checkLogin(credential["username"],credential["password"])){
+				loginSuccessUptadeUI();
+			}
+		}
+	}
+	// Read a page's GET URL variables and return them as an associative array.
+	function getUrlVars(){
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++){
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+	</script>
+  <script>
+    var map_text_data={
+	"1":["Partenza","Qui arriviamo in aereo."],
+	"2":["Prima tappa","Qui ci andiamo subito perché c'è il miglior ramen."],
+	"3":["Seconda tappa","Qua facciamo una breve sosta alle terme."],
+	"4":["Terza tappa","Qui c'è la statua gigante di Super Mario."],
+	"5":["Arrivo","Questo giro panoramico ci fa vistare tutti i villaggini."],
+	}
+	function createImgUrl(step){
+		return 'https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/0'+step+'.png';
+	}
+    function MapChange(btn){
+		var step = $(btn).data("step");
+		$("#map-map").css('background-image', 'url('+createImgUrl(step)+')');
+		$("#map-title").text(map_text_data[step][0]);
+		$("#map-txt").text(map_text_data[step][1]);
+	}
+	
+	
+	$.fn.preload = function() {
+		this.each(function(){
+			$('<img/>')[0].src = this;
+		});
+	}
+	$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
+  
+	
+  
+  </script>
+  <script>
+	// Set the date we're counting down to
+	var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+
+	$(document).ready(function () {
+		landingLoginCheck();
+		
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+		// Get todays date and time
+		var now = new Date().getTime();
+
+		// Find the distance between now an the count down date
+		var distance = countDownDate - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		// Display the result in the element with id="demo"
+		$(".timer").html( days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+		// If the count down is finished, write some text 
+		if (distance < 0) {
+		clearInterval(x);
+		$(".timer").html("EXPIRED");
+		}
+		}, 1000);
+		
+	});
+  </script>
+  <style>
+	.hide{
+		display:none !important;
+	}
+    .map-map{
+		background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png);
+		width: 100%;
+		height: 50vw;
+		-webkit-transition: background-image 0.2s ease-in-out;
+		transition: background-image 0.2s ease-in-out;
+		background-position: 50%;
+		background-size: contain;
+	    background-repeat: no-repeat;
+    }
+	.map-control-container{
+		display:flex;
+		flex-wrap: wrap;
+		justify-content:center;
+		align-items:center;
+		align-content:flex-start;
+		
+		width:100%;
+		
+	}
+	.map-btn{
+		background-color:lightblue;
+		height:30px;
+		width:20%;
+		border:1px solid black;
+    }
+	.map-title{
+		width:100%;
+		text-align:center;
+		font-size:150%;
+		font-weight:bold;
+	}
+	.map-txt{
+		width:100%;
+		text-align:center;
+	}
+  </style>
+</head>
+<body style="height:100vh;margin:0;">
+  <div class="login-content">
+  Username:<input type=text" id="username"/>
+  Password:<input type=text id="password"/>
+  <button id="login" onclick="onAccediClick();">Accedi</button>
+  </div>
+  <div class="site-content hide">
+	<div class="timer">
+	</div>
+	<div class="map-plugin-container">
+		<div class="map-control-container">
+			<div class="map-btn" data-step="1" onclick="MapChange(this)">1</div>
+			<div class="map-btn" data-step="2" onclick="MapChange(this)">2</div>
+			<div class="map-btn" data-step="3" onclick="MapChange(this)">3</div>
+			<div class="map-btn" data-step="4" onclick="MapChange(this)">4</div>
+			<div class="map-btn" data-step="5" onclick="MapChange(this)">5</div>
+		</div>
+		<div class="map-map-container">
+		  <div id="map-map" class="map-map"></div>
+		</div>
+		<div id="map-title"class="map-title">Partenza</div>
+		<div id="map-txt"class="map-txt">Qui arriviamo in aereo.</div>
+	</div>
+  </div>
+</body>
+</html>
