@@ -20,7 +20,11 @@ button {
 	display:none !important;
 }
 
-.martini-rvsp__form > div, .martini-rvsp__menu-choices > input {
+.martini-rvsp__menu-choices {
+	list-style: none;
+}
+
+.martini-rvsp__form > div{
     display: block;
     margin: 0 auto;
 }

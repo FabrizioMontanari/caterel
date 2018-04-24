@@ -6,146 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
     <!-- bootstrap -->
     <link rel="stylesheet" href="./website/main.css">
-
-    <script src="./website/detail_toggle.js"></script>
-
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	
-	<script>
-		/*login dei poveri*/
-	function checkLogin(username,password){
-		if (username === "nomeutente" && password==="password"){
-			console.log("credenziali riconosciute");
-			return true;
-		}
-		console.log("credenziali non riconosciute");
-		return false;
-	}
-	
-	function loginSuccessUptadeUI(){
-		$(".login-content").addClass("hide");
-		$(".site-content").removeClass("hide");
-	}
-	
-	function onAccediClick(){
-		var u=$("#username").val();
-		var p=$("#password").val();
-		if (checkLogin(u,p)){
-			setCookie("login_done","t");
-			loginSuccessUptadeUI();
-		}
-	}
-	
-	function landingLoginCheck(){
-		var credential = getUrlVars();
-		console.log("found this cookie: " +getCookie("login_done"));
-		console.log("check cookie: " +getCookie("login_done")!=="t");
-		if ( !(credential.hasOwnProperty('password') && credential.hasOwnProperty('username')) && getCookie("login_done")!=="t" ) {
-			return;
-		}
-		else{
-			if (checkLogin(credential["username"],credential["password"]) || getCookie("login_done")==="t"){
-				setCookie("login_done","t");
-				loginSuccessUptadeUI();
-			}
-		}
-	}
-	// Read a page's GET URL variables and return them as an associative array.
-	function getUrlVars(){
-		var vars = [], hash;
-		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-		for(var i = 0; i < hashes.length; i++){
-			hash = hashes[i].split('=');
-			vars.push(hash[0]);
-			vars[hash[0]] = hash[1];
-		}
-		return vars;
-	}
-	
-	function setCookie(cname, cvalue) {
-		var ctmp = cname + "="+ cvalue;
-		document.cookie = ctmp;
-		console.log("cookie set: "+ ctmp);
-	}
-
-	function getCookie(cname) {
-		var name = cname + "=";
-		var ca = document.cookie.split(';');
-		for(var i = 0; i < ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
-	}
-	</script>
-  <script>
-    var map_text_data={
-	"1":["Partenza","Qui arriviamo in aereo."],
-	"2":["Prima tappa","Qui ci andiamo subito perché c'è il miglior ramen."],
-	"3":["Seconda tappa","Qua facciamo una breve sosta alle terme."],
-	"4":["Terza tappa","Qui c'è la statua gigante di Super Mario."],
-	"5":["Arrivo","Questo giro panoramico ci fa vistare tutti i villaggini."],
-	}
-	function createImgUrl(step){
-		return 'https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/0'+step+'.png';
-	}
-    function MapChange(btn){
-		var step = $(btn).data("step");
-		$("#map-map").css('background-image', 'url('+createImgUrl(step)+')');
-		$("#map-title").text(map_text_data[step][0]);
-		$("#map-txt").text(map_text_data[step][1]);
-	}
-	
-	
-	$.fn.preload = function() {
-		this.each(function(){
-			$('<img/>')[0].src = this;
-		});
-	}
-	$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
-  
-	
-  
-  </script>
-  <script>
-	// Set the date we're counting down to
-	var countDownDate = new Date("Sep 18, 2018 12:00:00").getTime();
-	
-	$(document).ready(function () {
-		landingLoginCheck();
-		
-		// Update the count down every 1 second
-		var x = setInterval(function() {
-
-		// Get todays date and time
-		var now = new Date().getTime();
-
-		// Find the distance between now an the count down date
-		var distance = countDownDate - now;
-
-		// Time calculations for days, hours, minutes and seconds
-		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-		// Display the result in the element with id="demo"
-		$(".timer").html( days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
-
-		// If the count down is finished, write some text 
-		if (distance < 0) {
-		clearInterval(x);
-		$(".timer").html("EXPIRED");
-		}
-		}, 1000);
-		
-	});
-  </script>
+    
+	<script src="./website/detail_toggle.js"></script>
+	<script src="./website/login.js"></script>
+	<script src="./website/countdown.js"></script>
+	<script src="./website/map.js"></script>
 </head>
   <body>
   <div class="login-content">
@@ -201,10 +68,10 @@
 			</div>
         </div>
         <p class="martini-gift__toggle-details">
-            Clicca qua per mostrare i dettagli su come contribuire
+			Per contribuire clicca qui
         </p>
         <div class="martini-gift__gift-details">
-            <p>Per partecipare al regalo puoi fare un bonifico sul conto IBAN: 1234-1234-1324-1234</p>
+            <p>Per partecipare al regalo puoi fare un bonifico sul conto<br>IBAN: 1234-1234-1324-1234</p>
             <p>In alternativa puoi recarti presso l'agenzia viaggi:</p>
             <ul class="martini-gift__agency-address">
                 <li>Agenzia Tal dei Tali</li>
@@ -228,16 +95,16 @@
             </div>
             <div class="martini-rvsp__menu">
                 <div>Menu</div>
-                    <div class="martini-rvsp__menu-choices">
-                    <input type="checkbox" id="dieta-normale" name="dieta-normale" value="normale" />					<label for="dieta-normale">Normale</label>
-                    <input type="checkbox" id="dieta-vegetariano" name="dieta-vegetarano" value="vegetariano" />		<label for="dieta-vegetariano">Vegetariano</label>
-                    <input type="checkbox" id="dieta-vegano" name="dieta-vegano" value="vegano" />						<label for="dieta-vegano">Vegano</label>
-                    <input type="checkbox" id="dieta-no-glutine" name="dieta-no-glutine" value="no-glutine" />			<label for="dieta-no-glutine">Senza Glutine</label>
-                    <input type="checkbox" id="dieta-no-latticini" name="dieta-no-latticini" value="no-latticini" />	<label for="dieta-no-latticini">Senza Latticini</label>
-                    <input type="checkbox" id="dieta-altro" name="dieta-altro" value="altro" />							<label for="dieta-altro">Altro</label>
-                    <label for="altro-info">Ulteriori necessita' sulla dieta</label>
-                    <input type="text" name="altro-info" />
-                </div>
+                <ul class="martini-rvsp__menu-choices">
+					<li><input type="checkbox" id="dieta-normale" name="dieta-normale" value="normale" />					<label for="dieta-normale">Normale</label></li>
+					<li><input type="checkbox" id="dieta-vegetariano" name="dieta-vegetarano" value="vegetariano" />		<label for="dieta-vegetariano">Vegetariano</label></li>
+					<li><input type="checkbox" id="dieta-vegano" name="dieta-vegano" value="vegano" />						<label for="dieta-vegano">Vegano</label></li>
+					<li><input type="checkbox" id="dieta-no-glutine" name="dieta-no-glutine" value="no-glutine" />			<label for="dieta-no-glutine">Senza Glutine</label></li>
+					<li><input type="checkbox" id="dieta-no-latticini" name="dieta-no-latticini" value="no-latticini" />	<label for="dieta-no-latticini">Senza Latticini</label></li>
+					<li><input type="checkbox" id="dieta-altro" name="dieta-altro" value="altro" />							<label for="dieta-altro">Altro</label></li>
+					<li><label for="altro-info">Ulteriori necessita' sulla dieta</label></li>
+					<li><input type="text" name="altro-info" /></li>
+                </ul>
             </div>
             <button class="martini-rvsp__send">Conferma la tua presenza</button>
         </form>
