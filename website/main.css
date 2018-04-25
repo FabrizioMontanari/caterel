@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffdd;
+    background-color: snow;
     text-align: center;
 }
 
@@ -15,7 +15,28 @@ button {
     color: #880000;
     background-color: white;
 }
+/*
+	gestione sezioni
+*/
+section{
+	min-height:100vh;
+}
 
+.martini-intro{
+	background-color:snow;
+}
+.martini-timer{
+	background-color:#880000;
+	color:snow;
+	font-size:500%
+}
+.martini-location{}
+.martini-dress-code{}
+.martini-gift{
+	background-color:#880000;
+}
+.martini-rvsp{}
+/*fine sezioni*/
 .hide{
 	display:none !important;
 }
