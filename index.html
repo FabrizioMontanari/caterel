@@ -32,7 +32,7 @@
 	<section class="martini-timer">
         <div class="martini-timer__decoration"></div>
         <div class="martini-timer__title">
-			<div class="timer"></div>
+			<div class="martini-timer__title__timer"></div>
         </div>
     </section>
     <section class="martini-location">
@@ -52,20 +52,18 @@
         <div class="martini-gift__decoration"></div>
         <h2>Se a questo punto volete mandarci a quel paese ci abbiamo gia' pensato noi!</h2>
         <div class="martini-gift__map">
-            <div class="map-plugin-container">
-				<div class="map-control-container">
-					<div class="map-btn" data-step="1" onclick="MapChange(this)">1</div>
-					<div class="map-btn" data-step="2" onclick="MapChange(this)">2</div>
-					<div class="map-btn" data-step="3" onclick="MapChange(this)">3</div>
-					<div class="map-btn" data-step="4" onclick="MapChange(this)">4</div>
-					<div class="map-btn" data-step="5" onclick="MapChange(this)">5</div>
-				</div>
-				<div class="map-map-container">
-				  <div id="map-map" class="map-map"></div>
-				</div>
-				<div id="map-title"class="map-title">Partenza</div>
-				<div id="map-txt"class="map-txt">Qui arriviamo in aereo.</div>
+			<div class="martini-gift__map__controls">
+				<div class="martini-gift__map__controls__btn" data-step="1" onclick="MapChange(this)">1</div>
+				<div class="martini-gift__map__controls__btn" data-step="2" onclick="MapChange(this)">2</div>
+				<div class="martini-gift__map__controls__btn" data-step="3" onclick="MapChange(this)">3</div>
+				<div class="martini-gift__map__controls__btn" data-step="4" onclick="MapChange(this)">4</div>
+				<div class="martini-gift__map__controls__btn" data-step="5" onclick="MapChange(this)">5</div>
 			</div>
+			<div class="martini-gift__map__map">
+			  <div id="martini-gift__map__map__img" class="martini-gift__map__map__img"></div>
+			</div>
+			<div id="martini-gift__map__title"class="martini-gift__map__title">Partenza</div>
+			<div id="martini-gift__map__txt"class="martini-gift__map__txt">Qui arriviamo in aereo.</div>
         </div>
         <p class="martini-gift__toggle-details">
 			Per contribuire clicca qui

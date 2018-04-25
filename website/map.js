@@ -11,9 +11,9 @@ function createImgUrl(step){
 }
 function MapChange(btn){
 	var step = $(btn).data("step");
-	$("#map-map").css('background-image', 'url('+createImgUrl(step)+')');
-	$("#map-title").text(map_text_data[step][0]);
-	$("#map-txt").text(map_text_data[step][1]);
+	$("#martini-gift__map__map__img").css('background-image', 'url('+createImgUrl(step)+')');
+	$("#martini-gift__map__title").text(map_text_data[step][0]);
+	$("#martini-gift__map__txt").text(map_text_data[step][1]);
 }
 
 
