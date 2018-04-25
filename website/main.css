@@ -1,9 +1,12 @@
 body {
     background-color: snow;
     text-align: center;
+	margin:0;
+	padding:0;
 }
 
 h1, h2 {
+	margin:0;
     color: #880000;
 }
 
@@ -28,7 +31,10 @@ section{
 .martini-timer{
 	background-color:#880000;
 	color:snow;
-	font-size:500%
+	font-size:500%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .martini-location{}
 .martini-dress-code{}
