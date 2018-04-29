@@ -4,6 +4,11 @@ function checkLogin(username,password){
 		console.log("credenziali riconosciute");
 		return true;
 	}
+	if (username==="ellie" && password==="tvtb"){
+		enableHearts();
+		console.log("AMMMOREEEE");
+		return true;
+	}
 	console.log("credenziali non riconosciute");
 	return false;
 }
@@ -69,6 +74,9 @@ function getCookie(cname) {
 	return "";
 }
 
+function enableHearts(){
+	$(".site-content").append("<div id='heart1' class='heart'></div><div id='heart2' class='heart'></div><div id='heart3' class='heart'></div><div id='heart4' class='heart'></div>");
+}
 
 $(document).ready(function () {
 	landingLoginCheck();
