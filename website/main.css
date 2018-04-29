@@ -86,12 +86,24 @@ section{
 	width:20%;
 	border:1px solid black;
 }
-.martini-gift__map__map{
-	background-image: url(https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png);
-	width: 100%;
+.martini-gift__map__frame{
+	width: 80%;
 	height: 50vw;
-	-webkit-transition: background-image 0.2s ease-in-out;
-	transition: background-image 0.2s ease-in-out;
+	margin:0 auto;
+	overflow:hidden;
+}
+.martini-gift__map__map.zoomin{
+	transform: scale(2) translate(15%,-15%);
+}
+.martini-gift__map__map.zoomout{
+	transform: scale(1) translate(0,0);
+}
+.martini-gift__map__map{
+	background-image: url("https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png");
+	width: 100%;
+	height: 100%;
+	-webkit-transition: background-image 0.5s ease-in-out, transform 0.5s ease-in-out;
+	transition: background-image 0.5s ease-in-out,transform  0.5s ease-in-out;
 	background-position: 50%;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -107,6 +119,14 @@ section{
 	text-align:center;
 }
 
+.martini-preloader{
+	height: 0px;
+	min-height: 0px;
+	max-height: 0px;	
+}
+.martini-preloader img{
+	height:0;
+}
 /*
 easter egg
 */

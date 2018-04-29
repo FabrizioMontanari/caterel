@@ -11,7 +11,21 @@ function createImgUrl(step){
 }
 function MapChange(btn){
 	var step = $(btn).data("step");
-	$("#martini-gift__map__map").css('background-image', 'url('+createImgUrl(step)+')');
+	if ( step !=1 && $("#martini-gift__map__map").css('background-image').toLowerCase() == 'url("https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png")'.toLowerCase()){
+		$("#martini-gift__map__map").addClass("zoomin");
+		$("#martini-gift__map__map").removeClass("zoomout");
+		setTimeout(function(){ 
+								$("#martini-gift__map__map").css('background-image', 'url('+createImgUrl(step)+')');
+								
+							}, 500);
+	}
+	else{
+		$("#martini-gift__map__map").css('background-image', 'url('+createImgUrl(step)+')');
+		if (step==1){
+			$("#martini-gift__map__map").removeClass("zoomin");
+			$("#martini-gift__map__map").addClass("zoomout");
+		}
+	}
 	$("#martini-gift__map__title").text(map_text_data[step][0]);
 	$("#martini-gift__map__txt").text(map_text_data[step][1]);
 }
@@ -19,7 +33,14 @@ function MapChange(btn){
 
 $.fn.preload = function() {
 	this.each(function(){
-		$('<img/>')[0].src = this;
+		$(".martini-preloader").append('<img src="'+this+'">');
 	});
 }
-$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
+
+
+$(document).ready(function () {
+	$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
+	setTimeout(function(){
+							$(".martini-preloader").addClass("hide");
+						}, 500);
+});
