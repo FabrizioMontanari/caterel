@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'Amatic-Bold';
-	src: url('https://github.com/FabrizioMontanari/caterel/blob/master/website/fonts/Amatic-Bold.ttf?raw=true') format('truetype');
+	src: url('fonts/Amatic-Bold.ttf') format('truetype');
 
 	font-weight: 300;
 	font-style: normal;
@@ -8,7 +8,7 @@
 }
 @font-face {
 	font-family: 'Amatic-Regular';
-	src: url('https://github.com/FabrizioMontanari/caterel/blob/master/website/fonts/AmaticSC-Regular.ttf?raw=true') format('truetype');
+	src: url('fonts/AmaticSC-Regular.ttf') format('truetype');
 
 	font-weight: 300;
 	font-style: normal;
@@ -16,7 +16,7 @@
 }
 @font-face {
 	font-family: 'Autumn';
-	src: url('https://github.com/FabrizioMontanari/caterel/blob/master/website/fonts/Autumn_in_November.ttf?raw=true') format('truetype');
+	src: url('fonts/Autumn_in_November.ttf') format('truetype');
 
 	font-weight: 300;
 	font-style: normal;
@@ -24,7 +24,7 @@
 }
 @font-face {
 	font-family: 'destain';
-	src: url('https://github.com/FabrizioMontanari/caterel/blob/master/website/fonts/destain.ttf?raw=true') format('truetype');
+	src: url('fonts/destain.ttf') format('truetype');
 
 	font-weight: 300;
 	font-style: normal;
