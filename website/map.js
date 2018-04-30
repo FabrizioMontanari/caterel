@@ -11,10 +11,10 @@ function createImgUrl(step){
 }
 function MapChange(btn){
 	var step = $(btn).data("step");
-	if ( step !=1 && $("#martini-gift__map__map").css('background-image').toLowerCase() == 'url("https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/01.png")'.toLowerCase()){
+	if ( step !=1 && $("#martini-gift__map__map").css('background-image').toLowerCase().indexOf("01.png") !== -1){
 		$("#martini-gift__map__map").addClass("zoomin");
 		$("#martini-gift__map__map").removeClass("zoomout");
-		setTimeout(function(){ 
+		setTimeout(function(){
 								$("#martini-gift__map__map").css('background-image', 'url('+createImgUrl(step)+')');
 								
 							}, 500);
@@ -36,7 +36,6 @@ $.fn.preload = function() {
 		$(".martini-preloader").append('<img src="'+this+'">');
 	});
 }
-
 
 $(document).ready(function () {
 	$([createImgUrl(1),createImgUrl(2),createImgUrl(3),createImgUrl(4),createImgUrl(5)]).preload();
