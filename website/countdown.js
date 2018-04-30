@@ -15,7 +15,7 @@ function updateTimer(){
 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 	// Display the result in the element
-	$(".martini-timer__title__timer").html( days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+	$(".martini-timer__title__timer").html( days + "d " + hours + "h " + minutes + "m " + seconds + " s ");
 
 	// If the count down is finished, write some text 
 	if (distance < 0) {

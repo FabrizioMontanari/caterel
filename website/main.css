@@ -1,3 +1,36 @@
+@font-face {
+	font-family: 'Amatic-Bold';
+	src: url('/website/fonts/Amatic-Bold.ttf') format('truetype');
+
+	font-weight: 300;
+	font-style: normal;
+	text-rendering: antialiased;
+}
+@font-face {
+	font-family: 'Amatic-Regular';
+	src: url('/website/fonts/AmaticSC-Regular.ttf') format('truetype');
+
+	font-weight: 300;
+	font-style: normal;
+	text-rendering: antialiased;
+}
+@font-face {
+	font-family: 'Autumn';
+	src: url('/website/fonts/Autumn_in_November.ttf') format('truetype');
+
+	font-weight: 300;
+	font-style: normal;
+	text-rendering: antialiased;
+}
+@font-face {
+	font-family: 'destain';
+	src: url('/website/fonts/destain.ttf') format('truetype');
+
+	font-weight: 300;
+	font-style: normal;
+	text-rendering: antialiased;
+}
+
 body {
     background-color: snow;
     text-align: center;
@@ -22,16 +55,18 @@ button {
 	gestione sezioni
 */
 section{
-	min-height:100vh;
+	min-height:105vh;
 }
 
 .martini-intro{
 	background-color:snow;
+	font-family:Autumn;
 }
 .martini-timer{
 	background-color:#880000;
 	color:snow;
-	font-size:500%;
+	font-family:Autumn;
+	font-size:10vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
