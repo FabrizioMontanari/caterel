@@ -1,7 +1,17 @@
 // colors
-$bordeaux: #5F021F;
+$martini-bordeaux: #5F021F;
+$martini-bordeaux-dark: darken($martini-bordeaux, 5%);
+$martini-bordeaux-light: lighten($martini-bordeaux, 15%);
 
-$yellow: #FFCD00;
+$martini-yellow: #FFCD00;
+$martini-yellow-dark: darken($martini-yellow, 5%);
+$martini-yellow-light: lighten($martini-yellow, 15%);
+
+$martini-blue: #5B5EC1;
+$martini-blue-dark: darken($martini-blue, 5%);
+$martini-blue-light: lighten($martini-blue, 15%);
+
+$body-copy: #000;
 
 // fonts
 @font-face {

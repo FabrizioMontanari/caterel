@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    // background: lighten($martini-blue-light, 25%);
 }
 
 h1, h2, h3, p {
@@ -9,25 +10,25 @@ h1, h2, h3, p {
 }
 
 h1 {
-    color: $bordeaux;
+    color: $martini-bordeaux;
     font-size: 186px;
     font-family: amatic;
 }
 
 h2 {
-    color: $bordeaux;
+    color: $martini-bordeaux;
     font-size: 86px;
     font-family: autumn;
 }
 
 h3 {
-    color: $bordeaux;
+    color: $martini-bordeaux-dark;
     font-size: 40px;
     font-family: autumn;
 }
 
 p {
-    color: $bordeaux;
+    color: $martini-bordeaux-dark;
     font-size: 34px;
     font-family: autumn;
 }
@@ -75,7 +76,7 @@ p {
 }
 
 .martini-countdown {
-    background: $yellow;
+    background: $martini-yellow;
 
     &__container {
         text-align: center;
@@ -149,14 +150,14 @@ p {
             font-family: amatic;
             font-size: 1.5em;
             text-transform: uppercase;
-            color: $yellow;
+            color: $martini-yellow;
         }
 
         &--highlight-bordeaux {
             font-family: amatic;
             font-size: 1.5em;
             text-transform: uppercase;
-            color: $bordeaux;
+            color: $martini-bordeaux;
         }
     }
 }
