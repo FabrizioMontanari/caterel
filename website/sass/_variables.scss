@@ -1,0 +1,21 @@
+// colors
+$bordeaux: #5F021F;
+
+$yellow: #FFCD00;
+
+// fonts
+@font-face {
+    font-family: 'amatic';
+    
+	src: url('../fonts/Amatic-Bold.ttf') format('truetype');
+	font-style: normal;
+	text-rendering: antialiased;
+}
+
+@font-face {
+    font-family: 'autumn';
+    
+	src: url('../fonts/Autumn_in_November.ttf') format('truetype');
+	font-style: normal;
+	text-rendering: antialiased;
+}

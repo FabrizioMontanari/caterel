@@ -1,1 +1,63 @@
 @import '_variables';
+
+h1 {
+    color: $bordeaux;
+    font-size: 186px;
+    font-family: amatic;
+}
+
+h2 {
+    color: $bordeaux;
+    font-size: 86px;
+    font-family: autumn;
+}
+
+h3 {
+    color: $bordeaux;
+    font-size: 40px;
+    font-family: autumn;
+}
+
+p {
+    color: $bordeaux;
+    font-size: 24px;
+    font-family: autumn;
+}
+
+.martini-intro {
+    text-align: center;
+    max-width: 1008px;
+    margin: 20px auto;
+
+    &__pre-title {
+        margin: 0 auto;
+    }
+
+    &__title-box {
+        margin: 60px auto;
+    }
+
+    &__title {
+        margin: 0 auto -80px;
+
+        &--ampersand {
+            font-family: autumn;
+            font-size: 1.5em;
+        }
+    }
+
+    &__subtitle {
+        margin: 0 auto;
+    }
+
+    &__location {
+        margin: 0 auto;
+    }
+
+    &__location-text {
+        &--highlight {
+            font-family: amatic;
+            font-size: 1.5em;
+        }
+    }
+}
