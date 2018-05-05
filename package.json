@@ -1,0 +1,23 @@
+{
+  "name": "martini-sposi",
+  "version": "1.0.0",
+  "description": "Bomberi qua ci mettiamo info generali",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabrizioMontanari/caterel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FabrizioMontanari/caterel/issues"
+  },
+  "homepage": "https://github.com/FabrizioMontanari/caterel#readme"
+}
