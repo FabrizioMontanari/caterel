@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+h1, h2, h3, p {
+    font-weight: normal;
+}
+
 h1 {
     color: $bordeaux;
     font-size: 186px;
@@ -24,7 +28,7 @@ h3 {
 
 p {
     color: $bordeaux;
-    font-size: 24px;
+    font-size: 34px;
     font-family: autumn;
 }
 
@@ -45,6 +49,7 @@ p {
 
     &__title {
         margin: 0 auto -80px;
+        text-transform: uppercase;
 
         &--ampersand {
             font-family: autumn;
@@ -64,6 +69,7 @@ p {
         &--highlight {
             font-family: amatic;
             font-size: 1.5em;
+            text-transform: uppercase;
         }
     }
 }
@@ -79,8 +85,7 @@ p {
     
     &__banner-element {
         display: inline-block;
-        vertical-align: middle;
-        margin: 60px 0;
+        margin: 60px auto;
 
         &--left {
             float: left;
@@ -97,5 +102,27 @@ p {
 
     &__clock-separator {
         vertical-align: middle;
+    }
+}
+
+.martini-location {
+    &__container {
+        text-align: center;
+        max-width: 1008px;
+        margin: 20px auto;
+    }
+
+    &__description-text {
+        &--highlight {
+            font-family: amatic;
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+
+        margin: 40px auto;
+    }
+
+    &__buffet-warning {
+        margin: 40px auto;
     }
 }
