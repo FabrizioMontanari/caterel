@@ -11,7 +11,8 @@ $martini-blue: #5B5EC1;
 $martini-blue-dark: darken($martini-blue, 5%);
 $martini-blue-light: lighten($martini-blue, 15%);
 
-$body-copy: #000;
+$martini-body-copy: $martini-bordeaux-dark;
+$martini-background: #FFF1E1;
 
 // fonts
 @font-face {
