@@ -1,6 +1,7 @@
 @import '_variables';
 
 body {
+	position:relative;
     margin: 0;
 	padding-top:9vmax;
     background: $martini-background;
@@ -29,35 +30,41 @@ h3 {
 }
 
 p {
-    color: $martini-body-copy;
-    font-size: 34px;
-    font-family: autumn;
+	color: $martini-body-copy;
+	font-size: 34px;
+	font-family: autumn;
 }
 
 .martini-header {
-    background: $martini-yellow-light;
-	align-items: center;
-	align-items: stretch;
+    background: $martini-yellow;
+	padding-top: 0px;
+    padding-bottom: 0px;
 	
 	&__nav-collapser{
-		justify-content: center;
+		justify-content: flex-end;
+	}
+	&__nav-togglr{
+		margin: 3px 0;
 	}
 	
 	&__nav-brand{
-		font-family: amatic;
-		font-size:4.3vmax;
+		color:$martini-bordeaux !important;
+		font-family: autumn;
+		font-size:3.3vmax;
+		
+		align-self:center;
 		
 		margin: 0 5px 0 0;
 		padding:0;
-	}    
+	}
 
     &__nav-link {
 		font-family: amatic;
 		font-size:3.7vmax;
-        text-transform: 
-		uppercase;text-align: center;
+        text-transform: uppercase;
+		text-align: center;
         text-decoration: none;
-        color: $martini-body-copy;
+        color: black !important;
     }
 }
 
