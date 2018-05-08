@@ -12,14 +12,14 @@ const updateCountdown = counters => {
 	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 	const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	/*const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
 
-	counters.days.innerHTML = `${days}d`;
-	counters.hours.innerHTML = `${hours}h`;
-	counters.minutes.innerHTML = `${minutes}m`;
-	counters.seconds.innerHTML = `${seconds}s`;
+	counters.days.innerHTML = `${days}D&nbsp;`;
+	counters.hours.innerHTML = `&nbsp;${hours}H&nbsp;`;
+	counters.minutes.innerHTML = `&nbsp;${minutes}M`;
+	/*counters.seconds.innerHTML = `${seconds}S`;*/
 
-	setTimeout(() => updateCountdown(counters), 1000);
+	setTimeout(() => updateCountdown(counters), 60000);
 };
 
 const initialise = () => {

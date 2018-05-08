@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+	padding-top:93px;
     background: $martini-background;
 }
 
@@ -35,25 +36,21 @@ p {
 
 .martini-header {
     background: $martini-yellow-light;
-
-    position: fixed;
-    top: 0;
-    width: 100%;
-
-    &__container {
-        text-align: center;
-        max-width: 1008px;
-        margin: 0 auto;
-        padding: 5px;
-    }
-
-    &__text {
-        margin: 0px;
-        font-family: amatic;
-        text-transform: uppercase;
-    }
+	align-items: baseline;
+	
+	
+	&__nav-brand{
+		font-family: amatic;
+		font-size:4.3vmax;
+		
+		margin: 0 5px 0 0;
+	}
 
     &__nav-link {
+		font-family: amatic;
+		font-size:3.7vmax;
+        text-transform: 
+		uppercase;text-align: center;
         text-decoration: none;
         color: $martini-body-copy;
     }
@@ -64,7 +61,7 @@ p {
         text-align: center;
         max-width: 1008px;
         margin: auto;
-        padding-top: 40px;
+        padding-top: 10px;
     }
 
     &__pre-title {
@@ -104,33 +101,61 @@ p {
 
 .martini-countdown {
     background: $martini-yellow;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
 
     &__container {
-        text-align: center;
-        max-width: 1008px;
-        margin: auto;
-        padding-top: 40px;
+		display:flex;
+		justify-content: center;
+		align-items: stretch;
     }
     
     &__banner-element {
         display: inline-block;
-        margin: 60px auto;
-
-        &--left {
-            float: left;
-        }
-
-        &--right {
-            float: right;
-        }
     }
+	
+	&__banner-element__bimba{
+		background-image:url("../img/karin.png");
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-position:50%;
+		padding-top:20vh;
+	}
+	&__banner-element__bimbo{
+		background-image:url("../img/matteo.png");
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-position:50%;
+		padding-top:20vh;
+	}
 
     &__clock {
-        font-family: amatic;
+		display:flex;
+		justify-content: center;
+		align-items:center;
+		height:100%;
+        
+		font-family: amatic;
+		font-size: 5vmax;
+		
+		margin:0;
     }
 
-    &__clock-separator {
-        vertical-align: middle;
+    &__clock-separator1 {
+		
+		background-image:url("../img/countdown-separator.png");
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-position-y:55%;
+    }
+	&__clock-separator2 {
+		
+		background-image:url("../img/countdown-separator.png");
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-position-y:45%;
+		transform: rotate(180deg);
     }
 }
 

@@ -6,24 +6,42 @@
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/main.css">
     <script src="./js/countdown.js"></script>
 </head>
 
 <body>
-    <section class="martini-header" id="martini-header">
-        <div class="martini-header__container">
-            <p class="martini-header__text">
-                <a href="#martini-intro" class="martini-header__nav-link">Home</a> - 
-                <a href="#martini-countdown" class="martini-header__nav-link">Data</a> - 
-                <a href="#martini-location" class="martini-header__nav-link">Pranzo</a> - 
-                <a href="#martini-theme" class="martini-header__nav-link">Dettagli</a> - 
-                <a href="#martini-" class="martini-header__nav-link">Honeymoon</a> - 
-                <a href="#martini-" class="martini-header__nav-link">RSVP</a>
-            </p>
-        </div>
-    </section>
+	<nav class="martini-header navbar navbar-light fixed-top navbar-expand-sm container">
+		<p class="navbar-brand martini-header__nav-brand" >Menu</p>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+			<ul class="navbar-nav mr-auto mt-lg-0">
+				<li class="nav-item">
+					<a href="#martini-intro" class="martini-header__nav-link nav-link">Home</a>
+				</li>
+				<li class="nav-item"><a href="#martini-countdown" class="martini-header__nav-link nav-link">Data</a></li>
+				<li class="nav-item"><a href="#martini-location" class="martini-header__nav-link nav-link">Pranzo</a></li>
+				<li class="nav-item"><a href="#martini-theme" class="martini-header__nav-link nav-link">Dettagli</a></li>
+				<li class="nav-item"><a href="#martini-" class="martini-header__nav-link nav-link">Honeymoon</a></li>
+				<li class="nav-item"><a href="#martini-" class="martini-header__nav-link nav-link">RSVP</a></li>
+			</ul>
+		</div>
+	</nav>
     <section class="martini-intro" id="martini-intro">
         <div class="martini-intro__container">
             <h3 class="martini-intro__pre-title">Finalmente, dopo 12 anni di fidanzamento</h3>
@@ -49,26 +67,40 @@
             </div>
     </section>
     <section class="martini-countdown" id="martini-countdown">
-        <div class="martini-countdown__container">
-            <div class="martini-countdown__banner-element martini-countdown__banner-element--left">
-                <img src="img/karin.png" class="martini-countdown__potrait-karin">
+        <div class="martini-countdown__container container row">
+            <div class="martini-countdown__banner-element martini-countdown__banner-element__bimba col-sm-3">
             </div>
-            <div class="martini-countdown__banner-element">
+            <div class="martini-countdown__banner-element col-sm-6">
                 <h2 class="martini-countdown__clock">
-                    <span class="martini-countdown__clock-days">10d</span>
-                    <img class="martini-countdown__clock-separator" src="img/countdown-separator.png">
-                    <span class="martini-countdown__clock-hours">10h</span>
-                    <img class="martini-countdown__clock-separator" src="img/countdown-separator.png">
-                    <span class="martini-countdown__clock-minutes">10m</span>
-                    <img class="martini-countdown__clock-separator" src="img/countdown-separator.png">
-                    <span class="martini-countdown__clock-seconds">10s</span>
+                    <span class="martini-countdown__clock-days">10D</span>
+                    <div class="martini-countdown__clock-separator1">&nbsp;&nbsp;&nbsp;</div>
+                    <span class="martini-countdown__clock-hours">10H</span>
+                    <div class="martini-countdown__clock-separator2">&nbsp;&nbsp;&nbsp;</div>
+                    <span class="martini-countdown__clock-minutes">10M</span>
                 </h2>
             </div>
-            <div class="martini-countdown__banner-element martini-countdown__banner-element--right">
-                <img src="img/matteo.png" class="martini-countdown__potrait-matteo">
+            <div class="martini-countdown__banner-element martini-countdown__banner-element__bimbo col-sm-3">
             </div>
         </div>
     </section>
+	
+	
+	<section class="martini-timer">
+        <div class="martini-timer__timer container row">
+			<div class="martini-timer__timer__bimba col-sm-3">&nbsp;</div>
+			<h1 class="martini-timer__timer__h1 col-sm-6">
+				<span class="martini-timer__timer__days"></span>
+				<div class="martini-timer__timer__separator1">&nbsp;&nbsp;</div>
+				<span class="martini-timer__timer__hours"></span>
+				<div class="martini-timer__timer__separator2">&nbsp;&nbsp;</div>
+				<span class="martini-timer__timer__minutes"></span>
+			</h1>
+			<div class="martini-timer__timer__bimbo col-sm-3">&nbsp;</div>
+		</div>
+    </section>
+	
+	
+	
     <section class="martini-location" id="martini-location">
         <div class="martini-location__container">
             <p class="martini-location__text">
