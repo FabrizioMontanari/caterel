@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-	padding-top:93px;
+	padding-top:9vmax;
     background: $martini-background;
 }
 
@@ -36,15 +36,20 @@ p {
 
 .martini-header {
     background: $martini-yellow-light;
-	align-items: baseline;
+	align-items: center;
+	align-items: stretch;
 	
+	&__nav-collapser{
+		justify-content: center;
+	}
 	
 	&__nav-brand{
 		font-family: amatic;
 		font-size:4.3vmax;
 		
 		margin: 0 5px 0 0;
-	}
+		padding:0;
+	}    
 
     &__nav-link {
 		font-family: amatic;
