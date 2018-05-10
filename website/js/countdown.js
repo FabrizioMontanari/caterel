@@ -1,6 +1,6 @@
 const countDownDate = new Date("Sep 18, 2018 12:00:00").getTime();
 
-const getClassName = name => `.martini-countdown__${name}`;
+const getClassName = name => `.martini-countdown__banner-element__central__clock${name}`;
 
 const updateCountdown = counters => {
 	const distance = countDownDate - new Date().getTime();
@@ -24,11 +24,11 @@ const updateCountdown = counters => {
 
 const initialise = () => {
 	const counterElements = {
-		days: document.querySelector(getClassName('clock-days')),
-		hours: document.querySelector(getClassName('clock-hours')),
-		minutes: document.querySelector(getClassName('clock-minutes')),
-		seconds: document.querySelector(getClassName('clock-seconds')),
-		clock: document.querySelector(getClassName('clock'))
+		days: document.querySelector(getClassName('-days')),
+		hours: document.querySelector(getClassName('-hours')),
+		minutes: document.querySelector(getClassName('-minutes')),
+		/*seconds: document.querySelector(getClassName('-seconds')),*/
+		clock: document.querySelector(getClassName(''))
 	}
 
 	updateCountdown(counterElements);

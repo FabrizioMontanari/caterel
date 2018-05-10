@@ -130,54 +130,102 @@ p {
 		display:flex;
 		justify-content: center;
 		align-items: stretch;
+		
+		padding-top: 30px;
+		padding-bottom: 30px;
     }
     
     &__banner-element {
         display: inline-block;
     }
 	
+	&__banner-element__central {
+		display: inline-flex;
+		flex-direction: column;
+		&__invite{
+			font-family: autumn;
+			
+			text-align: center;
+			
+			&__amatic{
+				font-family: amatic;
+			}
+		}
+		&__separator-1{
+			object-fit: contain;
+		}
+		&__directive{
+			font-family:arktic;
+			font-weight:bold;
+			text-align:center;
+			&__minor{
+				font-size:75%;
+			}
+		}
+		&__RSVP-link{
+			color:black;
+			font-family:arktic;
+			font-weight:bold;
+			text-align:center;
+			
+			align-self: center;
+			border:1px solid black;
+			padding: 0 5px;
+		}
+		
+		
+		&__clock {
+			display:flex;
+			justify-content: center;
+			align-items:center;
+			height:100%;
+			
+			font-family: amatic;
+			font-size: 5vmax;
+			
+			margin:0;
+		}
+
+		&__clock-separator1 {
+			
+			background-image:url("../img/countdown-separator.png");
+			background-size:contain;
+			background-repeat:no-repeat;
+			background-position-y:55%;
+		}
+		&__clock-separator2 {
+			
+			background-image:url("../img/countdown-separator.png");
+			background-size:contain;
+			background-repeat:no-repeat;
+			background-position-y:45%;
+			transform: rotate(180deg);
+		}
+		
+		&__separator-2{
+			object-fit: contain;
+		}
+		
+	}
+	
 	&__banner-element__bimba{
-		background-image:url("../img/karin.png");
+		/*background-image:url("../img/sezione2_Karin.png");
 		background-size:contain;
 		background-repeat:no-repeat;
 		background-position:50%;
-		padding-top:20vh;
+		padding-top:20vh;*/
+		object-fit: contain;
+		padding:0px;
 	}
 	&__banner-element__bimbo{
-		background-image:url("../img/matteo.png");
+		/*background-image:url("../img/sezione2_Matteo.png");
 		background-size:contain;
 		background-repeat:no-repeat;
 		background-position:50%;
-		padding-top:20vh;
+		padding-top:20vh;*/
+		object-fit: contain;
+		padding:0px;
 	}
-
-    &__clock {
-		display:flex;
-		justify-content: center;
-		align-items:center;
-		height:100%;
-        
-		font-family: amatic;
-		font-size: 5vmax;
-		
-		margin:0;
-    }
-
-    &__clock-separator1 {
-		
-		background-image:url("../img/countdown-separator.png");
-		background-size:contain;
-		background-repeat:no-repeat;
-		background-position-y:55%;
-    }
-	&__clock-separator2 {
-		
-		background-image:url("../img/countdown-separator.png");
-		background-size:contain;
-		background-repeat:no-repeat;
-		background-position-y:45%;
-		transform: rotate(180deg);
-    }
 }
 
 .martini-location {
