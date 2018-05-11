@@ -74,7 +74,7 @@ p {
 	align-items:center;
 	justify-content:center;
 	
-	height:100vh;
+	min-height:100vh;
 	background:url("../img/sezione1_HOME.png");
 	background-size:cover;
 	background-position:50%;
@@ -93,6 +93,8 @@ p {
 
     &__title {
         margin: 0px auto -2.4vh;
+		
+		color:black;
 		font-size: 7.4vh;
         text-transform: uppercase;
 
@@ -103,6 +105,7 @@ p {
     }
 
     &__subtitle {
+		color:black;
 	    font-size: 5.3vh;
         margin: 0 auto;
     }
@@ -121,7 +124,7 @@ p {
 }
 
 .martini-countdown {
-    background: $martini-yellow;
+    background: $martini-yellow-light;
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
@@ -155,7 +158,7 @@ p {
 			object-fit: contain;
 		}
 		&__directive{
-			font-family:arktic;
+			font-family:arctik;
 			font-weight:bold;
 			text-align:center;
 			&__minor{
@@ -164,7 +167,7 @@ p {
 		}
 		&__RSVP-link{
 			color:black;
-			font-family:arktic;
+			font-family:arctik;
 			font-weight:bold;
 			text-align:center;
 			
@@ -180,26 +183,26 @@ p {
 			align-items:center;
 			height:100%;
 			
+			color:black;
 			font-family: amatic;
-			font-size: 5vmax;
+			font-size: 5.5vmax;
 			
 			margin:0;
 		}
 
-		&__clock-separator1 {
+		&__clock-separator-1 {
 			
-			background-image:url("../img/countdown-separator.png");
+			background-image:url("../img/sezione2_fiore1.png");
 			background-size:contain;
 			background-repeat:no-repeat;
 			background-position-y:55%;
 		}
-		&__clock-separator2 {
+		&__clock-separator-2 {
 			
-			background-image:url("../img/countdown-separator.png");
+			background-image:url("../img/sezione2_fiore2.png");
 			background-size:contain;
 			background-repeat:no-repeat;
-			background-position-y:45%;
-			transform: rotate(180deg);
+			background-position-y:55%;
 		}
 		
 		&__separator-2{
@@ -229,22 +232,78 @@ p {
 }
 
 .martini-location {
+	height: 100vh;
+	padding: 2vh 0;
+	background-image:url("../img/sezione3_sfondo_o60pc.png");
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+	position:relative;
+	
+	&__overlay{
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		
+		opacity: 0.5;
+		background-color:white;
+	}
     &__container {
         text-align: center;
-        max-width: 1008px;
-        margin: auto;
-        padding-top: 40px;
-    }
-
-    &__text {
-        margin: 80px auto;
-
-        &--highlight {
-            font-family: amatic;
-            font-size: 1.5em;
-            text-transform: uppercase;
-        }
-    }
+        /*padding-top: 40px;
+		padding-bottom: 30px;*/
+		height:100%;
+		
+		position:relative;
+		
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-content:stretch;
+    
+		&__d-q{
+			color:white;
+			font-size:4vh;
+			margin-bottom: 4vh;
+			&__d{
+				font-family: amatic;
+			}
+		}
+		&__separator-1{object-fit: contain;}
+        &__resturant{
+			color:white;
+			font-size: 12vh;
+			margin-bottom:1vh;
+		}
+		&__r-address{
+			color:white;
+			font-family: arctik;
+			font-size: 2.7vh;
+			line-height: 85%;
+			margin-bottom: 4vh;
+		}
+		&__map-icon{
+			margin-bottom:4vh;
+			img{object-fit: contain;}
+		}
+		&__separator-2{
+			object-fit: contain;
+			margin-bottom:4vh;
+		}
+		&__duration{
+			color:white;
+			font-size:3.5vh;
+			margin-bottom:4vh;
+			&__end{
+				font-family: amatic;
+			}
+		}
+		&__separator-3{object-fit: contain;}
+	
+	
+	}
 }
 
 .martini-map {
