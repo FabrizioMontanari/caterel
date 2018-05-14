@@ -12,12 +12,10 @@ const updateCountdown = counters => {
 	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 	const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	/*const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
 
 	counters.days.innerHTML = `${days}D&nbsp;`;
 	counters.hours.innerHTML = `&nbsp;${hours}H&nbsp;`;
 	counters.minutes.innerHTML = `&nbsp;${minutes}M`;
-	/*counters.seconds.innerHTML = `${seconds}S`;*/
 
 	setTimeout(() => updateCountdown(counters), 60000);
 };
@@ -27,7 +25,6 @@ const initialise = () => {
 		days: document.querySelector(getClassName('-days')),
 		hours: document.querySelector(getClassName('-hours')),
 		minutes: document.querySelector(getClassName('-minutes')),
-		/*seconds: document.querySelector(getClassName('-seconds')),*/
 		clock: document.querySelector(getClassName(''))
 	}
 
