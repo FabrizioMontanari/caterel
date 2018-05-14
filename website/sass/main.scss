@@ -8,64 +8,60 @@ body {
 }
 
 h1, h2, h3, p {
-    font-weight: normal;
+	font-weight: normal;
+	margin: 0;
 }
 
 h1 {
     color: $martini-bordeaux;
     font-size: 186px;
-    font-family: amatic;
+	font-family: amatic;
 }
 
 h2 {
     color: $martini-bordeaux;
     font-size: 86px;
-    font-family: autumn;
+	font-family: autumn;
 }
 
 h3 {
-    color: $martini-body-copy;
+    color: $martini-bordeaux;
     font-size: 40px;
-    font-family: autumn;
+	font-family: autumn;
 }
 
-p {
+p, div, a {
 	color: $martini-body-copy;
 	font-size: 34px;
 	font-family: autumn;
 }
 
 .martini-header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+
+	z-index: 10;
+
     background: $martini-yellow;
-	padding-top: 0px;
-    padding-bottom: 0px;
 	
-	&__nav-collapser{
+	&__collapser {
 		justify-content: flex-end;
 	}
-	&__nav-togglr{
-		margin: 3px 0;
-	}
 	
-	&__nav-brand{
-		color:$martini-bordeaux !important;
-		font-family: autumn;
-		font-size:3.3vmax;
-		
-		align-self:center;
-		
-		margin: 0 5px 0 0;
-		padding:0.5rem 0;
+	&__title {
+		margin: 1rem 1rem 0.2rem;
 	}
 
-    &__nav-link {
+    &__link {
 		font-family: amatic;
-		font-size:3.7vmax;
         text-transform: uppercase;
+		text-decoration: underline;
+		
+		display: block;
 		text-align: center;
-        text-decoration: underline;
-        color: black !important;
-		padding: 0 .3rem 0 .3rem!important;
+		margin: 0.2rem 0.4rem;
+		
     }
 }
 

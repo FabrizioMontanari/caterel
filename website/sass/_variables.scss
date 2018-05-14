@@ -1,3 +1,6 @@
+// spacing
+$spacing-unit: 1rem;
+
 // colors
 $martini-bordeaux: #7C2529;
 $martini-bordeaux-dark: darken($martini-bordeaux, 5%);
@@ -11,7 +14,7 @@ $martini-blue: #5B5EC1;
 $martini-blue-dark: darken($martini-blue, 5%);
 $martini-blue-light: lighten($martini-blue, 15%);
 
-$martini-body-copy: $martini-bordeaux-dark;
+$martini-body-copy: #000;
 $martini-background: #FFF1E1;
 
 // fonts
