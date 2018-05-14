@@ -87,10 +87,6 @@ p {
         margin: 20px auto;
     }
 
-    &__title-box {
-
-    }
-
     &__title {
         margin: 0px auto -2.4vh;
 		
@@ -212,20 +208,10 @@ p {
 	}
 	
 	&__banner-element__bimba{
-		/*background-image:url("../img/sezione2_Karin.png");
-		background-size:contain;
-		background-repeat:no-repeat;
-		background-position:50%;
-		padding-top:20vh;*/
 		object-fit: contain;
 		padding:0px;
 	}
 	&__banner-element__bimbo{
-		/*background-image:url("../img/sezione2_Matteo.png");
-		background-size:contain;
-		background-repeat:no-repeat;
-		background-position:50%;
-		padding-top:20vh;*/
 		object-fit: contain;
 		padding:0px;
 	}
@@ -252,8 +238,6 @@ p {
 	}
     &__container {
         text-align: center;
-        /*padding-top: 40px;
-		padding-bottom: 30px;*/
 		height:100%;
 		
 		position:relative;
