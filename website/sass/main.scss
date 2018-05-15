@@ -66,9 +66,9 @@ p {
 		@media (min-width: 576px) { font-size: 26px;margin-top: -4px;};
         text-transform: uppercase;
 		text-align: center;
-        text-decoration: underline;
+        text-decoration: none;
         color: black !important;
-		padding: 0 .3rem 0 .3rem!important;
+		padding: 0 .5rem 0 .5rem!important;
 		
     }
 }
@@ -232,6 +232,7 @@ p {
 		padding-top:20vh;*/
 		object-fit: contain;
 		padding:0px;
+		@media (max-width: 576px) { width: 65%;};
 	}
 	&__banner-element__bimbo{
 		/*background-image:url("../img/sezione2_Matteo.png");
@@ -241,11 +242,12 @@ p {
 		padding-top:20vh;*/
 		object-fit: contain;
 		padding:0px;
+		@media (max-width: 576px) { width: 65%;};
 	}
 }
 
 .martini-location {
-	height: 100vh;
+	height: 104vh;
 	padding: 2vh 0;
 	background-image:url("../img/sezione3_sfondo_o60pc.png");
 	background-size: cover;
@@ -274,12 +276,12 @@ p {
 		display:flex;
 		flex-direction:column;
 		justify-content:center;
-		align-content:stretch;
+		align-items:center;
     
 		&__d-q{
 			color:white;
 			font-size:4vh;
-			margin-bottom: 4vh;
+			margin-bottom: 3vh;
 			&__d{
 				font-family: amatic;
 			}
@@ -295,20 +297,25 @@ p {
 			font-family: arctik;
 			font-size: 2.7vh;
 			line-height: 85%;
-			margin-bottom: 4vh;
+			margin-bottom: 3vh;
 		}
 		&__map-icon{
-			margin-bottom:4vh;
-			img{object-fit: contain;}
+			margin-bottom:3vh;
+			img{
+				object-fit: contain;
+				border-radius:10px;
+				border: 4px solid white;
+				padding:5px 10px;
+			}
 		}
 		&__separator-2{
 			object-fit: contain;
-			margin-bottom:4vh;
+			margin-bottom:3vh;
 		}
 		&__duration{
 			color:white;
 			font-size:3.5vh;
-			margin-bottom:4vh;
+			margin-bottom:3vh;
 			&__end{
 				font-family: amatic;
 			}
