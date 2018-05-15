@@ -4,6 +4,7 @@ body {
 	position:relative;
     margin: 0;
 	padding-top:6vmax;
+	@media (min-width: 576px) { padding-top: 26px;};
     background: $martini-background;
 }
 
@@ -51,6 +52,7 @@ p {
 		color:$martini-bordeaux !important;
 		font-family: autumn;
 		font-size:3.3vmax;
+		@media (min-width: 576px) { font-size: 16px;};
 		
 		align-self:center;
 		
@@ -61,11 +63,13 @@ p {
     &__nav-link {
 		font-family: amatic;
 		font-size:3.7vmax;
+		@media (min-width: 576px) { font-size: 26px;margin-top: -4px;};
         text-transform: uppercase;
 		text-align: center;
         text-decoration: underline;
         color: black !important;
 		padding: 0 .3rem 0 .3rem!important;
+		
     }
 }
 
@@ -145,13 +149,17 @@ p {
 	&__banner-element__central {
 		display: inline-flex;
 		flex-direction: column;
+		
 		&__invite{
 			font-family: autumn;
-			
 			text-align: center;
+			font-size: 3.0vmax;
+			@media (max-width: 576px) { font-size: 6vmax; margin-bottom:3vmax;}
 			
 			&__amatic{
 				font-family: amatic;
+				font-size: 3.5vmax;
+				@media (max-width: 576px) { font-size: 6.6vmax; margin-bottom:3vmax;}
 			}
 		}
 		&__separator-1{
@@ -161,6 +169,9 @@ p {
 			font-family:arctik;
 			font-weight:bold;
 			text-align:center;
+			
+			line-height: 90%;
+			padding: 15px 0;
 			&__minor{
 				font-size:75%;
 			}
@@ -173,7 +184,7 @@ p {
 			
 			align-self: center;
 			border:1px solid black;
-			padding: 0 5px;
+			padding: 0 15px;
 		}
 		
 		
@@ -188,6 +199,8 @@ p {
 			font-size: 5.5vmax;
 			
 			margin:0;
+			
+			@media (max-width: 576px) { font-size: 10vmax; margin-bottom:3vmax;}
 		}
 
 		&__clock-separator-1 {
