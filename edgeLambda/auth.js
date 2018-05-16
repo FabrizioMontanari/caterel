@@ -1,18 +1,13 @@
-const unauthorizedResponse = {
-    status: '401',
-    statusDescription: 'Unauthorized',
-    body: 'Unauthorized',
-    headers: { 'www-authenticate': [{ key: 'WWW-Authenticate', value: 'Basic' }] }
-};
-
-const expectedAuthString = `Basic ${new Buffer('martini:sposi').toString('base64')}`;
-
-const isAuthValid = auth => auth instanceof Array && auth[0].value === expectedAuthString;
+const isAuthorized = cookie => cookie && cookie.length && cookie[0].value && cookie[0].value.includes('Logged=1');
 
 exports.handler = (event, context, callback) => {
     const { request } = event.Records[0].cf;
-    
-    const callbackValue = isAuthValid(request.headers.authorization) ? request : unauthorizedResponse;
+    const { uri, headers } = request;
+    const cookie = headers.cookie;
 
-    callback(null, callbackValue);
+    if(!isAuthorized(cookie)) {
+        request.uri = '/login.html';
+    }
+
+    callback(null, request);
 }
