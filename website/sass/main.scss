@@ -166,8 +166,8 @@ p {
 			object-fit: contain;
 		}
 		&__directive{
-			font-family:arctik;
-			font-weight:bold;
+			font-family:museoBold;
+			/*font-weight:bold;*/
 			text-align:center;
 			
 			line-height: 90%;
@@ -177,9 +177,10 @@ p {
 			}
 		}
 		&__RSVP-link{
-			color:black;
-			font-family:arctik;
-			font-weight:bold;
+			color:white;
+			background-color:$martini-bordeaux;
+			font-family:museoBold;
+			/*font-weight:bold;*/
 			text-align:center;
 			
 			align-self: center;
@@ -294,7 +295,7 @@ p {
 		}
 		&__r-address{
 			color:white;
-			font-family: arctik;
+			font-family: museo;
 			font-size: 2.7vh;
 			line-height: 85%;
 			margin-bottom: 3vh;
@@ -320,6 +321,19 @@ p {
 				font-family: amatic;
 			}
 		}
+		&__dcode{
+			color:white;
+			font-size:3vh;
+			margin-bottom:3vh;
+			&__y{
+				font-family: amatic;
+				color:$martini-yellow;
+			}
+			&__b{
+				font-family: amatic;
+				color:$martini-bordeaux;
+			}
+		}
 		&__separator-3{object-fit: contain;}
 	
 	
@@ -338,29 +352,72 @@ p {
     }
 }
 
-.martini-theme {
-    &__container {
-        text-align: center;
-        max-width: 1008px;
-        margin: auto;
-        padding-top: 40px;
-    }
-
-    &__text {
-        margin: 80px auto;
-
-        &--highlight-yellow {
-            font-family: amatic;
-            font-size: 1.5em;
-            text-transform: uppercase;
-            color: $martini-yellow;
-        }
-
-        &--highlight-bordeaux {
-            font-family: amatic;
-            font-size: 1.5em;
-            text-transform: uppercase;
-            color: $martini-bordeaux;
-        }
-    }
+.martini-confirm{
+	background-color:$martini-yellow-light;
+	padding:3vh 0px;
+	p{
+		font-family:museo;
+		font-size:2vw;
+	}
+	
+	.checkbox{
+		display:inline-block;
+		background-image:url("../img/sezione2_fiore2.png");
+		background-size:contain;
+		background-repeat:no-repeat;
+		width:30px;
+	}
+	
+	&__container{
+		
+		text-align: center;
+		height:100%;
+		
+		position:relative;
+		
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+		
+		&__title{
+			font-family: autumn;
+			font-size:3.7vh;
+			span{
+				font-family:amatic;
+				font-size:125%;
+			}
+		}
+		
+		&__main-guest{
+			justify-content: center;
+			width: 100%;
+			
+			input{margin-right:10px;}
+		}
+		&__family{
+			justify-content: space-evenly;
+			width:100%;
+			margin-bottom:3vh;
+			&__member{
+				flex-grow:1;
+				&__name{
+					width:100%;
+					input{margin-right:10px;}
+				}
+			}
+		}
+		
+		&__notes{
+			margin-bottom:3vh;
+		}
+		&__submit{
+			background-color:$martini-bordeaux;
+			color:white;
+			border:0px;
+			font-family:amatic;
+			font-size:5vh;
+			width:50%;
+		}
+	}
 }

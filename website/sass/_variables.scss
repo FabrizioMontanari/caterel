@@ -38,3 +38,18 @@ $martini-background: #FFF1E1;
 	font-style: normal;
 	text-rendering: antialiased;
 }
+
+@font-face {
+    font-family: 'museo';
+    
+	src: url('../fonts/Museo300-Regular.otf') format("opentype");
+	font-style: normal;
+	text-rendering: antialiased;
+}
+@font-face {
+    font-family: 'museoBold';
+    
+	src: url('../fonts/Museo700-Regular.otf') format("opentype");
+	font-style: normal;
+	text-rendering: antialiased;
+}

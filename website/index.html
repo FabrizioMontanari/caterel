@@ -95,10 +95,15 @@
 			<img class="martini-location__container__separator-1" src="/img/sezione3_divisorio1.png">
             <h1 class="martini-location__container__resturant">il boccone del prete</h1>
 			<p class="martini-location__container__r-address">via Siepelunga 56<br>Bologna</p>
-			<a class="martini-location__container__map-icon" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete"><img src="/img/sezione3_mappa.png"></a>
+			<a class="martini-location__container__map-icon" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete"><img src="/img/sezione3_mappa.png">clicca qui per le indicazioni</a>
 			<img class="martini-location__container__separator-2" src="/img/sezione3_divisorio2.png">
 			<p class="martini-location__container__duration">dalle 21<br>
 				<span class="martini-location__container__duration__end">fino a sera</span>
+			</p>
+			<p class="martini-location__container__dcode">se ti fa piacere indossa come noi un dettaglio
+				<span class="martini-location__container__dcode__y">giallo</span>
+				 o 
+				<span class="martini-location__container__dcode__b">bordeaux</span>
 			</p>
 			<img class="martini-location__container__separator-3" src="/img/sezione3_divisorio3.png">
         </div>
@@ -111,19 +116,59 @@
         </div>
     </section>
 	-->
-    <section class="martini-theme" id="martini-theme">
-        <div class="martini-theme__container">
-            <p class="martini-theme__text">
-                Abbiamo scelto due colori come filo conduttore della nostra festa: il
-                <span class="martini-theme__text--highlight-yellow">Giallo</span>
-                e il
-                <span class="martini-theme__text--highlight-bordeaux">Bordeaux</span>
-            </p>
-            <p class="martini-theme__text">
-                Se uno di questi colori ti piace e se hai un accessorio adatto, indossalo così da rallegrare l'atmosfera!
-            </p>
-        </div>
+    <section class="martini-confirm" id="martini-confirm">
+        <form class="martini-confirm__container container">
+			<h1 class="martini-confirm__container__title"><span>unisciti</span> alla nostra festa</h1>
+			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
+			<div class="martini-confirm__container__main-guest row">
+				<input class="col-sm" type="text" name="nome" placeholder="Nome">
+				<input class="col-sm" type="text" name="cognome" placeholder="Cognome">
+				<div class="checkbox">&nbsp;</div>
+			</div>
+			<p>scegli il tuo menu</p>
+			<select>
+				<option>regular</option>
+				<option>vegetariano</option>
+				<option>intollerante al lattosio</option>
+				<option>celiaco</option>
+				<option>vegano</option>
+			</select>
+			<p>conferma anche per i tuoi cari!</p>
+            <div class="martini-confirm__container__family row">
+				<div id="member1" class="martini-confirm__container__family__member col-xs">
+					<div class="martini-confirm__container__family__member__name">
+						<input type="text" name="familiare1" placeholder="Nome e Cognome">
+						<div class="checkbox">&nbsp;</div>
+					</div>
+					<p>menu</p>
+					<select>
+						<option>regular</option>
+						<option>vegetariano</option>
+						<option>intollerante al lattosio</option>
+						<option>celiaco</option>
+						<option>vegano</option>
+					</select>
+				</div>
+				<div id="member2" class="martini-confirm__container__family__member col-xs">
+					<div class="martini-confirm__container__family__member__name">
+						<input type="text" name="familiare2" placeholder="Nome e Cognome">
+						<div class="checkbox">&nbsp;</div>
+					</div>
+					<p>menu</p>
+					<select>
+						<option>regular</option>
+						<option>vegetariano</option>
+						<option>intollerante al lattosio</option>
+						<option>celiaco</option>
+						<option>vegano</option>
+					</select>
+				</div>
+			</div>
+			<textarea id="notes" class="martini-confirm__container__notes" rows="5" cols="80" name="note" placeholder="note"></textarea>
+			<input class="martini-confirm__container__submit" type="submit" value="ci sarò!">
+        </form>
     </section>
+	
     <div class="bumper" style="height: 300px"></div>
 </body>
 
