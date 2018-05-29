@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="css/main.css">
     <script src="./js/countdown.js"></script>
+	<script src="./js/map.js"></script>
 	
 </head>
 
@@ -38,7 +39,7 @@
 				<li class="nav-item"><a href="#martini-countdown" class="martini-header__nav-link nav-link">&#8226; Save the date</a></li>
 				<li class="nav-item"><a href="#martini-location" class="martini-header__nav-link nav-link">&#8226; Dove/Quando</a></li>
 				<!--<li class="nav-item"><a href="#martini-theme" class="martini-header__nav-link nav-link">Dettagli</a></li>-->
-				<li class="nav-item"><a href="#martini-" class="martini-header__nav-link nav-link">&#8226; Honeymoon</a></li>
+				<li class="nav-item"><a href="#martini-hm" class="martini-header__nav-link nav-link">&#8226; Honeymoon</a></li>
 				<li class="nav-item"><a href="#martini-RSVP" class="martini-header__nav-link nav-link">&#8226; RSVP</a></li>
 			</ul>
 		</div>
@@ -116,7 +117,44 @@
         </div>
     </section>
 	-->
-    <section class="martini-confirm" id="martini-confirm">
+	
+	
+	<section class="martini-gift">
+		<div class="container">
+			<h2 class="martini-gift__title">Viaggio di nozze</h2>
+			<div class="martini-gift__map row">
+				<div class="martini-gift__map__controls col-sm-4">
+					<div class="martini-gift__map__controls__btn" data-step="1" onclick="MapChange(this)">1</div>
+					<div class="martini-gift__map__controls__btn" data-step="2" onclick="MapChange(this)">2</div>
+					<div class="martini-gift__map__controls__btn" data-step="3" onclick="MapChange(this)">3</div>
+					<div class="martini-gift__map__controls__btn" data-step="4" onclick="MapChange(this)">4</div>
+					<div class="martini-gift__map__controls__btn" data-step="5" onclick="MapChange(this)">5</div>
+				</div>
+				<div id="martini-gift__map__frame" class="martini-gift__map__frame col-sm-8">
+					<div id="martini-gift__map__map" class="martini-gift__map__map"></div>
+				</div>
+				<div id="martini-gift__map__title"class="martini-gift__map__title">Partenza</div>
+				<div id="martini-gift__map__txt"class="martini-gift__map__txt">Qui arriviamo in aereo.</div>
+			</div>
+			<p class="martini-gift__toggle-details">
+				Per contribuire clicca qui
+			</p>
+			<div class="martini-gift__gift-details">
+				<p>Per partecipare al regalo puoi fare un bonifico sul conto<br>IBAN: 1234-1234-1324-1234</p>
+				<p>In alternativa puoi recarti presso l'agenzia viaggi:</p>
+				<ul class="martini-gift__agency-address">
+					<li>Agenzia Tal dei Tali</li>
+					<li>Via Da Qualche parte 32</li>
+					<li>40123</li>
+					<li>Bologna</li>
+				</ul>
+			</div>
+		</div>
+    </section>
+	
+	
+	
+    <section class="martini-confirm" id="martini-RSVP">
         <form class="martini-confirm__container container">
 			<h1 class="martini-confirm__container__title"><span>unisciti</span> alla nostra festa</h1>
 			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
