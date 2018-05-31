@@ -23,7 +23,7 @@
     <script src="./js/countdown.js"></script>
 	<script src="./js/map.js"></script>
 	<script src="./js/detail_toggle.js"></script>
-	
+	<script src="./js/confirmation.js"></script>
 </head>
 
 <body>
@@ -179,12 +179,13 @@
 			<h1 class="martini-confirm__container__title"><span>unisciti</span> alla nostra festa</h1>
 			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
 			<div class="martini-confirm__container__main-guest row">
-				<input class="col-sm" type="text" name="nome" placeholder="Nome">
-				<input class="col-sm" type="text" name="cognome" placeholder="Cognome">
+				<input class="col-sm" type="text" name="main_nome" placeholder="Nome">
+				<input class="col-sm" type="text" name="main_cognome" placeholder="Cognome">
 				<div class="checkbox">&nbsp;</div>
 			</div>
+			<p class="hide" id="error-not-invited">Nominativo non trovato!</p>
 			<p>scegli il tuo menu</p>
-			<select>
+			<select name="main_menu">
 				<option>regular</option>
 				<option>vegetariano</option>
 				<option>intollerante al lattosio</option>
@@ -192,14 +193,15 @@
 				<option>vegano</option>
 			</select>
 			<p>conferma anche per i tuoi cari!</p>
-            <div class="martini-confirm__container__family row">
-				<div id="member1" class="martini-confirm__container__family__member col-xs">
+            <div class="martini-confirm__container__family row" id="martini-confirm__container__family">
+				<!-- PLACEHOLDER usare fillFamily per popolare
+				<div id="familiare_0" class="martini-confirm__container__family__member col-md">
 					<div class="martini-confirm__container__family__member__name">
-						<input type="text" name="familiare1" placeholder="Nome e Cognome">
-						<div class="checkbox">&nbsp;</div>
+						<input type="text" name="familiare_0_nome" value="karin Marchiori" readonly>
+						<div id="familiare_0_confirmed" class="checkbox" onclick="$(this).toggleClass('checked')">&nbsp;</div>
 					</div>
 					<p>menu</p>
-					<select>
+					<select name="familiare_0_menu">
 						<option>regular</option>
 						<option>vegetariano</option>
 						<option>intollerante al lattosio</option>
@@ -207,13 +209,13 @@
 						<option>vegano</option>
 					</select>
 				</div>
-				<div id="member2" class="martini-confirm__container__family__member col-xs">
+				<div id="familiare_1" class="martini-confirm__container__family__member col-md">
 					<div class="martini-confirm__container__family__member__name">
-						<input type="text" name="familiare2" placeholder="Nome e Cognome">
-						<div class="checkbox">&nbsp;</div>
+						<input type="text" name="familiare_1_nome" value="Pippo baudo" readonly>
+						<div id="familiare_1_confirmed" class="checkbox" onclick="$(this).toggleClass('checked')">&nbsp;</div>
 					</div>
 					<p>menu</p>
-					<select>
+					<select name="familiare_1_menu">
 						<option>regular</option>
 						<option>vegetariano</option>
 						<option>intollerante al lattosio</option>
@@ -221,9 +223,33 @@
 						<option>vegano</option>
 					</select>
 				</div>
+				<div id="familiare_2" class="martini-confirm__container__family__member col-md">
+					<div class="martini-confirm__container__family__member__name">
+						<input type="text" name="familiare_2_nome" value="bova Raul" readonly>
+						<div id="familiare_2_confirmed" class="checkbox" onclick="$(this).toggleClass('checked')">&nbsp;</div>
+					</div>
+					<p>menu</p>
+					<select name="familiare_2_menu">
+						<option>regular</option>
+						<option>vegetariano</option>
+						<option>intollerante al lattosio</option>
+						<option>celiaco</option>
+						<option>vegano</option>
+					</select>
+				</div>-->
 			</div>
 			<textarea id="notes" class="martini-confirm__container__notes" rows="5" cols="80" name="note" placeholder="note"></textarea>
-			<input class="martini-confirm__container__submit" type="submit" value="ci sarò!">
+			<div class="martini-confirm__container__submit" id="confirm-be-there" onclick="onConfirmClick()">ci sarò!</div>
+			<div class="martini-confirm__container__overlay hide" id="confirm-overlay">
+				<!--PLACEHOLDER usare fillConfirmation per popolare
+				<h1 class="martini-confirm__container__overlay__title">confermi la presenza di</h1>
+				<p class="martini-confirm__container__overlay__member">Matteo Frontini, menu tradizionale</p>
+				<p class="martini-confirm__container__overlay__member">Karin Marchiori, menu tradizionale</p>
+				<p class="martini-confirm__container__overlay__member">Pippo Baudo, menu intollerante al lattosio</p>
+				<div class="martini-confirm__container__overlay__submit" >CONFERMA</div>
+				<div class="martini-confirm__container__overlay__back" onclick="onBackClick()">MODIFICA</div>
+				-->
+			</div>
         </form>
     </section>
 	

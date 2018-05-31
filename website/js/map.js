@@ -7,11 +7,11 @@ var map_text_data={
 }
 
 function createImgUrl(step){
-	return 'https://raw.githubusercontent.com/FabrizioMontanari/caterel/master/0'+step+'.png';
+	return '../img/map/'+step+'.jpg';
 }
 function MapChange(btn){
 	var step = $(btn).data("step");
-	if ( step !=1 && $("#martini-gift__map__map").css('background-image').toLowerCase().indexOf("01.png") !== -1){
+	if ( step !=1 && $("#martini-gift__map__map").css('background-image').toLowerCase().indexOf("1.jpg") !== -1){
 		$("#martini-gift__map__map").addClass("zoomin");
 		$("#martini-gift__map__map").removeClass("zoomout");
 		setTimeout(function(){
