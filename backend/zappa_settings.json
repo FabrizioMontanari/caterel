@@ -6,5 +6,13 @@
         "project_name": "backend",
         "runtime": "python3.6",
         "s3_bucket": "www.imartinisisposano.it"
+    },
+    "prod": {
+        "app_function": "martini.app",
+        "aws_region": null,
+        "profile_name": "default",
+        "project_name": "backend",
+        "runtime": "python3.6",
+        "s3_bucket": "www.imartinisisposano.it"
     }
 }

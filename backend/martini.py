@@ -1,31 +1,24 @@
 from flask import *  # lazy.
 app = Flask(__name__)
 
-
-BASE_URL = 'test.imartinisisposano.it'
+LOGIN_COOKIE_NAME = 'is_logged_in'
 
 
 @app.route('/')
 def index():
-    print(request.host)
-    if request.host == f'km.{BASE_URL}':
-        res = make_response(redirect(f'http://{BASE_URL}', 302))
-        res.set_cookie('is_logged_in', 'True', domain=f'{BASE_URL}')
+    print('inhere')
+    if 'km.' in request.host:
+        base_host = request.host.replace('km.', '')
+        res = make_response(redirect(f'https://{base_host}', 302))
+        res.set_cookie(LOGIN_COOKIE_NAME, 'True', domain=f'{base_host}')
         return res
 
-    is_logged_in = request.cookies.get('is_logged_in')
-    return f'Hello, World! {is_logged_in}'
+    is_logged_in = request.cookies.get(LOGIN_COOKIE_NAME)
+    return f'Hello, World! logged in status is :{is_logged_in}:'
 
 
 @app.route('/login')
 def login():
     res = make_response('logged in!')
-    res.set_cookie('is_logged_in', 'True')
-    return res
-
-
-@app.route('/logout')
-def logout():
-    res = make_response('logged out!')
-    res.set_cookie('is_logged_in', expires=0)
+    res.set_cookie(LOGIN_COOKIE_NAME, 'True')
     return res
