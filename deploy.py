@@ -5,6 +5,7 @@ import shutil
 
 # clean up
 shutil.rmtree('static', ignore_errors=True)
+shutil.rmtree('backend', ignore_errors=True)
 
 
 # css
@@ -16,3 +17,9 @@ sass.compile(dirname=('src/sass', 'static/css'), output_style='compressed')
 shutil.copytree('src/fonts', 'static/fonts')
 shutil.copytree('src/img', 'static/img')
 shutil.copytree('src/js', 'static/js')
+
+
+# backend files
+shutil.copytree('src/templates', 'backend/templates')
+shutil.copy2('src/martini.py', 'backend')
+shutil.copy2('src/zappa_settings.json', 'backend')
