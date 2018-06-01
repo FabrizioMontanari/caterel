@@ -1,6 +1,4 @@
 node_modules
-package-lock.json
-lib
-css
+static
 env
 __pycache__

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass sass/main.scss css/main.css --style=compressed --no-source-map"
+    "sass": "sass src/sass/main.scss static/css/main.css --style=compressed --no-source-map"
   },
   "repository": {
     "type": "git",
