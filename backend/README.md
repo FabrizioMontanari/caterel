@@ -2,7 +2,7 @@
 
 ## Installation
 
-* create a virtualenv with `python==3.6.4` and `pip==9.0.1`
+* create a virtualenv with `python==3.6.4` and `pip==9.0.1` in the root folder
 * run `pip install -r requirements.txt`
 
 ## Usage
