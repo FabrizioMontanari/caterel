@@ -5,7 +5,7 @@ LOGIN_COOKIE_NAME = 'is_logged_in'
 
 def set_cookie_and_redirect(request):
         base_host = request.host.replace('km.', '')
-        res = make_response(redirect(f'http://{base_host}', 302))
+        res = make_response(redirect(f'http://{base_host}'))
         res.set_cookie(LOGIN_COOKIE_NAME, 'True', domain=f'{base_host}')
         return res
 
@@ -15,8 +15,10 @@ def index():
     if 'km.' in request.host:
         return set_cookie_and_redirect(request)
 
-    is_logged_in = request.cookies.get(LOGIN_COOKIE_NAME)
-    return f'Hello, World! logged in status is :{is_logged_in}:'
+    if request.cookies.get(LOGIN_COOKIE_NAME) != 'True':
+        return redirect('/login')
+
+    return render_template('index.html')
 
 
 @app.route('/login', methods=['POST', 'GET'])
