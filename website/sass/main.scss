@@ -1,10 +1,27 @@
 @import '_variables';
 
+/**
+Media queries di bootstrap:
+
+Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+*/
+
+
 body {
 	position:relative;
     margin: 0;
-	padding-top:6vmax;
-	@media (min-width: 576px) { padding-top: 26px;};
+	padding-top: 40px;
     background: $martini-background;
 }
 
@@ -51,8 +68,7 @@ p {
 	&__nav-brand{
 		color:$martini-bordeaux !important;
 		font-family: autumn;
-		font-size:3.3vmax;
-		@media (min-width: 576px) { font-size: 16px;};
+		font-size:16px;
 		
 		align-self:center;
 		
@@ -62,8 +78,8 @@ p {
 
     &__nav-link {
 		font-family: amatic;
-		font-size:3.7vmax;
-		@media (min-width: 576px) { font-size: 26px;margin-top: -4px;};
+		font-size: 26px;
+		margin-top: -4px;
         text-transform: uppercase;
 		text-align: center;
         text-decoration: none;
@@ -304,6 +320,7 @@ p {
 			margin-bottom:3vh;
 			color:white;
 			font-family:museo;
+			line-height:12px;
 			&:hover{
 				color:$martini-yellow;
 				text-decoration:none;
@@ -364,10 +381,30 @@ p {
 */
 .martini-gift{
 	background-color:white;
+	
+	p{
+		text-align:center;
+		font-family:museo;
+		font-size:14px;
+		@media (min-width: 576px) { font-size:16px; }
+		@media (min-width: 768px) { font-size:20px; }
+		@media (min-width: 992px) { font-size:20px; }
+		@media (min-width: 1200px) { font-size:20px; }
+		span{
+			font-weight:bold;
+		}
+	}
 	&__title{
 		text-align:center;
-		margin-bottom:5vh;
-		padding-top:4vh;
+		color:black;
+		font-size:26px;
+		margin-bottom:18px;
+		padding-top:20px;
+		@media (min-width: 576px) { font-size:30px; margin-bottom:20px; padding-top:30px; }
+		@media (min-width: 768px) { font-size:48px; margin-bottom:30px; padding-top:40px; }
+		@media (min-width: 992px) { font-size:48px; margin-bottom:30px; padding-top:40px; }
+		@media (min-width: 1200px) { font-size:48px; margin-bottom:30px; padding-top:40px; }
+		
 	}
 	&__map{
 		
@@ -431,19 +468,22 @@ p {
 	&__toggle-details {
 		font-family:amatic;
 		text-align:center;
+		color:black;
+		font-size:26px;
+		margin:14px auto;
+		border:1px solid black;
+		width:190px;
+		cursor:pointer;
+		
+		@media (min-width: 576px) { font-size:30px; margin:16px auto; width:220px; }
+		@media (min-width: 768px) { font-size:48px; margin:20px auto; width:350px; }
+		@media (min-width: 992px) { font-size:48px; margin:20px auto; width:350px; }
+		@media (min-width: 1200px) { font-size:48px; margin:20px auto; width:350px; }
 	}
 	&__gift-details{
 		max-height: 0;
 		overflow: hidden;
 		transition: max-height 0.4s ease-out;
-		
-		p{
-			text-align: center;
-			font-family: museo;
-			span{
-				font-weight:bold;
-			}
-		}
 	}
 }
 .martini-preloader{
@@ -473,22 +513,50 @@ p {
 	padding:3vh 0px;
 	p{
 		font-family:museo;
-		font-size:2vw;
+		font-size:14px;
+		@media (min-width: 576px) { font-size:16px; }
+		@media (min-width: 768px) { font-size:20px; }
+		@media (min-width: 992px) { font-size:20px; }
+		@media (min-width: 1200px) { font-size:20px; }
 	}
 	select{
-		margin-bottom:4vh;
+		margin-bottom:40px;
 		font-family:museo;
+		font-size:14px;
+		@media (min-width: 576px) { font-size:16px; }
+		@media (min-width: 768px) { font-size:20px; }
+		@media (min-width: 992px) { font-size:20px; }
+		@media (min-width: 1200px) { font-size:20px; }
 	}
 	input{
 		font-family:museo;
+		font-size:14px;
+		margin-bottom:5px;
+		@media (min-width: 576px) { font-size:16px; margin-bottom:5px; }
+		@media (min-width: 768px) { font-size:20px; margin-bottom:0px; }
+		@media (min-width: 992px) { font-size:20px; margin-bottom:0px; }
+		@media (min-width: 1200px) { font-size:20px; margin-bottom:0px; }
+	}
+	textarea{
+		font-family:museo;
+		font-size:14px;
+		width:100%;
+		@media (min-width: 576px) { width:95%; font-size:16px; }
+		@media (min-width: 768px) { width:80%; font-size:20px; }
+		@media (min-width: 992px) { width:65%; font-size:20px; }
+		@media (min-width: 1200px) { width:50%; font-size:20px; }
 	}
 	.checkbox{
 		display:inline-block;
 		background-image:url("../img/sezione5_check_vuoto.png");
 		background-size:contain;
 		background-repeat:no-repeat;
-		width:38px;
+		width:34px;
 		cursor:pointer;
+		@media (min-width: 576px) { width:34px; }
+		@media (min-width: 768px) { width:42px; }
+		@media (min-width: 992px) { width:42px; }
+		@media (min-width: 1200px) { width:42px; }
 		
 		&.checked{
 			background-image:url("../img/sezione5_check_pieno.png");
@@ -509,46 +577,64 @@ p {
 		
 		&__title{
 			font-family: autumn;
-			font-size:3.7vh;
+			font-size:26px;
+			margin-bottom:14px;
 			span{
 				font-family:amatic;
 				font-size:125%;
 			}
+			@media (min-width: 576px) { font-size:30px; margin-bottom:16px; }
+			@media (min-width: 768px) { font-size:48px; margin-bottom:20px; }
+			@media (min-width: 992px) { font-size:48px; margin-bottom:20px; }
+			@media (min-width: 1200px) { font-size:48px; margin-bottom:20px; }
 		}
 		
 		&__main-guest{
 			justify-content: center;
 			width: 100%;
-			margin-bottom:2vh;
+			margin-bottom:20px;
 			
 			input{margin-right:10px;}
 		}
 		&__family{
 			justify-content: space-evenly;
 			width:100%;
-			margin-bottom:3vh;
+			margin-bottom:30px;
 			&__member{
 				flex-grow:1;
-				padding:0px;
+				padding:0;
+				margin-bottom:20px;
+				
+				p{margin-bottom:5px;}
 				&__name{
 					width:100%;
 					cursor:default;
-					input{margin-right:10px;}
+					input{
+						margin-right:0px;
+						@media (min-width: 576px) { margin-right:0px; }
+						@media (min-width: 768px) { margin-right:10px; }
+						@media (min-width: 992px) { margin-right:10px; }
+						@media (min-width: 1200px) { margin-right:10px; }
+					}
 				}
 			}
 		}
 		
 		&__notes{
-			margin-bottom:3vh;
+			margin-bottom:30px;
 		}
 		&__submit{
 			background-color:$martini-bordeaux;
 			color:white;
-			border:0px;
+			border:0;
 			font-family:amatic;
-			font-size:5vh;
-			width:50%;
+			font-size:26px;
+			width:30%;
 			cursor:pointer;
+			@media (min-width: 576px) { font-size:30px; }
+			@media (min-width: 768px) { font-size:48px; }
+			@media (min-width: 992px) { font-size:48px; }
+			@media (min-width: 1200px) { font-size:48px; }
 		}
 		&__overlay{
 			position:absolute;
@@ -565,34 +651,47 @@ p {
 			justify-content: center;
 			align-items: center;
 			&__title{
-				margin:0 0 4vh 0;
+				margin:0 0 14px 0;
 				color:white;
 				font-family: amatic;
-				font-size:3.7vh;
+				font-size:26px;
+				margin-bottom:14px;
+				@media (min-width: 576px) { font-size:30px; margin-bottom:16px; }
+				@media (min-width: 768px) { font-size:48px; margin-bottom:20px; }
+				@media (min-width: 992px) { font-size:48px; margin-bottom:20px; }
+				@media (min-width: 1200px) { font-size:48px; margin-bottom:20px; }
 			}
 			&__member{
 				color:white;
 				font-family: museo;
-				font-size:2vh;
+				font-size:20px;
 			}
 			&__submit{
 				background-color:$martini-yellow;
 				color:$martini-bordeaux;
-				border:0px;
+				border:0;
 				font-family:amatic;
-				font-size:5vh;
 				cursor:pointer;
 				width:40%;
-				margin-bottom:4vh;
+				font-size:26px;
+				margin-bottom:20px;
+				@media (min-width: 576px) { font-size:30px; margin-bottom:24px; }
+				@media (min-width: 768px) { font-size:48px; margin-bottom:30px; }
+				@media (min-width: 992px) { font-size:48px; margin-bottom:30px; }
+				@media (min-width: 1200px) { font-size:48px; margin-bottom:30px; }
 			}
 			&__back{
 				background-color:$martini-yellow;
 				color:$martini-bordeaux;
-				border:0px;
+				border:0;
 				font-family:amatic;
-				font-size:5vh;
+				font-size:26px;
 				cursor:pointer;
 				width:40%;
+				@media (min-width: 576px) { font-size:30px; }
+				@media (min-width: 768px) { font-size:48px; }
+				@media (min-width: 992px) { font-size:48px; }
+				@media (min-width: 1200px) { font-size:48px; }
 			}
 		}
 	}

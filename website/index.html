@@ -24,6 +24,9 @@
 	<script src="./js/map.js"></script>
 	<script src="./js/detail_toggle.js"></script>
 	<script src="./js/confirmation.js"></script>
+	<!-- RIMUOVERE: solo per debug-->
+	<script>$(document).ready(function(){fillFamily(["Marco Baldo", "Bella Lui", "Topo Gigio","ellie"]);});</script>
+	<!-- RIMUOVERE: fine-->
 </head>
 
 <body>
@@ -76,7 +79,7 @@
 				<h4 class="martini-countdown__banner-element__central__invite">sei <span class="martini-countdown__banner-element__central__invite__amatic">invitato<span></h4>
 				<img class="martini-countdown__banner-element__central__separator-1" src="/img/sezione2_cuore.png">
 				<h4 class="martini-countdown__banner-element__central__directive">Il 22 Settembre 2018<br>alle ore 12 in Sala Rossa<br><span class="martini-countdown__banner-element__central__directive__minor">(Palazzo D'Accursio, Bologna)</span></h4>
-				<a class="martini-countdown__banner-element__central__RSVP-link" href="martini-RSVP">RSVP</a>
+				<a class="martini-countdown__banner-element__central__RSVP-link" href="#martini-RSVP">RSVP</a>
                 <h2 class="martini-countdown__banner-element__central__clock">
                     <span class="martini-countdown__banner-element__central__clock-days">10D</span>
                     <div class="martini-countdown__banner-element__central__clock-separator-1">&nbsp;&nbsp;&nbsp;</div>
@@ -97,7 +100,7 @@
 			<img class="martini-location__container__separator-1" src="/img/sezione3_divisorio1.png">
             <h1 class="martini-location__container__resturant">il boccone del prete</h1>
 			<p class="martini-location__container__r-address">via Siepelunga 56<br>Bologna</p>
-			<a class="martini-location__container__map-icon" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete">
+			<a class="martini-location__container__map-icon" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete" target="_blank">
 				<img src="/img/sezione3_mappa.png"><br>
 				clicca qui<br>
 				per le indicazioni
@@ -124,7 +127,7 @@
 	-->
 	
 	
-	<section class="martini-gift">
+	<section class="martini-gift" id="martini-hm">
 		<div class="container">
 			<h2 class="martini-gift__title">Viaggio di nozze</h2>
 			<div class="martini-gift__map row">
@@ -156,7 +159,7 @@
 				<div id="martini-gift__map__txt"class="martini-gift__map__txt">Qui arriviamo in aereo.</div>
 			</div>
 			<h3 class="martini-gift__toggle-details">
-				vuoi aiutarci a scappare?
+				VUOI AIUTARCI A SCAPPARE?
 			</h3>
 			<div class="martini-gift__gift-details">
 				<p>La lista di nozze è disponibile presso la sede dell'agenzia:<br>
@@ -238,8 +241,8 @@
 					</select>
 				</div>-->
 			</div>
-			<textarea id="notes" class="martini-confirm__container__notes" rows="5" cols="80" name="note" placeholder="note"></textarea>
-			<div class="martini-confirm__container__submit" id="confirm-be-there" onclick="onConfirmClick()">ci sarò!</div>
+			<textarea id="notes" class="martini-confirm__container__notes" rows="5" name="note" placeholder="note"></textarea>
+			<div class="martini-confirm__container__submit" id="confirm-be-there" onclick="onConfirmClick()">CI SARÒ!</div>
 			<div class="martini-confirm__container__overlay hide" id="confirm-overlay">
 				<!--PLACEHOLDER usare fillConfirmation per popolare
 				<h1 class="martini-confirm__container__overlay__title">confermi la presenza di</h1>

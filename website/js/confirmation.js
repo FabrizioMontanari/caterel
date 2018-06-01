@@ -49,7 +49,7 @@ function fillFamily(family){
 	var container = $('#martini-confirm__container__family');
 	container.empty();
 	family.forEach(function(member, i){
-		var new_element = '<div id="familiare_'+i+'" class="martini-confirm__container__family__member col-md">\
+		var new_element = '<div id="familiare_'+i+'" class="martini-confirm__container__family__member col-sm-5">\
 					<div class="martini-confirm__container__family__member__name">\
 						<input type="text" name="familiare_'+i+'_nome" value="'+member+'" readonly>\
 						<div id="familiare_'+i+'_confirmed" class="checkbox" onclick="$(this).toggleClass(\'checked\')">&nbsp;</div>\
