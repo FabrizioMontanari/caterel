@@ -4,13 +4,13 @@ import sys
 import shutil
 
 
-verbose = '--verbose' in sys.argv
-
-print('Building project...', end='\n' if verbose else '')
-
+verbose = '--verbose' in sys.argv[1:]
 def verbose_log(message):
     if verbose:
         print(message)
+
+
+print('Building project...', end='\n' if verbose else '')
 
 # clean up
 verbose_log('    Cleaning up destination folders...')
