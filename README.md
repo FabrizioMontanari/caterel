@@ -1,18 +1,24 @@
 # I Martini Si Sposano
 
+## Requirements
+
+* Python 3.6.4
+* Pip 9.0.1 (10+ won't work)
+* AWS cli configured with access
+
 ## Installation
 
-* create a virtualenv with `python==3.6.4` and `pip==9.0.1`
-* activate the virtualenv
-* run `pip install -r requirements.txt`
+* Create a virtualenv called `env`
+* Activate the virtualenv
+* Run `$ pip install -r requirements.txt`
 
 ## Development
 
-* all base files are in src and development should be done there
-* to start a local server you can run `FLASK_APP=martini.py flask run`
+* All base files are in src and development should be done there
+* Run `$ python build.py` in the root folder to compile and copy the files from the source directory
+* Run `$ FLASK_APP=martini.py flask run` in the `backend` folder to start a local development server
 
 ## Deployment
 
-* run `python deploy.py` in the root folder to copy/compile the files
-* deploy the backend with `zappa update <stage>` (dev/prod)
-* copy the content of the static folder to s3
+* Ensure the virtualenv is present and all requirements are installed. Does not need to be active.
+* Run `$ bash deploy.sh <dev|prod>` in the root folder to compile and deploy the new version. Defaults to `dev`
