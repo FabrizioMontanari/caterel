@@ -15,7 +15,7 @@
 ## Development
 
 * All base files are in src and development should be done there
-* Run `$ python build.py` in the root folder to compile and copy the files from the source directory
+* Run `$ python build.py <--verbose>` in the root folder to compile and copy the files from the source directory
 * Run `$ FLASK_APP=martini.py flask run` in the `backend` folder to start a local development server
 
 ## Deployment
