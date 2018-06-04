@@ -1,4 +1,6 @@
 @import '_variables';
+@import '_defaults';
+
 
 /**
 Media queries di bootstrap:
@@ -95,7 +97,7 @@ p {
 	justify-content:center;
 	
 	min-height:100vh;
-	background:url("../img/sezione1_HOME.png");
+	background:url("../img/intro-background.png");
 	background-size:cover;
 	background-position:50%;
 	

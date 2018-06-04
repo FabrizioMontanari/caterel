@@ -1,0 +1,35 @@
+@import '_variables';
+
+body {
+    margin: 0;
+    background: $martini-background;
+}
+
+h1, h2, h3, p {
+    font-weight: normal;
+    margin: 0;
+}
+
+h1, h2 {
+    color: $martini-body-copy;
+    font-size: 76px;
+	font-family: autumn;
+}
+
+h3 {
+    color: $martini-body-copy;
+    font-size: 50px;
+	font-family: autumn;
+}
+
+h4 {
+    color: $martini-body-copy;
+    font-size: 22px;
+	font-family: autumn;
+}
+
+p {
+    color: $martini-body-copy;
+    font-size: 22px;
+	font-family: museo;
+}

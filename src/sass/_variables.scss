@@ -11,8 +11,17 @@ $martini-blue: #5B5EC1;
 $martini-blue-dark: darken($martini-blue, 5%);
 $martini-blue-light: lighten($martini-blue, 15%);
 
-$martini-body-copy: $martini-bordeaux-dark;
+// $martini-body-copy: $martini-bordeaux-dark;
+$martini-body-copy: #000;
 $martini-background: #FFF1E1;
+
+
+// bootstrap breakpoints
+$bp-s: 576px;
+$bp-m: 768px;
+$bp-l: 992px;
+$bp-xl: 1200px;
+
 
 // fonts
 @font-face {
@@ -31,13 +40,13 @@ $martini-background: #FFF1E1;
 	text-rendering: antialiased;
 }
 
-@font-face {
-    font-family: 'arctik';
+// @font-face {
+//     font-family: 'arctik';
     
-	src: url('../fonts/Arctik_2.5.ttf') format('truetype');
-	font-style: normal;
-	text-rendering: antialiased;
-}
+// 	src: url('../fonts/Arctik_2.5.ttf') format('truetype');
+// 	font-style: normal;
+// 	text-rendering: antialiased;
+// }
 
 @font-face {
     font-family: 'museo';
@@ -46,6 +55,7 @@ $martini-background: #FFF1E1;
 	font-style: normal;
 	text-rendering: antialiased;
 }
+
 @font-face {
     font-family: 'museoBold';
     
