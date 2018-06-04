@@ -1,0 +1,41 @@
+@import '_variables';
+
+body {
+    margin: 0;
+    background: $martini-background;
+}
+
+h1, h2, h3, p {
+    font-weight: normal;
+}
+
+h1 {
+    color: $martini-bordeaux;
+    font-size: 186px;
+    font-family: amatic;
+}
+
+h2 {
+    color: $martini-bordeaux;
+    font-size: 86px;
+    font-family: autumn;
+}
+
+h3 {
+    color: $martini-body-copy;
+    font-size: 40px;
+    font-family: autumn;
+}
+
+p {
+	color: $martini-body-copy;
+	font-size: 34px;
+	font-family: autumn;
+}
+
+
+.martini-login {
+    &__container {
+        margin: auto;
+    }
+}

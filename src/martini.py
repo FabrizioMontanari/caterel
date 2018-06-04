@@ -3,7 +3,7 @@ from flask import *  # lazy.
 app = Flask(__name__)
 
 LOGIN_COOKIE_NAME = 'is_logged_in'
-STATIC_ROOT = 'static.imartinisisposano.it' if os.environ.get('SERVERTYPE') == 'AWS Lambda' or '127.0.0.1:8000/static'
+STATIC_ROOT = '//static.imartinisisposano.it' if os.environ.get('SERVERTYPE') == 'AWS Lambda' else '//127.0.0.1:8000/static'
 
 def set_cookie_and_redirect(request):
         base_host = request.host.replace('km.', '')

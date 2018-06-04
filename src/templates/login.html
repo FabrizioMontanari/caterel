@@ -2,19 +2,23 @@
 <html>
 
 <head>
-    <title>Login</title>
-    
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	
-	<link rel="stylesheet" href="//static.imartinisisposano.it/css/login.css">
+	<title>Login - I Martini si Sposano!</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="{{static_root}}/css/login.css">
 </head>
 
 <body>
-	<form action="" method="POST">
-		<input type="submit" value="Submit">Login
-		<input type="password" name="password" required>
-	</form>
+	<div class="martini-login__container">
+		<h1 class="martini-login__title">Benvenuto</h1>
+		<h2 class="martini-login__subtitle">Per favore inserisci la password per continuare</h2>
+		<form class="martini-login__form" action="" method="POST">
+			<input type="password" name="password" required>
+			<button>Accedi</button>
+		</form>
+	</div>
 </body>
 
 </html>
