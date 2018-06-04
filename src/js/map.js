@@ -7,7 +7,7 @@ var map_text_data={
 }
 
 function createImgUrl(step){
-	return '../img/map/'+step+'.jpg';
+	return '//static.imartinisisposano.it/img/map/'+step+'.jpg';
 }
 function MapChange(btn){
 	var step = $(btn).data("step");
