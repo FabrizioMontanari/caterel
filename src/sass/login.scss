@@ -1,10 +1,15 @@
 @import '_variables';
 @import '_defaults';
 
+body {
+    background-color: $martini-yellow;
+}
+
 .martini-login {
     &__container {
-        width: 120px;
+        width: 200px;
         margin: 15rem auto;
+        text-align: center;
 
 		background: url("../img/login-outline.png");
 		background-size: contain;
@@ -13,13 +18,28 @@
         
         padding: 200px;
         @media screen and (max-width: $bp-m) { padding: 160px; }
-		@media screen and (max-width: $bp-xs) { padding: 100px; }
+		@media screen and (max-width: $bp-s) { padding: 100px; }
     }
 
     &__input {
-        width: 100px;
-
+        width: 180px;
         margin: 5px;
         padding: 5px;
+
+        text-align: center;
+    }
+
+    &__button {
+        background-color: $martini-bordeaux;
+        color: #fff;
+
+        border: 0;
+        padding: 2px 40px;
+
+        text-transform: uppercase;
+        font-family: amatic;
+        font-size: 28px;    
+        @media screen and (max-width: $bp-m) { font-size: 24px; }
+        @media screen and (max-width: $bp-xs) { font-size: 22px; }
     }
 }
