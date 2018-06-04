@@ -2,37 +2,31 @@
 <html>
 
 <head>
-    <title>I Martini si Sposano!</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- Latest compiled and minified CSS -->
+	<title>I Martini si Sposano!</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{static_root}}/css/main.css">
 
-	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="{{static_root}}/css/main.css">
-    <script src="{{static_root}}/js/countdown.js"></script>
+	<script src="{{static_root}}/js/countdown.js"></script>
 	<script src="{{static_root}}/js/map.js"></script>
 	<script src="{{static_root}}/js/detail_toggle.js"></script>
 	<script src="{{static_root}}/js/confirmation.js"></script>
 	<!-- RIMUOVERE: solo per debug-->
-	<script>$(document).ready(function(){fillFamily(["Marco Baldo", "Bella Lui", "Topo Gigio","ellie"]);});</script>
-	<!-- RIMUOVERE: fine-->
+	<script>$(document).ready(function () { fillFamily(["Marco Baldo", "Bella Lui", "Topo Gigio", "ellie"]); });</script>
 </head>
 
 <body>
 	<nav class="martini-header navbar navbar-light fixed-top navbar-expand-md">
-		<p class="navbar-brand martini-header__nav-brand" >Matteo & Karin</p>
-		<button class="navbar-toggler martini-header__nav-togglr" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+		<p class="navbar-brand martini-header__nav-brand">Matteo & Karin</p>
+		<button class="navbar-toggler martini-header__nav-togglr" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+		 aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse martini-header__nav-collapser" id="navbarTogglerDemo01">
@@ -40,93 +34,91 @@
 				<li class="nav-item">
 					<a href="#martini-intro" class="martini-header__nav-link nav-link">&#8226; Home</a>
 				</li>
-				<li class="nav-item"><a href="#martini-countdown" class="martini-header__nav-link nav-link">&#8226; Save the date</a></li>
-				<li class="nav-item"><a href="#martini-location" class="martini-header__nav-link nav-link">&#8226; Dove/Quando</a></li>
-				<!--<li class="nav-item"><a href="#martini-theme" class="martini-header__nav-link nav-link">Dettagli</a></li>-->
-				<li class="nav-item"><a href="#martini-hm" class="martini-header__nav-link nav-link">&#8226; Honeymoon</a></li>
-				<li class="nav-item"><a href="#martini-RSVP" class="martini-header__nav-link nav-link">&#8226; RSVP</a></li>
+				<li class="nav-item">
+					<a href="#martini-countdown" class="martini-header__nav-link nav-link">&#8226; Save the date</a>
+				</li>
+				<li class="nav-item">
+					<a href="#martini-location" class="martini-header__nav-link nav-link">&#8226; Dove/Quando</a>
+				</li>
+				<li class="nav-item">
+					<a href="#martini-hm" class="martini-header__nav-link nav-link">&#8226; Honeymoon</a>
+				</li>
+				<li class="nav-item">
+					<a href="#martini-RSVP" class="martini-header__nav-link nav-link">&#8226; RSVP</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
-    <section class="martini-intro" id="martini-intro">
-        <div class="martini-intro__container container">
-            <!--<h3 class="martini-intro__pre-title">Finalmente, dopo 12 anni di fidanzamento</h3>-->
-            <div class="martini-intro__title-box">
-                <h1 class="martini-intro__title">
-                    Matteo
-                    <span class="martini-intro__title--ampersand">&amp</span>
-                    Karin
-                </h1>
-                <h2 class="martini-intro__subtitle">
-                    si sposano
-                </h2>
-            </div>
-            <!--<div class="martini-intro__location">
-                <h3 class="martini-intro__location-text">
-                    Non prendere impegni per il
-                    <span class="martini-intro__location-text--highlight">12/34/56</span>
-                    . Ti aspettiamo alle ore
-                    <span class="martini-intro__location-text--highlight">12</span>
-                    in
-                    <span class="martini-intro__location-text--highlight">Sala Rossa</span>
-                </h3>
-            </div>-->
-    </section>
-    <section class="martini-countdown" id="martini-countdown">
-        <div class="martini-countdown__container container row">
-            <img class="martini-countdown__banner-element martini-countdown__banner-element__bimba col-sm-3" src="{{static_root}}/img/sezione2_Karin.png">
-            <div class="martini-countdown__banner-element martini-countdown__banner-element__central col-sm-6">
-				<h4 class="martini-countdown__banner-element__central__invite">sei <span class="martini-countdown__banner-element__central__invite__amatic">invitato<span></h4>
+	<section class="martini-intro" id="martini-intro">
+		<div class="martini-intro__container container">
+			<div class="martini-intro__title-box">
+				<h1 class="martini-intro__title">
+					Matteo
+					<span class="martini-intro__title--ampersand">&amp</span>
+					Karin
+				</h1>
+				<h2 class="martini-intro__subtitle">
+					si sposano
+				</h2>
+			</div>
+	</section>
+	<section class="martini-countdown" id="martini-countdown">
+		<div class="martini-countdown__container container row">
+			<img class="martini-countdown__banner-element martini-countdown__banner-element__bimba col-sm-3" src="{{static_root}}/img/sezione2_Karin.png">
+			<div class="martini-countdown__banner-element martini-countdown__banner-element__central col-sm-6">
+				<h4 class="martini-countdown__banner-element__central__invite">sei
+					<span class="martini-countdown__banner-element__central__invite__amatic">invitato
+						<span>
+				</h4>
 				<img class="martini-countdown__banner-element__central__separator-1" src="{{static_root}}/img/sezione2_cuore.png">
-				<h4 class="martini-countdown__banner-element__central__directive">Il 22 Settembre 2018<br>alle ore 12 in Sala Rossa<br><span class="martini-countdown__banner-element__central__directive__minor">(Palazzo D'Accursio, Bologna)</span></h4>
+				<h4 class="martini-countdown__banner-element__central__directive">Il 22 Settembre 2018
+					<br>alle ore 12 in Sala Rossa
+					<br>
+					<span class="martini-countdown__banner-element__central__directive__minor">(Palazzo D'Accursio, Bologna)</span>
+				</h4>
 				<a class="martini-countdown__banner-element__central__RSVP-link" href="#martini-RSVP">RSVP</a>
-                <h2 class="martini-countdown__banner-element__central__clock">
-                    <span class="martini-countdown__banner-element__central__clock-days">10D</span>
-                    <div class="martini-countdown__banner-element__central__clock-separator-1">&nbsp;&nbsp;&nbsp;</div>
-                    <span class="martini-countdown__banner-element__central__clock-hours">10H</span>
-                    <div class="martini-countdown__banner-element__central__clock-separator-2">&nbsp;&nbsp;&nbsp;</div>
-                    <span class="martini-countdown__banner-element__central__clock-minutes">10M</span>
-                </h2>
+				<h2 class="martini-countdown__banner-element__central__clock">
+					<span class="martini-countdown__banner-element__central__clock-days">10D</span>
+					<div class="martini-countdown__banner-element__central__clock-separator-1">&nbsp;&nbsp;&nbsp;</div>
+					<span class="martini-countdown__banner-element__central__clock-hours">10H</span>
+					<div class="martini-countdown__banner-element__central__clock-separator-2">&nbsp;&nbsp;&nbsp;</div>
+					<span class="martini-countdown__banner-element__central__clock-minutes">10M</span>
+				</h2>
 				<img class="martini-countdown__banner-element__central__separator-2 d-none d-lg-block" src="{{static_root}}/img/sezione2_divisorio.png">
-            </div>
-            <img class="martini-countdown__banner-element martini-countdown__banner-element__bimbo col-sm-3" src="{{static_root}}/img/sezione2_Matteo.png">
-        </div>
-    </section>
-	
-    <section class="martini-location" id="martini-location">
+			</div>
+			<img class="martini-countdown__banner-element martini-countdown__banner-element__bimbo col-sm-3" src="{{static_root}}/img/sezione2_Matteo.png">
+		</div>
+	</section>
+
+	<section class="martini-location" id="martini-location">
 		<div class="martini-location__overlay"></div>
-        <div class="martini-location__container container">
-			<p class="martini-location__container__d-q"><span  class="martini-location__container__d-q__d">dove</span> e quando</p>
+		<div class="martini-location__container container">
+			<p class="martini-location__container__d-q">
+				<span class="martini-location__container__d-q__d">dove</span> e quando</p>
 			<img class="martini-location__container__separator-1" src="{{static_root}}/img/sezione3_divisorio1.png">
-            <h1 class="martini-location__container__resturant">il boccone del prete</h1>
-			<p class="martini-location__container__r-address">via Siepelunga 56<br>Bologna</p>
-			<a class="martini-location__container__map-icon" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete" target="_blank">
-				<img src="{{static_root}}/img/sezione3_mappa.png"><br>
-				clicca qui<br>
-				per le indicazioni
+			<h1 class="martini-location__container__resturant">il boccone del prete</h1>
+			<p class="martini-location__container__r-address">via Siepelunga 56
+				<br>Bologna</p>
+			<a class="martini-location__container__map-icon" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete"
+			 target="_blank">
+				<img src="{{static_root}}/img/sezione3_mappa.png">
+				<br> clicca qui
+				<br> per le indicazioni
 			</a>
 			<img class="martini-location__container__separator-2" src="{{static_root}}/img/sezione3_divisorio2.png">
-			<p class="martini-location__container__duration">dalle 21<br>
+			<p class="martini-location__container__duration">dalle 21
+				<br>
 				<span class="martini-location__container__duration__end">fino a sera</span>
 			</p>
 			<p class="martini-location__container__dcode">se ti fa piacere indossa come noi un dettaglio
 				<span class="martini-location__container__dcode__y">giallo</span>
-				 o 
+				o
 				<span class="martini-location__container__dcode__b">bordeaux</span>
 			</p>
 			<img class="martini-location__container__separator-3" src="{{static_root}}/img/sezione3_divisorio3.png">
-        </div>
-    </section>
-	<!--
-    <section class="martini-map" id="martini-map">
-        <div class="martini-map__container">
-            <iframe class="martini-map__map" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCHz2gc20mn847WZT85eeM99a_Q4b2_Dqk&q=Via+Siepelunga_56">
-            </iframe>
-        </div>
-    </section>
-	-->
-	
-	
+		</div>
+	</section>
+
 	<section class="martini-gift" id="martini-hm">
 		<div class="container">
 			<h2 class="martini-gift__title">Viaggio di nozze</h2>
@@ -150,36 +142,39 @@
 					<div class="martini-gift__map__controls__btn" data-step="16" onclick="MapChange(this)">day16</div>
 					<div class="martini-gift__map__controls__btn" data-step="17" onclick="MapChange(this)">day17</div>
 					<div class="martini-gift__map__controls__btn" data-step="18" onclick="MapChange(this)">day18</div>
-					
+
 				</div>
 				<div id="martini-gift__map__frame" class="martini-gift__map__frame col-sm-7">
 					<div id="martini-gift__map__map" class="martini-gift__map__map"></div>
 				</div>
-				<div id="martini-gift__map__title"class="martini-gift__map__title">Partenza</div>
-				<div id="martini-gift__map__txt"class="martini-gift__map__txt">Qui arriviamo in aereo.</div>
+				<div id="martini-gift__map__title" class="martini-gift__map__title">Partenza</div>
+				<div id="martini-gift__map__txt" class="martini-gift__map__txt">Qui arriviamo in aereo.</div>
 			</div>
 			<h3 class="martini-gift__toggle-details">
 				VUOI AIUTARCI A SCAPPARE?
 			</h3>
 			<div class="martini-gift__gift-details">
-				<p>La lista di nozze è disponibile presso la sede dell'agenzia:<br>
-				<span>AEGIR Viaggi</span><br>
-				via Calabria 8/b, Bologna.<br>
-				051 0366662
+				<p>La lista di nozze è disponibile presso la sede dell'agenzia:
+					<br>
+					<span>AEGIR Viaggi</span>
+					<br> via Calabria 8/b, Bologna.
+					<br> 051 0366662
 				</p>
-				<p>Oppure, se ti è più comodo è possibile effettuare<br>
-				un bonifico all'IBAN:<br>
-				<span>IT69A0312702403000000007462</span>.
+				<p>Oppure, se ti è più comodo è possibile effettuare
+					<br> un bonifico all'IBAN:
+					<br>
+					<span>IT69A0312702403000000007462</span>.
 				</p>
 			</div>
 		</div>
-    </section>
-	
-	
-	
-    <section class="martini-confirm" id="martini-RSVP">
-        <form class="martini-confirm__container container">
-			<h1 class="martini-confirm__container__title"><span>unisciti</span> alla nostra festa</h1>
+	</section>
+
+
+
+	<section class="martini-confirm" id="martini-RSVP">
+		<form class="martini-confirm__container container">
+			<h1 class="martini-confirm__container__title">
+				<span>unisciti</span> alla nostra festa</h1>
 			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
 			<div class="martini-confirm__container__main-guest row">
 				<input class="col-sm" type="text" name="main_nome" placeholder="Nome">
@@ -196,67 +191,16 @@
 				<option>vegano</option>
 			</select>
 			<p>conferma anche per i tuoi cari!</p>
-            <div class="martini-confirm__container__family row" id="martini-confirm__container__family">
-				<!-- PLACEHOLDER usare fillFamily per popolare
-				<div id="familiare_0" class="martini-confirm__container__family__member col-md">
-					<div class="martini-confirm__container__family__member__name">
-						<input type="text" name="familiare_0_nome" value="karin Marchiori" readonly>
-						<div id="familiare_0_confirmed" class="checkbox" onclick="$(this).toggleClass('checked')">&nbsp;</div>
-					</div>
-					<p>menu</p>
-					<select name="familiare_0_menu">
-						<option>regular</option>
-						<option>vegetariano</option>
-						<option>intollerante al lattosio</option>
-						<option>celiaco</option>
-						<option>vegano</option>
-					</select>
-				</div>
-				<div id="familiare_1" class="martini-confirm__container__family__member col-md">
-					<div class="martini-confirm__container__family__member__name">
-						<input type="text" name="familiare_1_nome" value="Pippo baudo" readonly>
-						<div id="familiare_1_confirmed" class="checkbox" onclick="$(this).toggleClass('checked')">&nbsp;</div>
-					</div>
-					<p>menu</p>
-					<select name="familiare_1_menu">
-						<option>regular</option>
-						<option>vegetariano</option>
-						<option>intollerante al lattosio</option>
-						<option>celiaco</option>
-						<option>vegano</option>
-					</select>
-				</div>
-				<div id="familiare_2" class="martini-confirm__container__family__member col-md">
-					<div class="martini-confirm__container__family__member__name">
-						<input type="text" name="familiare_2_nome" value="bova Raul" readonly>
-						<div id="familiare_2_confirmed" class="checkbox" onclick="$(this).toggleClass('checked')">&nbsp;</div>
-					</div>
-					<p>menu</p>
-					<select name="familiare_2_menu">
-						<option>regular</option>
-						<option>vegetariano</option>
-						<option>intollerante al lattosio</option>
-						<option>celiaco</option>
-						<option>vegano</option>
-					</select>
-				</div>-->
+			<div class="martini-confirm__container__family row" id="martini-confirm__container__family">
 			</div>
 			<textarea id="notes" class="martini-confirm__container__notes" rows="5" name="note" placeholder="note"></textarea>
 			<div class="martini-confirm__container__submit" id="confirm-be-there" onclick="onConfirmClick()">CI SARÒ!</div>
 			<div class="martini-confirm__container__overlay hide" id="confirm-overlay">
-				<!--PLACEHOLDER usare fillConfirmation per popolare
-				<h1 class="martini-confirm__container__overlay__title">confermi la presenza di</h1>
-				<p class="martini-confirm__container__overlay__member">Matteo Frontini, menu tradizionale</p>
-				<p class="martini-confirm__container__overlay__member">Karin Marchiori, menu tradizionale</p>
-				<p class="martini-confirm__container__overlay__member">Pippo Baudo, menu intollerante al lattosio</p>
-				<div class="martini-confirm__container__overlay__submit" >CONFERMA</div>
-				<div class="martini-confirm__container__overlay__back" onclick="onBackClick()">MODIFICA</div>
-				-->
 			</div>
-        </form>
-    </section>
-	
-    <div class="bumper" style="height: 300px"></div>
+		</form>
+	</section>
+
+	<div class="bumper" style="height: 300px"></div>
 	<section class="martini-preloader"></section>
 </body>
 
