@@ -1,58 +1,9 @@
 @import '_variables';
 @import '_defaults';
 
-
-/**
-Media queries di bootstrap:
-
-Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
-
-Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-
-*/
-
-
 body {
 	position:relative;
-    margin: 0;
 	padding-top: 40px;
-    background: $martini-background;
-}
-
-h1, h2, h3, p {
-    font-weight: normal;
-}
-
-h1 {
-    color: $martini-bordeaux;
-    font-size: 186px;
-    font-family: amatic;
-}
-
-h2 {
-    color: $martini-bordeaux;
-    font-size: 86px;
-    font-family: autumn;
-}
-
-h3 {
-    color: $martini-body-copy;
-    font-size: 40px;
-    font-family: autumn;
-}
-
-p {
-	color: $martini-body-copy;
-	font-size: 34px;
-	font-family: autumn;
 }
 
 .martini-header {
@@ -93,55 +44,28 @@ p {
 
 .martini-intro {
 	display:flex;
-	align-items:center;
-	justify-content:center;
-	
 	min-height:100vh;
-	background:url("../img/intro-background.png");
-	background-size:cover;
-	background-position:50%;
+
+	background: url("../img/intro-background.png");
+	background-size: cover;
+	background-position: 50%;
 	
     &__container {
-        text-align: center;
-    }
-
-    &__pre-title {
-        margin: 20px auto;
-    }
-
-    &__title-box {
-
-    }
-
-    &__title {
-        margin: 0px auto -2.4vh;
-		
-		color:black;
-		font-size: 7.4vh;
-        text-transform: uppercase;
-
-        &--ampersand {
-            font-family: autumn;
-            font-size: 1.5em;
-        }
+		padding: 200px;
+		@media screen and (max-width: $bp-m) { padding: 160px; }
+		@media screen and (max-width: $bp-xs) { padding: 120px; }
+	
+		background: url("../img/intro-outline.png");
+		background-size: contain;
+		background-position: 50%;
+		background-repeat: no-repeat;
+	
+		text-align: center;
+		margin: auto;
     }
 
     &__subtitle {
-		color:black;
-	    font-size: 5.3vh;
-        margin: 0 auto;
-    }
-
-    &__location {
-        margin: 0 auto;
-    }
-
-    &__location-text {
-        &--highlight {
-            font-family: amatic;
-            font-size: 1.5em;
-            text-transform: uppercase;
-        }
+		font-family: autumn;
     }
 }
 

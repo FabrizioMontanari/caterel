@@ -12,24 +12,36 @@ h1, h2, h3, p {
 
 h1, h2 {
     color: $martini-body-copy;
+    font-family: amatic;
+    
     font-size: 76px;
-	font-family: autumn;
+    @media screen and (max-width: $bp-m) { font-size: 60px; }
+    @media screen and (max-width: $bp-xs) { font-size: 52px; }
 }
 
 h3 {
     color: $martini-body-copy;
+    font-family: amatic;
+
     font-size: 50px;
-	font-family: autumn;
+    @media screen and (max-width: $bp-m) { font-size: 40px; }
+    @media screen and (max-width: $bp-xs) { font-size: 35px; }
 }
 
 h4 {
     color: $martini-body-copy;
-    font-size: 22px;
-	font-family: autumn;
+    font-family: amatic;
+    
+    font-size: 22px;    
+    @media screen and (max-width: $bp-m) { font-size: 20px; }
+    @media screen and (max-width: $bp-xs) { font-size: 18px; }
 }
 
 p {
     color: $martini-body-copy;
-    font-size: 22px;
-	font-family: museo;
+    font-family: museo;
+
+    font-size: 22px;    
+    @media screen and (max-width: $bp-m) { font-size: 20px; }
+    @media screen and (max-width: $bp-xs) { font-size: 18px; }
 }
