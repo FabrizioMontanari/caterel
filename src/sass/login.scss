@@ -1,41 +1,25 @@
 @import '_variables';
-
-body {
-    margin: 0;
-    background: $martini-background;
-}
-
-h1, h2, h3, p {
-    font-weight: normal;
-}
-
-h1 {
-    color: $martini-bordeaux;
-    font-size: 186px;
-    font-family: amatic;
-}
-
-h2 {
-    color: $martini-bordeaux;
-    font-size: 86px;
-    font-family: autumn;
-}
-
-h3 {
-    color: $martini-body-copy;
-    font-size: 40px;
-    font-family: autumn;
-}
-
-p {
-	color: $martini-body-copy;
-	font-size: 34px;
-	font-family: autumn;
-}
-
+@import '_defaults';
 
 .martini-login {
     &__container {
-        margin: auto;
+        width: 120px;
+        margin: 15rem auto;
+
+		background: url("../img/login-outline.png");
+		background-size: contain;
+		background-position: center;
+        background-repeat: no-repeat;	
+        
+        padding: 200px;
+        @media screen and (max-width: $bp-m) { padding: 160px; }
+		@media screen and (max-width: $bp-xs) { padding: 100px; }
+    }
+
+    &__input {
+        width: 100px;
+
+        margin: 5px;
+        padding: 5px;
     }
 }
