@@ -3,7 +3,7 @@
 
 body {
 	position:relative;
-	padding-top: 40px;
+	padding-top: 20px;
 }
 
 .martini-header {
@@ -44,17 +44,26 @@ body {
 
 .martini-intro {
 	display:flex;
-	min-height:100vh;
+	height: 100vh;
 
 	background: url("../img/intro-background.png");
-	background-size: cover;
-	background-position: 50%;
-	
+	background-position: center;
+	background-repeat: no-repeat;
+
+	@media screen and (max-height: 450px) { background-size: 160%; }
+
+	// temp fix until 1000px height background image created.
+	@media screen and (min-height: 900px) { background-size: cover; }
+
     &__container {
 		padding: 200px;
-		@media screen and (max-width: $bp-m) { padding: 160px; }
-		@media screen and (max-width: $bp-xs) { padding: 120px; }
-	
+		@media screen and (max-width: $bp-m) { padding: 180px 140px; }
+		@media screen and (max-width: $bp-s) { padding: 160px 100px; }
+		@media screen and (max-width: $bp-xs) { padding: 100px 70px; }
+		
+		@media screen and (max-height: 450px) { padding: 110px 140px; }
+		@media screen and (max-height: 400px) { padding: 100px 140px; }
+
 		background: url("../img/intro-outline.png");
 		background-size: contain;
 		background-position: 50%;
@@ -64,8 +73,15 @@ body {
 		margin: auto;
     }
 
+    &__title {
+		@media screen and (max-height: 450px) { font-size: 52px; }
+		@media screen and (max-height: 450px) { font-size: 46px; }
+	}
+	
     &__subtitle {
 		font-family: autumn;
+		@media screen and (max-height: 450px) { font-size: 38px; }
+		@media screen and (max-height: 450px) { font-size: 32px; }
     }
 }
 

@@ -10,7 +10,17 @@ h1, h2, h3, p {
     margin: 0;
 }
 
-h1, h2 {
+h1 {
+    color: $martini-body-copy;
+    font-family: amatic;
+    
+    font-size: 76px;
+    @media screen and (max-width: $bp-m) { font-size: 68px; }
+    @media screen and (max-width: $bp-s) { font-size: 52px; }
+    @media screen and (max-width: $bp-xs) { font-size: 42px; }
+}
+
+h2 {
     color: $martini-body-copy;
     font-family: amatic;
     
@@ -23,9 +33,10 @@ h3 {
     color: $martini-body-copy;
     font-family: amatic;
 
-    font-size: 50px;
-    @media screen and (max-width: $bp-m) { font-size: 40px; }
-    @media screen and (max-width: $bp-xs) { font-size: 35px; }
+    font-size: 52px;
+    @media screen and (max-width: $bp-m) { font-size: 46px; }
+    @media screen and (max-width: $bp-s) { font-size: 38px; }
+    @media screen and (max-width: $bp-xs) { font-size: 32px; }
 }
 
 h4 {
