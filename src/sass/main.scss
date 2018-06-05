@@ -206,8 +206,8 @@ body {
 }
 
 .martini-location {
-	height: 104vh;
-	padding: 2vh 0;
+	height: 115vh;
+	padding: 5vh 0;
 	background-image:url("../img/sezione3_sfondo_o60pc.png");
 	background-size: cover;
 	background-position: 50% 50%;
@@ -239,6 +239,7 @@ body {
     
 		&__d-q{
 			color:white;
+			font-family:autumn;
 			font-size:4vh;
 			margin-bottom: 3vh;
 			&__d{
@@ -281,6 +282,7 @@ body {
 		&__duration{
 			color:white;
 			font-size:3.5vh;
+			font-family:autumn;
 			margin-bottom:3vh;
 			&__end{
 				font-family: amatic;
@@ -288,7 +290,7 @@ body {
 		}
 		&__dcode{
 			color:white;
-			font-size:3vh;
+			font-size:3.5vh;
 			margin-bottom:3vh;
 			&__y{
 				font-family: amatic;
