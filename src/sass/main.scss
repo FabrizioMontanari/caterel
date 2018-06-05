@@ -363,7 +363,7 @@ body {
 			border: 1px solid black;
 		}
 		&__map{
-			background-image: url("../img/map/1.jpg");
+			background-image: url("../img/map/JMap-Day0.png");
 			width: 100%;
 			height: 100%;
 			-webkit-transition: background-image 0.5s ease-in-out,-webkit-transform 0.5s ease-in-out;
@@ -372,8 +372,8 @@ body {
 			background-size: contain;
 			background-repeat: no-repeat;
 			&.zoomin{
-				-webkit-transform: scale(2) translate(15%,-15%);
-				transform: scale(2) translate(15%,-15%);
+				-webkit-transform: scale(1.5) translate(2%,-21%);
+				transform: scale(1.5) translate(2%,-21%);
 			}
 			&.zoomout{
 				-webkit-transform: scale(1) translate(0,0);
