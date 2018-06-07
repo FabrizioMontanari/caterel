@@ -25,7 +25,24 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if request.method == 'POST' and request.form.get('password') == '1234':
+    if request.method == 'POST' and request.form.get('password').lower() == 'ellie':
         return set_cookie_and_redirect(request)
 
     return render_template('login.html', static_root=STATIC_ROOT)
+
+'''
+@app.route('/get_family',methods=['POST'])
+def get_family():
+    target = json.loads(request.json['data'])["target"]
+    #use target to search db for family
+    pass
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
+@app.route('/confirmation',methods=['POST'])
+def confirmation():
+    targets = json.loads(request.json['data'])["targets"]
+    for target in targets.keys():
+        #update target confirmation on db
+        pass
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+'''
