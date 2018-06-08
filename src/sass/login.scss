@@ -8,7 +8,7 @@ body {
 .martini-login {
     &__container {
         width: 200px;
-        margin: 15rem auto;
+        margin: 1rem auto;
         text-align: center;
 
 		background: url("../img/login-outline.png");
@@ -18,12 +18,12 @@ body {
         
         padding: 200px;
         @media screen and (max-width: $bp-m) { padding: 160px; }
-		@media screen and (max-width: $bp-s) { padding: 100px; }
+		@media screen and (max-width: $bp-s) { padding: 80px; }
     }
 
     &__input {
-        width: 180px;
-        margin: 5px;
+        width: 90%;
+        margin: 5px 0;
         padding: 5px;
 
         text-align: center;
