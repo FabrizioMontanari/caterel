@@ -124,7 +124,7 @@ body {
 			object-fit: contain;
 		}
 		&__directive{
-			font-family:museoBold;
+			font-family:museo;
 			/*font-weight:bold;*/
 			text-align:center;
 			
@@ -206,13 +206,14 @@ body {
 }
 
 .martini-location {
-	height: 120vh;
-	padding: 5vh 0;
+	height: 110vh;
+	padding: 2vh 0;
 	background-image:url("../img/sezione3_sfondo_o60pc.png");
 	background-size: cover;
 	background-position: 50% 50%;
 	background-repeat:no-repeat;
 	position:relative;
+	@media screen and (min-width: 1200px) { height: 100vh; padding: 0 0; }
 	
 	&__overlay{
 		top: 0;
@@ -240,8 +241,8 @@ body {
 		&__d-q{
 			color:white;
 			font-family:autumn;
-			font-size:4vh;
-			margin-bottom: 3vh;
+			font-size:8vh;
+			margin-bottom: 5vh;
 			&__d{
 				font-family: amatic;
 			}
@@ -249,18 +250,19 @@ body {
 		&__separator-1{object-fit: contain;}
         &__resturant{
 			color:white;
-			font-size: 12vh;
+			font-size: 10vh;
 			margin-bottom:1vh;
+			@media screen and (min-width: 768px) { font-size: 12vh; }
 		}
 		&__r-address{
 			color:white;
 			font-family: museo;
 			font-size: 2.7vh;
 			line-height: 85%;
-			margin-bottom: 3vh;
+			margin-bottom: 2vh;
 		}
 		&__map-icon{
-			margin-bottom:3vh;
+			margin-bottom:5vh;
 			color:white;
 			font-family:museo;
 			line-height:12px;
@@ -284,7 +286,7 @@ body {
 			font-size:3.5vh;
 			font-family:autumn;
 			line-height: 90%;
-			margin-bottom:3vh;
+			margin-bottom:1vh;
 			&__end{
 				font-family: amatic;
 			}
@@ -345,13 +347,13 @@ body {
 	&__title{
 		text-align:center;
 		color:black;
-		font-size:26px;
+		font-size:48px;
 		margin-bottom:18px;
 		padding-top:20px;
-		@media (min-width: 576px) { font-size:30px; margin-bottom:20px; padding-top:30px; }
-		@media (min-width: 768px) { font-size:48px; margin-bottom:30px; padding-top:40px; }
-		@media (min-width: 992px) { font-size:48px; margin-bottom:30px; padding-top:40px; }
-		@media (min-width: 1200px) { font-size:48px; margin-bottom:30px; padding-top:40px; }
+		@media (min-width: 576px) { font-size:56px; margin-bottom:20px; padding-top:30px; }
+		@media (min-width: 768px) { font-size:72px; margin-bottom:30px; padding-top:40px; }
+		@media (min-width: 992px) { font-size:72px; margin-bottom:30px; padding-top:40px; }
+		@media (min-width: 1200px) { font-size:72px; margin-bottom:30px; padding-top:40px; }
 		
 	}
 	&__map{
@@ -525,16 +527,16 @@ body {
 		
 		&__title{
 			font-family: autumn;
-			font-size:26px;
+			font-size:30px;
 			margin-bottom:14px;
 			span{
 				font-family:amatic;
 				font-size:125%;
 			}
-			@media (min-width: 576px) { font-size:30px; margin-bottom:16px; }
-			@media (min-width: 768px) { font-size:48px; margin-bottom:20px; }
-			@media (min-width: 992px) { font-size:48px; margin-bottom:20px; }
-			@media (min-width: 1200px) { font-size:48px; margin-bottom:20px; }
+			@media (min-width: 576px) { font-size:48px; margin-bottom:16px; }
+			@media (min-width: 768px) { font-size:56px; margin-bottom:20px; }
+			@media (min-width: 992px) { font-size:56px; margin-bottom:20px; }
+			@media (min-width: 1200px) { font-size:56px; margin-bottom:20px; }
 		}
 		
 		&__main-guest{
