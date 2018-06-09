@@ -46,7 +46,14 @@ body {
 	display:flex;
 	height: 100vh;
 
-	background: url("../img/intro-background.png");
+	&--1 {
+		background-image: url("../img/intro-background-1.png");
+	}
+
+	&--2 {
+		background-image: url("../img/intro-background-2.png");
+	}
+	
 	background-position: center;
 	background-repeat: no-repeat;
 

@@ -1,4 +1,5 @@
 import os
+import random
 from flask import *  # lazy.
 app = Flask(__name__)
 
@@ -20,7 +21,11 @@ def index():
     if request.cookies.get(LOGIN_COOKIE_NAME) != 'True':
         return redirect('/login')
 
-    return render_template('index.html', static_root=STATIC_ROOT)
+    return render_template(
+        'index.html',
+        static_root=STATIC_ROOT,
+        background_version=random.randint(1,2)
+    )
 
 
 @app.route('/login', methods=['POST', 'GET'])
