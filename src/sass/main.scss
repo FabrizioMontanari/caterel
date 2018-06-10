@@ -57,8 +57,7 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 
-	@media screen and (min-height: 900px) { background-size: cover; }  // hd screens
-	@media screen and (max-height: 900px) and (max-width: 500px) { background-size: cover; }  // portrait tall phone
+	@media screen and (min-height: 700px) { background-size: cover; }  // hd screens, portrait tall phone
 	@media screen and (max-height: 700px) and (max-width: 500px) { background-size: 340%; }  // portrait mid phone
 	@media screen and (max-height: 570px) and (max-width: 500px) { background-size: 330%; }  // portrait short phone
 
@@ -66,11 +65,12 @@ body {
 	@media screen and (max-height: 380px) { background-size: 170%; }  // landscape iPhone
 
     &__container {
-		padding: 200px;
+		padding:200px;
 		@media screen and (max-width: $bp-m) { padding: 180px 140px; }
 		@media screen and (max-width: $bp-s) { padding: 160px 100px; }
 		@media screen and (max-width: $bp-xs) { padding: 100px 70px; }
 		
+		@media screen and (max-height: 900px) and (min-width: 500px) { padding: 170px; } // hd-ready screen
 		@media screen and (max-height: 450px) { padding: 110px 140px; }  // landscape Android
 		@media screen and (max-height: 380px) { padding: 100px 140px; }  // landscape iPhone
 
