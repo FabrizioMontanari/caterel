@@ -19,12 +19,10 @@ def set_cookie_and_redirect(request):
         return res
 
 
-
-
 class DBManager(object):
     def __init__(self):
         self.scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-        self.creds = ServiceAccountCredentials.from_json_keyfile_name('/home/fabrizio/Martini/caterel/src/secret_key.json', self.scope)
+        self.creds = ServiceAccountCredentials.from_json_keyfile_name('src/secret_key.json', self.scope)
         self.client  = gspread.authorize(self.creds)
 
         self.sheet_family = self.client.open("MartiniWedding").worksheet("famiglie")
@@ -64,9 +62,6 @@ class DBManager(object):
         return True
 
 
-
-
-
 @app.route('/')
 def index():
     if 'km.' in request.host:
@@ -74,7 +69,7 @@ def index():
 
     if request.cookies.get(LOGIN_COOKIE_NAME) != 'True':
         return redirect('/login')
-
+    
     return render_template(
         'index.html',
         static_root=STATIC_ROOT,
