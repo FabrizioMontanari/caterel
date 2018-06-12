@@ -2,3 +2,4 @@ env
 __pycache__
 backend
 static
+src/secret_key.json
