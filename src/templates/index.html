@@ -15,6 +15,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 	<script src="{{static_root}}/js/countdown.js"></script>
+	<!--<script src="{{static_root}}/js/map.js"></script>-->
+	<!--<script src="{{static_root}}/js/detail_toggle.js"></script>-->
+	<script src="{{static_root}}/js/confirmation.js"></script>
+	<!-- RIMUOVERE: solo per debug-->
+	<!--<script>$(document).ready(function () { fillFamily(["Marco Baldo", "Bella Lui", "Topo Gigio", "ellie"]); });</script>-->
 </head>
 
 <body>
@@ -124,7 +129,29 @@
 		<form class="martini-confirm__container container">
 			<h1 class="martini-confirm__container__title">
 				<span>unisciti</span> alla nostra festa</h1>
-			<p>Conferma la tua presenza<br class="d-inline d-sm-none"> a partire dal primo luglio</p>
+			<!--<p>Conferma la tua presenza<br class="d-inline d-sm-none"> a partire dal primo luglio</p>-->
+			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
+			<div class="martini-confirm__container__main-guest row">
+				<input class="col-sm" type="text" name="main_nome" placeholder="Nome">
+				<input class="col-sm" type="text" name="main_cognome" placeholder="Cognome">
+				<div id="checkbox_main" class="checkbox" onclick="onUserNomeCognomeEntered();">&nbsp;</div>
+			</div>
+			<p id="not_invited" class="hide" id="error-not-invited">Nominativo non trovato!</p>
+			<p id="select_your_menu_text" class="hide">scegli il tuo menu</p>
+			<select id="select_main_menu" class="hide" name="main_menu">
+				<option>regular</option>
+				<option>vegetariano</option>
+				<option>intollerante al lattosio</option>
+				<option>celiaco</option>
+				<option>vegano</option>
+			</select>
+			<p id="conferma_cari_text" class="hide">conferma anche per i tuoi cari!</p>
+			<div class="martini-confirm__container__family row hide" id="martini-confirm__container__family">
+			</div>
+			<textarea id="notes" class="martini-confirm__container__notes hide" rows="5" name="note" placeholder="note"></textarea>
+			<div class="martini-confirm__container__submit" id="confirm-be-there" onclick="onCiSaroClick();">CI SARÒ!</div>
+			<div class="martini-confirm__container__overlay hide" id="confirm-overlay">
+			</div>
 		</form>
 	</section>
 	<section class="martini-preloader"></section>
