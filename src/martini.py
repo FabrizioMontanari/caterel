@@ -24,13 +24,7 @@ def set_cookie_and_redirect(request):
 class DBManager(object):
     def __init__(self):
         self.scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-<<<<<<< HEAD
         self.creds = ServiceAccountCredentials.from_json_keyfile_name('/home/fabrizio/Martini/caterel/src/secret_key.json', self.scope)
-=======
-        #self.creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
-        self.creds_dict = {}#non metto la chiave di accesso in pubblico!
-        self.creds = ServiceAccountCredentials.from_json_keyfile_dict(self.creds_dict, self.scope)
->>>>>>> 7fbb45878c6800db3101984f97f2fde3a950536d
         self.client  = gspread.authorize(self.creds)
 
         self.sheet_family = self.client.open("MartiniWedding").worksheet("famiglie")
