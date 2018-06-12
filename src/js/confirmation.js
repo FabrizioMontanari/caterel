@@ -116,6 +116,7 @@ function onUserNomeCognomeEntered(){
 			$('#conferma_cari_text').addClass('hide');
 			$('#martini-confirm__container__family').addClass('hide');
 			$('#notes').addClass('hide');
+			$('#confirm-be-there').addClass('hide');
 			return;
 		}
 		//lock curent user
@@ -133,6 +134,7 @@ function onUserNomeCognomeEntered(){
 		$('#conferma_cari_text').removeClass('hide');
 		$('#martini-confirm__container__family').removeClass('hide');
 		$('#notes').removeClass('hide');
+		$('#confirm-be-there').removeClass('hide');
 		fillFamily(data.family, data.is_plusone);
 		return;
 	}).fail(function(jqXHR, textStatus) {

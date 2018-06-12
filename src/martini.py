@@ -25,7 +25,18 @@ class DBManager(object):
     def __init__(self):
         self.scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
         #self.creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
-        self.creds_dict = {}#non metto la chiave di accesso in pubblico!
+        self.creds_dict = {
+            "type": "service_account",
+            "project_id": "martinisposi2018",
+            "private_key_id": "a9a471ade108a900ddd476b042255a49cee88e71",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLLqW1o94tAazC\nrteTVlc1U9Wc9A+ijdR6NhHkUDeLLvk6k/yjbzlAZrOX/Y/n6zYBIxXaqcG0RY1M\nLvE7n0/LzHDWDN6mfR3ilyqhAUH2gdIgksnDufZwMpoMscWYJJMRMRji6edfJ2/j\nwIQLfhDQrSNWaNrgYWW1a89pNdc+M7uGYSulMb66BqqViniW5uT4o2UR1dEGJbuz\ntEq8wiFTv0Rdz/SWMQWmfxc508Ah+OeGlp1IKuqu+YXRqBFeals0iHqob9iVOyso\nwDPmeNcJFF8y+QcnmSZrX7v3Nl8O3BE7EawLKbGsO4ycpgAKalMPBwPBAzs2knZ0\nXZIs5FKjAgMBAAECggEAAVFPH8ttQGt3XFfX7AuuSxk9FGR8yXgT/armGM3wXkWy\ntg+JnuG0xFcmKQEq8r0Sv5UjqiRZrjqZPPo89D8HPHIZ9TlmJDxBeluymhKxA9E5\ntJ5fEpbdI0Mgvp5UgrUSAxWHbMlJh9NwpVB1SsHJiCDnTsMlUDkxeKi3Up5Xw/58\n6x5kDDrqW8xth5yjfEpkVQKzYxxbdZDYWKh4488BmyaPImB6rVx2LoLX8iB0LCc1\n7nnpKWIvJMHINPh0MIkuljXRn5E61TbVsHQMme658YuF6wpjEgvgg2hq9L4gOPl3\nsWhddeulLUJGDKAFu2F6dPe7YkMermmsTFgw48OmyQKBgQD6701d4hohiBdYPLcV\nQPmiLXIOhothh3Gh22KwjfMhrkcZIG7MVneFNZJaWnVfqGDB0sr0ic/38ukIA+oE\npwaRlcDnoTKNa0kyKaahnMNsmo1dYJ5Wdml0R90wXLZwjV4Got2B34y5lBIpfc49\nGtrU6arTXkh1vsMKgfM28mqcHwKBgQDPSJXPzCZReIntuuhpZt3Tt+XN7GxtIcIC\nDNUv/+M6lRs8JOp2DHDkcrd0m6oX07drKVluI1eecNCp7KqtjQBTUqOIjkFE33Qj\nlwzjndc44BdK+B5jVHShGenuSvCXtOEHDjretEiUw4+Z/t/6tjXXBoa+i2Lco5GN\nqwsLJHb4/QKBgF6O/qB6K06nceSWPIeNzIQIjApdOPiviWpsuWu+kfgHLFOTnSzz\nCGbyIQxbOg+p64weWsx7ghr1NksG7pCCQD9sJx0h6WLRIuv8NgaAhEPQmaSuW/xI\n8sQWsIsg5L7VBrGJfd8K1oS3/4ATIDx2ei/xPaYYyUVVdTnobjYuc24RAoGBAIeU\nIHkkPMP5Ja5bHH0kjV9X33XLeDgBZpZUsnSM2KGOuZujQcAo7wZdimU5FA41qrjq\n+NWzRDIb9D/QzuppWZcmbFR7R3G2/o3w1LtkmEtZN6MPm0C5Evf0rS/x0GBKLQ2i\nXxsfrIGxUBIXxYSE/b5BRI0JOoa6bg/NmpGVLkQ5AoGBAINDmyEl+5mRe9xCTzJ8\nO7vINhC/0f4SMa1BG/SUvWxpWXWdizjgBz2Oxk7lkZGo1ZTehAN2Rl1au6NCrhM4\nMkK9pvC5k9JbPh112TryRyofxikigmd4uJkDjT96ih3dv8NCYt1y1KEd4399cpaz\n+WL+Woh+dbNkTsPiX1uNrn82\n-----END PRIVATE KEY-----\n",
+            "client_email": "martinisposi@martinisposi2018.iam.gserviceaccount.com",
+            "client_id": "104436276002869759452",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://accounts.google.com/o/oauth2/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/martinisposi%40martinisposi2018.iam.gserviceaccount.com"
+        }#non metto la chiave di accesso in pubblico!
         self.creds = ServiceAccountCredentials.from_json_keyfile_dict(self.creds_dict, self.scope)
         self.client  = gspread.authorize(self.creds)
 
@@ -98,10 +109,10 @@ def get_family():
     target = request.json['target']
     family = dbman.get_family(target)
     is_plus1 = False
-    if len(family) == 1:
+    if family and len(family) == 1:
         if "p1_" in family[0]:
             is_plus1 = True
-    return json.dumps({'success':True, 'family':family, 'target':target, 'is_plusone':is_plus1}), 200, {'ContentType':'application/json'}
+    return json.dumps({'family':family, 'target':target, 'is_plusone':is_plus1}), 200, {'ContentType':'application/json'}
 
 
 @app.route('/confirmation',methods=['POST',])
@@ -128,4 +139,4 @@ def confirmation():
                                     main_nome,
                                     None
                                     )
-    return json.dumps({'success':True, 'data':request.json,}), 200, {'ContentType':'application/json'} 
+    return json.dumps({'data':request.json,}), 200, {'ContentType':'application/json'} 
