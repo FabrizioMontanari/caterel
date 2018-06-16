@@ -10,7 +10,9 @@ from flask import *  # lazy.
 app = Flask(__name__)
 
 LOGIN_COOKIE_NAME = 'is_logged_in'
-STATIC_ROOT = '//static.imartinisisposano.it' if os.environ.get('SERVERTYPE') == 'AWS Lambda' else '//127.0.0.1:8000/static'
+STATIC_ROOT = '//static.imartinisisposano.it' if os.environ.get(
+    'SERVERTYPE') == 'AWS Lambda' else '//127.0.0.1:8000/static'
+
 
 def set_cookie_and_redirect(request):
         base_host = request.host.replace('km.', '')
@@ -21,12 +23,16 @@ def set_cookie_and_redirect(request):
 
 class DBManager(object):
     def __init__(self):
-        self.scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-        self.creds = ServiceAccountCredentials.from_json_keyfile_name('src/secret_key.json', self.scope)
-        self.client  = gspread.authorize(self.creds)
+        self.scope = ['https://spreadsheets.google.com/feeds',
+                      'https://www.googleapis.com/auth/drive']
+        self.creds = ServiceAccountCredentials.from_json_keyfile_name(
+            'src/secret_key.json', self.scope)
+        self.client = gspread.authorize(self.creds)
 
-        self.sheet_family = self.client.open("MartiniWedding").worksheet("famiglie")
-        self.sheet_confirmation = self.client.open("MartiniWedding").worksheet("conferme")
+        self.sheet_family = self.client.open(
+            "MartiniWedding").worksheet("famiglie")
+        self.sheet_confirmation = self.client.open(
+            "MartiniWedding").worksheet("conferme")
 
     def get_family(self, target):
         try:
@@ -41,7 +47,8 @@ class DBManager(object):
 
     def set_confirmation(self, target, menu, notes, author, is_plusone_of):
         try:
-            conf = self.sheet_confirmation.find(target) if is_plusone_of is None else self.sheet_confirmation.find("p1_" + is_plusone_of)
+            conf = self.sheet_confirmation.find(
+                target) if is_plusone_of is None else self.sheet_confirmation.find("p1_" + is_plusone_of)
         except gspread.exceptions.CellNotFound as e:
             print(target, " non trovato per la conferma")
             return False
@@ -54,11 +61,14 @@ class DBManager(object):
 
         self.sheet_confirmation.update_cell(conf.row, conf.col+1, menu)
         self.sheet_confirmation.update_cell(conf.row, conf.col+2, notes)
-        self.sheet_confirmation.update_cell(conf.row, conf.col+3, author+" made it")
-        self.sheet_confirmation.update_cell(conf.row, conf.col+4, dt.datetime.now().strftime("%Y-%m-%d %H:%M"))
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+3, author+" made it")
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+4, dt.datetime.now().strftime("%Y-%m-%d %H:%M"))
         # se +1 salvo il riferimento di quello che ha dato il +1
         if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(conf.row, conf.col+5, is_plusone_of)
+            self.sheet_confirmation.update_cell(
+                conf.row, conf.col+5, is_plusone_of)
         return True
 
 
@@ -69,11 +79,11 @@ def index():
 
     if request.cookies.get(LOGIN_COOKIE_NAME) != 'True':
         return redirect('/login')
-    
+
     return render_template(
         'index.html',
         static_root=STATIC_ROOT,
-        background_version=random.randint(1,2)
+        background_version=random.randint(1, 2)
     )
 
 
@@ -85,7 +95,7 @@ def login():
     return render_template('login.html', static_root=STATIC_ROOT)
 
 
-@app.route('/get_family', methods=['POST',])
+@app.route('/get_family', methods=['POST', ])
 def get_family():
     dbman = DBManager()
     target = request.json['target']
@@ -94,10 +104,10 @@ def get_family():
     if family and len(family) == 1:
         if "p1_" in family[0]:
             is_plus1 = True
-    return json.dumps({'family':family, 'target':target, 'is_plusone':is_plus1}), 200, {'ContentType':'application/json'}
+    return json.dumps({'family': family, 'target': target, 'is_plusone': is_plus1}), 200, {'ContentType': 'application/json'}
 
 
-@app.route('/confirmation',methods=['POST',])
+@app.route('/confirmation', methods=['POST', ])
 def confirmation():
     dbman = DBManager()
     family = request.json['family']
@@ -107,18 +117,18 @@ def confirmation():
         #update target confirmation on db
         if 'is_plusone_of' in member.keys():
             dbman.set_confirmation(
-                                    member['nome'],
-                                    member['menu'],
-                                    main_note if main_nome == member['nome'] else '',
-                                    main_nome,
-                                    member['is_plusone_of']
-                                    )
+                member['nome'],
+                member['menu'],
+                main_note if main_nome == member['nome'] else '',
+                main_nome,
+                member['is_plusone_of']
+            )
         else:
             dbman.set_confirmation(
-                                    member['nome'],
-                                    member['menu'],
-                                    main_note if main_nome == member['nome'] else '',
-                                    main_nome,
-                                    None
-                                    )
-    return json.dumps({'data':request.json,}), 200, {'ContentType':'application/json'} 
+                member['nome'],
+                member['menu'],
+                main_note if main_nome == member['nome'] else '',
+                main_nome,
+                None
+            )
+    return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}
