@@ -15,8 +15,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 	<script src="{{static_root}}/js/countdown.js"></script>
-	<!--<script src="{{static_root}}/js/map.js"></script>-->
-	<!--<script src="{{static_root}}/js/detail_toggle.js"></script>-->
+	<script src="{{static_root}}/js/map_text_data.js"></script>
+	<script src="{{static_root}}/js/map.js"></script>
+	<script src="{{static_root}}/js/detail_toggle.js"></script>
 	<script src="{{static_root}}/js/confirmation.js"></script>
 </head>
 
@@ -118,15 +119,58 @@
 
 	<section class="martini-gift" id="martini-hm">
 		<div class="container">
-			<h2 class="martini-gift__title">Viaggio di nozze</h2>
-			<p style="padding-bottom:20px;">A breve troverete tutte le informazioni<br class="d-inline d-sm-none"> sul nostro viaggio di nozze</p>
+			<h2 class="martini-gift__title">Viaggio <span>di nozze</span></h2>
+			<!--<p style="padding-bottom:20px;">A breve troverete tutte le informazioni<br class="d-inline d-sm-none"> sul nostro viaggio di nozze</p>-->
+			<div class="martini-gift__controls row">
+				<div class="martini-gift__controls__btn col-lg-2" data-step="1" onclick="MapChange(this)">day1</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="2" onclick="MapChange(this)">day2</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="3" onclick="MapChange(this)">day3</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="4" onclick="MapChange(this)">day4</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="5" onclick="MapChange(this)">day5</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="6" onclick="MapChange(this)">day6</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="7" onclick="MapChange(this)">day7</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="8" onclick="MapChange(this)">day8</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="9" onclick="MapChange(this)">day9</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="10" onclick="MapChange(this)">day10</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="11" onclick="MapChange(this)">day11</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="12" onclick="MapChange(this)">day12</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="13" onclick="MapChange(this)">day13</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="14" onclick="MapChange(this)">day14</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="15" onclick="MapChange(this)">day15</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="16" onclick="MapChange(this)">day16</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="17" onclick="MapChange(this)">day17</div>
+				<div class="martini-gift__controls__btn col-lg-2" data-step="18" onclick="MapChange(this)">day18</div>
+			</div>
+			<div class="martini-gift__map row">
+				<div id="martini-gift__map__frame" class="martini-gift__map__frame col-sm-12">
+					<div id="martini-gift__map__map" class="martini-gift__map__map"></div>
+				</div>
+				<div id="martini-gift__map__title" class="martini-gift__map__title"></div>
+				<div id="martini-gift__map__txt" class="martini-gift__map__txt"></div>
+			</div>
+			<h3 class="martini-gift__toggle-details">
+				VUOI AIUTARCI A SCAPPARE?
+			</h3>
+			<div class="martini-gift__gift-details">
+				<p>La lista di nozze è disponibile presso la sede dell'agenzia:
+					<br>
+					<span>AEGIR Viaggi</span>
+					<br> via Calabria 8/b, Bologna.
+					<br> 051 0366662
+				</p>
+				<p>Oppure, se ti è più comodo è possibile effettuare
+					<br> un bonifico all'IBAN:
+					<br>
+					<span>IT69A0312702403000000007462</span>.
+				</p>
+			</div>
 		</div>
 	</section>
 
 	<section class="martini-confirm" id="martini-RSVP">
 		<form class="martini-confirm__container container">
 			<h1 class="martini-confirm__container__title">
-				<span>unisciti</span> alla nostra festa</h1>
+				unisciti <span>alla nostra festa</span></h1>
 			<!--<p>Conferma la tua presenza<br class="d-inline d-sm-none"> a partire dal primo luglio</p>-->
 			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
 			<div class="martini-confirm__container__main-guest row">
@@ -143,7 +187,7 @@
 				<option>celiaco</option>
 				<option>vegano</option>
 			</select>
-			<p id="conferma_cari_text" class="hide">conferma anche per i tuoi cari!</p>
+			<p id="conferma_cari_text" class="hide" style="margin-bottom:10px;">conferma anche per i tuoi cari:</p>
 			<div class="martini-confirm__container__family row hide" id="martini-confirm__container__family">
 			</div>
 			<textarea id="notes" class="martini-confirm__container__notes hide" rows="5" name="note" placeholder="note"></textarea>

@@ -148,7 +148,7 @@ function onUserNomeCognomeEntered(){
  * invia i dati della prenotazione
  */
 function onConfermaClick(){
-	main_nome = escape($('input[name=main_nome]').val()) + ' ' + escape($('input[name=main_cognome]').val());
+	main_nome = escape($('input[name=main_nome]').val()).toLowerCase() + ' ' + escape($('input[name=main_cognome]').val()).toLowerCase();
 	main_menu = $('select[name=main_menu]').val();
 	main_note = $('textarea[name=note]').val();
 	family = [{'nome':main_nome,'menu':main_menu}];
@@ -191,7 +191,7 @@ function onConfermaClick(){
 		console.log('OK; data=%o', data);
 		var overlay = $('#confirm-overlay');
 		overlay.empty();
-		var overlay_content  = '<h1 class="martini-confirm__container__overlay__title">conferma riuscita</h1>';
+		var overlay_content  = '<h1 class="martini-confirm__container__overlay__title">fatto il misfatto!</h1>';
 		overlay.append(overlay_content);
 	}).fail(function(jqXHR, textStatus) {
 		console.log('FAILURE: %o', jqXHR);

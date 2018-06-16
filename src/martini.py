@@ -54,7 +54,7 @@ class DBManager(object):
 
         self.sheet_confirmation.update_cell(conf.row, conf.col+1, menu)
         self.sheet_confirmation.update_cell(conf.row, conf.col+2, notes)
-        self.sheet_confirmation.update_cell(conf.row, conf.col+3, author)
+        self.sheet_confirmation.update_cell(conf.row, conf.col+3, author+" made it")
         self.sheet_confirmation.update_cell(conf.row, conf.col+4, dt.datetime.now().strftime("%Y-%m-%d %H:%M"))
         # se +1 salvo il riferimento di quello che ha dato il +1
         if is_plusone_of is not None:
