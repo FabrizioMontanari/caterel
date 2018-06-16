@@ -389,7 +389,7 @@ body {
 			/*height: 45px;
 			width:170px;*/
 			height:7.857vw;
-			width:33vw;
+			width:32vw;
 			padding:0;
 			text-align: center;
 			@media (min-width: 576px) {font-size:26px;height: 46px;width:180px;}
@@ -447,15 +447,19 @@ body {
 		text-align:center;
 		color:black;
 		font-size:26px;
-		margin:28px auto 14px auto;
-		border:1px solid black;
-		width:190px;
+		margin:23px auto 14px auto;
+		padding: 0px 0 10px 0;
+		width:205px;
 		cursor:pointer;
+		background-image:url('../img/sezione5_riquadroAiutaciAscappare.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-clip: padding-box;
 		
-		@media (min-width: 576px) { font-size:30px; margin:32px auto 16px auto; width:220px; }
-		@media (min-width: 768px) { font-size:48px; margin:40px auto 20px auto; width:350px; }
-		@media (min-width: 992px) { font-size:48px; margin:40px auto 20px auto; width:350px; }
-		@media (min-width: 1200px) { font-size:48px; margin:40px auto 20px auto; width:350px; }
+		@media (min-width: 576px) { font-size:25px; margin:32px auto 16px auto; width:220px; padding: 2px 0 8px 0;}
+		@media (min-width: 768px) { font-size:40px; margin:40px auto 20px auto; width:363px;padding: 5px 0 10px 0;}
+		@media (min-width: 992px) { font-size:40px; margin:40px auto 20px auto; width:363px;padding: 5px 0 10px 0;}
+		@media (min-width: 1200px) { font-size:40px; margin:40px auto 20px auto; width:363px;padding: 5px 0 10px 0;}
 	}
 	&__gift-details{
 		max-height: 0;
