@@ -9,9 +9,15 @@ import datetime as dt
 from flask import *  # lazy.
 app = Flask(__name__)
 
+STATIC_ROOT_NAMES = {
+    'local': '//127.0.0.1:8000/static',
+    'dev': '//s3-eu-west-1.amazonaws.com/www.imartinisisposano.it/static/dev',
+    'prod': '//static.imartinisisposano.it'
+}
+
+STAGE_NAME = os.environ.get('STAGE', default='local')
+STATIC_ROOT = STATIC_ROOT_NAMES[STAGE_NAME]
 LOGIN_COOKIE_NAME = 'is_logged_in'
-STATIC_ROOT = '//static.imartinisisposano.it' if os.environ.get(
-    'SERVERTYPE') == 'AWS Lambda' else '//127.0.0.1:8000/static'
 
 
 def set_cookie_and_redirect(request):
@@ -92,7 +98,10 @@ def login():
     if request.method == 'POST' and request.form.get('password').lower() == 'ellie':
         return set_cookie_and_redirect(request)
 
-    return render_template('login.html', static_root=STATIC_ROOT)
+    return render_template(
+        'login.html',
+        static_root=STATIC_ROOT
+    )
 
 
 @app.route('/get_family', methods=['POST', ])
