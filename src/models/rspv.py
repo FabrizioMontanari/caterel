@@ -1,3 +1,4 @@
+import boto3
 import gspread
 
 from oauth2client.service_account import ServiceAccountCredentials
@@ -13,6 +14,9 @@ class DBManager(object):
 
         self.sheet_family = self.client.open("MartiniWedding").worksheet("famiglie")
         self.sheet_confirmation = self.client.open("MartiniWedding").worksheet("conferme")
+    
+    def _load_credentials():
+        pass
 
     def get_family(self, target):
         try:

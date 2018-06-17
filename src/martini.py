@@ -89,3 +89,12 @@ def confirmation():
                 None
             )
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}
+
+
+@app.route('/sample')
+def sample():
+    import boto3
+
+    s3 = boto3.resource('s3')
+    obj = s3.Object('www.imartinisisposano.it','secret_key.json').get()
+    return obj['Body'].read().decode('utf-8')
