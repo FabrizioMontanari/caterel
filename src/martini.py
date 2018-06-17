@@ -51,10 +51,10 @@ def login():
     )
 
 
-@app.route('/get_family', methods=['POST'])
+@app.route('/get_family')
 def get_family():
     dbman = DBManager()
-    guest = request.json and request.json.get('target', '') or ''
+    guest = ' '.join([request.args.get('nome', ''), request.args.get('cognome', '')])
 
     return jsonify(dbman.get_family(guest))
 

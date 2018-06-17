@@ -82,8 +82,8 @@ function onBackClick(){
  * Se l'utente esiste si mostrano le opzioni da compilare e gli eventuali familiari
  */
 function onUserNomeCognomeEntered(){
-	var nome = escape($('input[name=main_nome]').val().toLowerCase());
-	var cognome = escape($('input[name=main_cognome]').val().toLowerCase());
+	var nome = escape($('input[name=main_nome]').val());
+	var cognome = escape($('input[name=main_cognome]').val());
 	//prevent request when empty
 	if(nome === '' || cognome === ''){
 		return;
@@ -92,21 +92,11 @@ function onUserNomeCognomeEntered(){
 	if($('#checkbox_main').hasClass('checked') || $('#checkbox_main').hasClass('checking')){
 		return;
 	}
-	$('#checkbox_main').addClass('checking');
-	$.ajax({
-		type: 'POST',
-		url: '/get_family',
-		/*beforeSend: function(xhr){},*/
-		cache: false,
-		data: JSON.stringify({
-			'target': nome + ' ' + cognome,
-		}),
-		contentType: 'application/json; charset=utf-8',
-		// crossDomain: false,
-		dataType: 'json'
-	}).done(function(data) {
+	// $('#checkbox_main').addClass('checking');
+	$.get('/get_family', { nome: nome, cognome: cognome })
+	.done(function(data) {
 		console.log('OK; data=%o', data);
-		if (data.family===null){
+		if (!data.guestAllowed){
 			//remove checking status
 			$('#checkbox_main').removeClass('checking');
 
@@ -135,7 +125,7 @@ function onUserNomeCognomeEntered(){
 		$('#martini-confirm__container__family').removeClass('hide');
 		$('#notes').removeClass('hide');
 		$('#confirm-be-there').removeClass('hide');
-		fillFamily(data.family, data.is_plusone);
+		fillFamily(data.guestFamily);
 		return;
 	}).fail(function(jqXHR, textStatus) {
 		console.log('FAILURE: %o', jqXHR);
