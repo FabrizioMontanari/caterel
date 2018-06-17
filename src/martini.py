@@ -51,16 +51,12 @@ def login():
     )
 
 
-@app.route('/get_family', methods=['POST', ])
+@app.route('/get_family', methods=['POST'])
 def get_family():
     dbman = DBManager()
-    target = request.json['target']
-    family = dbman.get_family(target)
-    is_plus1 = False
-    if family and len(family) == 1:
-        if "p1_" in family[0]:
-            is_plus1 = True
-    return json.dumps({'family': family,'target': target,'is_plusone': is_plus1}), 200, {'ContentType': 'application/json'}
+    guest = request.json and request.json.get('target', '') or ''
+
+    return jsonify(dbman.get_family(guest))
 
 
 @app.route('/confirmation', methods=['POST', ])
@@ -88,15 +84,3 @@ def confirmation():
                 None
             )
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}
-
-
-@app.route('/sample')
-def sample():
-    dbman = DBManager()
-    target = '"hey": "ho"'
-    family = dbman.get_family(target)
-    is_plus1 = False
-    if family and len(family) == 1:
-        if "p1_" in family[0]:
-            is_plus1 = True
-    return json.dumps({'family': family,'target': target,'is_plusone': is_plus1}), 200, {'ContentType': 'application/json'}

@@ -30,23 +30,30 @@ class DBManager(object):
             scopes=required_scopes
         )
 
-    def get_family(self, target):
+    def _is_guest_allowed(self, guest):
         try:
-            selected = self.sheet_family.find(target)
-        except gspread.exceptions.CellNotFound as e:
-            print(target, " non trovato")
-            return None
+            return guest and self.sheet_family.find(guest)
+        except (gspread.exceptions.CellNotFound, AttributeError) as e:
+            return False
 
-        selected_family = self.sheet_family.row_values(selected.row)
-        cleaned_family = [x for x in selected_family if x != target]
-        return cleaned_family
+    def _get_family_data(self, guest):
+        guest_cell = self.sheet_family.find(guest)
+        guest_family = self.sheet_family.row_values(guest_cell.row)
+
+        return [person for person in guest_family if person != guest]
+
+    def get_family(self, guest):
+        sanitised_guest = guest.lower()
+
+        return ({'guestAllowed': True, 'guestFamily': self._get_family_data(sanitised_guest)}
+                if self._is_guest_allowed(sanitised_guest)
+                else {'guestAllowed': False})
 
     def set_confirmation(self, target, menu, notes, author, is_plusone_of):
         try:
             conf = self.sheet_confirmation.find(
                 target) if is_plusone_of is None else self.sheet_confirmation.find("p1_" + is_plusone_of)
         except gspread.exceptions.CellNotFound as e:
-            print(target, " non trovato per la conferma")
             return False
         # se +1 salvo anche il nome
         if is_plusone_of is not None:
