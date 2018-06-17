@@ -1,7 +1,6 @@
 import os
 import random
 import json
-import datetime as dt
 
 from models.rspv import DBManager
 
@@ -93,8 +92,11 @@ def confirmation():
 
 @app.route('/sample')
 def sample():
-    import boto3
-
-    s3 = boto3.resource('s3')
-    obj = s3.Object('www.imartinisisposano.it','secret_key.json').get()
-    return obj['Body'].read().decode('utf-8')
+    dbman = DBManager()
+    target = '"hey": "ho"'
+    family = dbman.get_family(target)
+    is_plus1 = False
+    if family and len(family) == 1:
+        if "p1_" in family[0]:
+            is_plus1 = True
+    return json.dumps({'family': family,'target': target,'is_plusone': is_plus1}), 200, {'ContentType': 'application/json'}

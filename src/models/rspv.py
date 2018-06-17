@@ -1,22 +1,34 @@
 import boto3
 import gspread
+import json
 
+from datetime import datetime
 from oauth2client.service_account import ServiceAccountCredentials
 
 
 class DBManager(object):
     def __init__(self):
-        self.scope = ['https://spreadsheets.google.com/feeds',
-                      'https://www.googleapis.com/auth/drive']
-        self.creds = ServiceAccountCredentials.from_json_keyfile_name(
-            'src/secret_key.json', self.scope)
-        self.client = gspread.authorize(self.creds)
+        credentials = self._get_credentials()
+        client = gspread.authorize(credentials)
 
-        self.sheet_family = self.client.open("MartiniWedding").worksheet("famiglie")
-        self.sheet_confirmation = self.client.open("MartiniWedding").worksheet("conferme")
-    
-    def _load_credentials():
-        pass
+        self.sheet_family = client.open(
+            "MartiniWedding").worksheet("famiglie")
+        self.sheet_confirmation = client.open(
+            "MartiniWedding").worksheet("conferme")
+
+    def _get_credentials(self):
+        required_scopes = [
+            'https://spreadsheets.google.com/feeds',
+            'https://www.googleapis.com/auth/drive',
+        ]
+        s3 = boto3.resource('s3')
+        obj = s3.Object('www.imartinisisposano.it', 'secret_key.json').get()
+        keyfile_dict = json.loads(obj['Body'].read().decode('utf-8'))
+
+        return ServiceAccountCredentials.from_json_keyfile_dict(
+            keyfile_dict=keyfile_dict,
+            scopes=required_scopes
+        )
 
     def get_family(self, target):
         try:
@@ -48,7 +60,7 @@ class DBManager(object):
         self.sheet_confirmation.update_cell(
             conf.row, conf.col+3, author+" made it")
         self.sheet_confirmation.update_cell(
-            conf.row, conf.col+4, dt.datetime.now().strftime("%Y-%m-%d %H:%M"))
+            conf.row, conf.col+4, datetime.now().strftime("%Y-%m-%d %H:%M"))
         # se +1 salvo il riferimento di quello che ha dato il +1
         if is_plusone_of is not None:
             self.sheet_confirmation.update_cell(
