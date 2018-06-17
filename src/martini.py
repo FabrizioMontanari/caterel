@@ -2,9 +2,7 @@ import os
 import random
 import json
 
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-import datetime as dt
+from models.rspv import DBManager
 
 from flask import *  # lazy.
 app = Flask(__name__)
@@ -25,57 +23,6 @@ def set_cookie_and_redirect(request):
         res = make_response(redirect(f'http://{base_host}'))
         res.set_cookie(LOGIN_COOKIE_NAME, 'True', domain=f'{base_host}')
         return res
-
-
-class DBManager(object):
-    def __init__(self):
-        self.scope = ['https://spreadsheets.google.com/feeds',
-                      'https://www.googleapis.com/auth/drive']
-        self.creds = ServiceAccountCredentials.from_json_keyfile_name(
-            'src/secret_key.json', self.scope)
-        self.client = gspread.authorize(self.creds)
-
-        self.sheet_family = self.client.open(
-            "MartiniWedding").worksheet("famiglie")
-        self.sheet_confirmation = self.client.open(
-            "MartiniWedding").worksheet("conferme")
-
-    def get_family(self, target):
-        try:
-            selected = self.sheet_family.find(target)
-        except gspread.exceptions.CellNotFound as e:
-            print(target, " non trovato")
-            return None
-
-        selected_family = self.sheet_family.row_values(selected.row)
-        cleaned_family = [x for x in selected_family if x != target]
-        return cleaned_family
-
-    def set_confirmation(self, target, menu, notes, author, is_plusone_of):
-        try:
-            conf = self.sheet_confirmation.find(
-                target) if is_plusone_of is None else self.sheet_confirmation.find("p1_" + is_plusone_of)
-        except gspread.exceptions.CellNotFound as e:
-            print(target, " non trovato per la conferma")
-            return False
-        # se +1 salvo anche il nome
-        if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(conf.row, conf.col, target)
-            #TODO: aggiornare anche il foglio con le famiglie?????
-            ref = self.sheet_family.find("p1_" + is_plusone_of)
-            self.sheet_family.update_cell(ref.row, ref.col, target)
-
-        self.sheet_confirmation.update_cell(conf.row, conf.col+1, menu)
-        self.sheet_confirmation.update_cell(conf.row, conf.col+2, notes)
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+3, author+" made it")
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+4, dt.datetime.now().strftime("%Y-%m-%d %H:%M"))
-        # se +1 salvo il riferimento di quello che ha dato il +1
-        if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(
-                conf.row, conf.col+5, is_plusone_of)
-        return True
 
 
 @app.route('/')
@@ -104,16 +51,12 @@ def login():
     )
 
 
-@app.route('/get_family', methods=['POST', ])
+@app.route('/get_family')
 def get_family():
     dbman = DBManager()
-    target = request.json['target']
-    family = dbman.get_family(target)
-    is_plus1 = False
-    if family and len(family) == 1:
-        if "p1_" in family[0]:
-            is_plus1 = True
-    return json.dumps({'family': family, 'target': target, 'is_plusone': is_plus1}), 200, {'ContentType': 'application/json'}
+    guest = ' '.join([request.args.get('nome', ''), request.args.get('cognome', '')])
+
+    return jsonify(dbman.get_family(guest))
 
 
 @app.route('/confirmation', methods=['POST', ])

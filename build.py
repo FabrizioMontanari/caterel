@@ -31,8 +31,8 @@ shutil.copytree('src/js', 'static/js')
 # backend files copy
 verbose_log('    Copying bakend code...')
 shutil.copytree('src/templates', 'backend/templates')
+shutil.copytree('src/models', 'backend/models')
 shutil.copy2('src/martini.py', 'backend')
 shutil.copy2('src/zappa_settings.json', 'backend')
-shutil.copy2('src/secret_key.json', 'backend')
 
 print('Done')

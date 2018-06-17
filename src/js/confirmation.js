@@ -42,17 +42,17 @@ function fillConfirmation(){
  * acceta una array di nomi dei familiari es: ["Marco Baldo", "Bella Lui", "Topo Gigio"]
  * In caso di +1 viene aggiunto un solo membro e si inserisce un inputfield hidden
  */
-function fillFamily(family, is_plusone){
-	if(!Array.isArray(family)){
-		console.log("Errore: l'argomento non è un array");
-		return;
-	}
+function fillFamily(family){
+	// if(!Array.isArray(family)){
+	// 	console.log("Errore: l'argomento non è un array");
+	// 	return;
+	// }
 	var container = $('#martini-confirm__container__family');
 	container.empty();
 	family.forEach(function(member, i){
-		var name_input=!is_plusone?	'<input type="text" name="familiare_'+i+'_nome" value="'+member+'" readonly>':
-									'<input type="text" name="familiare_'+i+'_nome" value="" placeholder="Nome e Cognome">\
-									<input type="hidden" name="plus_one" value="plus_one_'+i+'">'
+		var name_input = member ? '<input type="text" name="familiare_' + i + '_nome" value="' + member + '" readonly>':
+								  '<input type="text" name="familiare_' + i + '_nome" value="" placeholder="Nome e Cognome">\
+								   <input type="hidden" name="plus_one" value="plus_one_' + i + '">'
 
 		var new_element = '<div id="familiare_'+i+'" class="martini-confirm__container__family__member col-sm-5">\
 					<div class="martini-confirm__container__family__member__name">\
@@ -82,8 +82,8 @@ function onBackClick(){
  * Se l'utente esiste si mostrano le opzioni da compilare e gli eventuali familiari
  */
 function onUserNomeCognomeEntered(){
-	var nome = escape($('input[name=main_nome]').val().toLowerCase());
-	var cognome = escape($('input[name=main_cognome]').val().toLowerCase());
+	var nome = escape($('input[name=main_nome]').val());
+	var cognome = escape($('input[name=main_cognome]').val());
 	//prevent request when empty
 	if(nome === '' || cognome === ''){
 		return;
@@ -93,20 +93,10 @@ function onUserNomeCognomeEntered(){
 		return;
 	}
 	$('#checkbox_main').addClass('checking');
-	$.ajax({
-		type: 'POST',
-		url: '/get_family',
-		/*beforeSend: function(xhr){},*/
-		cache: false,
-		data: JSON.stringify({
-			'target': nome + ' ' + cognome,
-		}),
-		contentType: 'application/json; charset=utf-8',
-		// crossDomain: false,
-		dataType: 'json'
-	}).done(function(data) {
+	$.get('/get_family', { nome: nome, cognome: cognome })
+	.done(function(data) {
 		console.log('OK; data=%o', data);
-		if (data.family===null){
+		if (!data.guestAllowed){
 			//remove checking status
 			$('#checkbox_main').removeClass('checking');
 
@@ -135,7 +125,7 @@ function onUserNomeCognomeEntered(){
 		$('#martini-confirm__container__family').removeClass('hide');
 		$('#notes').removeClass('hide');
 		$('#confirm-be-there').removeClass('hide');
-		fillFamily(data.family, data.is_plusone);
+		fillFamily(data.guestFamily);
 		return;
 	}).fail(function(jqXHR, textStatus) {
 		console.log('FAILURE: %o', jqXHR);
