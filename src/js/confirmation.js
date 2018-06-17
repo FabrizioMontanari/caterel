@@ -42,17 +42,17 @@ function fillConfirmation(){
  * acceta una array di nomi dei familiari es: ["Marco Baldo", "Bella Lui", "Topo Gigio"]
  * In caso di +1 viene aggiunto un solo membro e si inserisce un inputfield hidden
  */
-function fillFamily(family, is_plusone){
-	if(!Array.isArray(family)){
-		console.log("Errore: l'argomento non è un array");
-		return;
-	}
+function fillFamily(family){
+	// if(!Array.isArray(family)){
+	// 	console.log("Errore: l'argomento non è un array");
+	// 	return;
+	// }
 	var container = $('#martini-confirm__container__family');
 	container.empty();
 	family.forEach(function(member, i){
-		var name_input=!is_plusone?	'<input type="text" name="familiare_'+i+'_nome" value="'+member+'" readonly>':
-									'<input type="text" name="familiare_'+i+'_nome" value="" placeholder="Nome e Cognome">\
-									<input type="hidden" name="plus_one" value="plus_one_'+i+'">'
+		var name_input = member ? '<input type="text" name="familiare_' + i + '_nome" value="' + member + '" readonly>':
+								  '<input type="text" name="familiare_' + i + '_nome" value="" placeholder="Nome e Cognome">\
+								   <input type="hidden" name="plus_one" value="plus_one_' + i + '">'
 
 		var new_element = '<div id="familiare_'+i+'" class="martini-confirm__container__family__member col-sm-5">\
 					<div class="martini-confirm__container__family__member__name">\
@@ -92,7 +92,7 @@ function onUserNomeCognomeEntered(){
 	if($('#checkbox_main').hasClass('checked') || $('#checkbox_main').hasClass('checking')){
 		return;
 	}
-	// $('#checkbox_main').addClass('checking');
+	$('#checkbox_main').addClass('checking');
 	$.get('/get_family', { nome: nome, cognome: cognome })
 	.done(function(data) {
 		console.log('OK; data=%o', data);

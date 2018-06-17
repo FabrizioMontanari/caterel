@@ -38,9 +38,11 @@ class DBManager(object):
 
     def _get_family_data(self, guest):
         guest_cell = self.sheet_family.find(guest)
-        guest_family = self.sheet_family.row_values(guest_cell.row)
-
-        return [person for person in guest_family if person != guest]
+        guest_list = []
+        for person in self.sheet_family.row_values(guest_cell.row):
+            if person != guest:
+                guest_list.append('' if 'p1' in person else person)
+        return guest_list
 
     def get_family(self, guest):
         sanitised_guest = guest.lower()
