@@ -88,7 +88,11 @@ function onUserNomeCognomeEntered(){
 	if(nome === '' || cognome === ''){
 		return;
 	}
-	//prevent request when already checked
+	if (nome.toLowerCase()==='ellie' || cognome.toLowerCase()==='ellie'){
+		enableHearts();
+		return;
+	}
+ 	//prevent request when already checked
 	if($('#checkbox_main').hasClass('checked') || $('#checkbox_main').hasClass('checking')){
 		return;
 	}
@@ -187,4 +191,9 @@ function onConfermaClick(){
 		console.log('FAILURE: %o', jqXHR);
 		console.log('FAILURE: %o', textStatus);
 	});
+}
+
+/*for the lulz*/
+function enableHearts(){
+	$("body").append("<div id='heart1' class='heart'></div><div id='heart2' class='heart'></div><div id='heart3' class='heart'></div><div id='heart4' class='heart'></div>");
 }

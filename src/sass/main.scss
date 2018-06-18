@@ -333,10 +333,7 @@ body {
     }
 }
 
-/*
-* plugin mappa
-*risistemare
-*/
+
 .martini-gift{
 	background-color:white;
 	
@@ -480,14 +477,6 @@ body {
 .hide{
 	display:none !important;
 }
-
-
-
-
-
-
-
-/*risistemare*/
 
 .martini-confirm{
 	background-color:$martini-yellow-light;
@@ -679,4 +668,43 @@ body {
 			}
 		}
 	}
+}
+
+/*
+easter egg
+*/
+
+@keyframes example {
+    0%   {left:10vw; top:10vh;}
+    25%  {left:80vw; top:10vh;}
+    50%  {left:80vw; top:80vh;}
+    75%  {left:10vw; top:80vh;}
+    100% {left:10vw; top:10vh;}
+}
+.heart{
+	width: 10vw;
+	height: 10vw;
+	position: fixed;
+	top: -10vh;
+	left: -10vw;
+	z-index: 100;
+	background-image:  url(https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Hearts-PNG/Gold_Heart_Transparent_PNG_Clip_Art.png?m=1507172105);
+	background-size:  contain;
+	background-repeat:  no-repeat;
+	animation-name: example;
+    animation-duration: 8s;
+	animation-iteration-count: infinite;
+}
+
+#heart1 {
+	
+}
+#heart2 {
+	animation-delay:2s;
+}
+#heart3 {
+	animation-delay:4s;
+}
+#heart4 {
+	animation-delay:6s;
 }
