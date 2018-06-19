@@ -1,6 +1,9 @@
 import boto3
 
 from jinja2 import Template
+from os import path
+
+ROOT_FOLDER = path.join(path.dirname(__file__), '..')
 
 
 class EmailClient:
@@ -11,7 +14,7 @@ class EmailClient:
         self.admin_address = 'imartinisisposano@gmail.com'
 
     def _read_template(self, template_name):
-        with open(f'../templates/emails/{template_name}') as file:
+        with open(f'{ROOT_FOLDER}/templates/emails/{template_name}') as file:
             return file.read()
 
     def _render_message(self, template_name, **kwargs):
@@ -19,7 +22,7 @@ class EmailClient:
         return Template(message).render(**kwargs)
 
     def _send_message(self, template_name, from_email, to_email, subject, template_dictionary={}):
-        return  self.client.send_email(
+        return self.client.send_email(
             Source=from_email,
             Destination={'ToAddresses': [to_email]},
             Message={
@@ -43,9 +46,9 @@ class EmailClient:
             }
         )
 
-    def _sanitise_dictionary(dictionary):
+    def _sanitise_dictionary(self, dictionary):
         allowed_keys = ['guest_name', 'guest_note', 'menu_choice']
-        return {k:v for k,v in dictionary if k in allowed_keys}
+        return {k: v for k, v in dictionary.items() if k in allowed_keys}
 
     def send_admin_notification(self, template_dictionary):
         guest_name = template_dictionary.get('guest_name', None)
