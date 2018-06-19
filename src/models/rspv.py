@@ -59,13 +59,13 @@ class DBManager(object):
             return False
         # se +1 salvo anche il nome
         if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(conf.row, conf.col, target)
+            self.sheet_confirmation.update_cell(conf.row, conf.col, self.clean_string(target)
             #TODO: aggiornare anche il foglio con le famiglie?????
             ref = self.sheet_family.find("p1_" + is_plusone_of)
-            self.sheet_family.update_cell(ref.row, ref.col, target)
+            self.sheet_family.update_cell(ref.row, ref.col, self.clean_string(target))
 
-        self.sheet_confirmation.update_cell(conf.row, conf.col+1, menu)
-        self.sheet_confirmation.update_cell(conf.row, conf.col+2, notes)
+        self.sheet_confirmation.update_cell(conf.row, conf.col+1, self.clean_string(menu))
+        self.sheet_confirmation.update_cell(conf.row, conf.col+2, self.clean_string(notes))
         self.sheet_confirmation.update_cell(
             conf.row, conf.col+3, author+" made it")
         self.sheet_confirmation.update_cell(
@@ -73,5 +73,14 @@ class DBManager(object):
         # se +1 salvo il riferimento di quello che ha dato il +1
         if is_plusone_of is not None:
             self.sheet_confirmation.update_cell(
-                conf.row, conf.col+5, is_plusone_of)
+                conf.row, conf.col+5, self.clean_string(is_plusone_of))
         return True
+
+    def clean_string(self, s):
+        if len(s)<=2:
+            return s
+        
+        if s[0] == "=":
+            return "haking?" + s[1:]
+        
+        return s
