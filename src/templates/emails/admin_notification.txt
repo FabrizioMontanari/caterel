@@ -1,1 +1,1 @@
-{{person_name}} ha confermato la presenza
+{{guest_name}} ha confermato la presenza

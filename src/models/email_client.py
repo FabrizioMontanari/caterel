@@ -19,6 +19,7 @@ class EmailClient:
         return Template(message).render(**kwargs)
 
     def send_booking_notification(self):
+        template = 'admin_notification'
         return self.client.send_email(
             Source=self.server_address,
             Destination={'ToAddresses': [self.admin_address]},
@@ -29,7 +30,13 @@ class EmailClient:
                 'Body': {
                     'Text': {
                         'Data': self._render_message(
-                            template_name='admin_notification.txt',
+                            template_name=f'{template}.txt',
+                            person_name='tizio caio'
+                        )
+                    },
+                    'Html': {
+                        'Data': self._render_message(
+                            template_name=f'{template}.html',
                             person_name='tizio caio'
                         )
                     },
