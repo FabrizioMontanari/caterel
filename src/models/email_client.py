@@ -18,61 +18,49 @@ class EmailClient:
         message = self._read_template(template_name)
         return Template(message).render(**kwargs)
 
-    def send_admin_notification(self):
-        template = 'admin_notification'
-        return self.client.send_email(
-            Source=self.server_address,
-            Destination={'ToAddresses': [self.admin_address]},
+    def _send_message(self, template_name, from_email, to_email, subject, template_dictionary={}):
+        return  self.client.send_email(
+            Source=from_email,
+            Destination={'ToAddresses': [to_email]},
             Message={
                 'Subject': {
-                    'Data': 'Ping'
+                    'Data': subject
                 },
                 'Body': {
                     'Text': {
                         'Data': self._render_message(
-                            template_name=f'{template}.txt',
-                            guest_name='tizio caio'
+                            template_name=f'{template_name}.txt',
+                            **template_dictionary
                         )
                     },
                     'Html': {
                         'Data': self._render_message(
-                            template_name=f'{template}.html',
-                            guest_name='tizio caio'
+                            template_name=f'{template_name}.html',
+                            **template_dictionary
                         )
                     },
                 },
             }
         )
 
-    def send_guest_notification(self, guest_email=None):
-        template = 'guest_notification'
+    def send_admin_notification(self, template_dictionary):
+        guest_name = template_dictionary.get('guest_name', None)
 
-        return self.client.send_email(
-            Source=self.admin_address,
-            Destination={'ToAddresses': [guest_email]},
-            Message={
-                'Subject': {
-                    'Data': 'Ping'
-                },
-                'Body': {
-                    'Text': {
-                        'Data': self._render_message(
-                            template_name=f'{template}.txt',
-                            guest_name='tizio caio'
-                        )
-                    },
-                    'Html': {
-                        'Data': self._render_message(
-                            template_name=f'{template}.html',
-                            guest_name='tizio caio'
-                        )
-                    },
-                },
-            }
+        return self._send_message(
+            template_name='admin_notification',
+            from_email=self.server_address,
+            to_email=self.admin_address,
+            subject=f'Nuova conferma RSVP da {guest_name}!',
+            template_dictionary=template_dictionary
         )
 
+    def send_guest_notification(self, to_email, template_dictionary):
+        guest_name = template_dictionary.get('guest_name', None)
 
-# debug
-client = EmailClient()
-res = client.send_guest_notification('imartinisisposano@gmail.com')
-print(res)
+        return self._send_message(
+            template_name='guest_notification',
+            from_email=self.admin_address,
+            to_email=to_email,
+            subject=f'Grazie per la conferma {guest_name}!',
+            template_dictionary=template_dictionary
+        )
