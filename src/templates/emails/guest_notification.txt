@@ -1,0 +1,6 @@
+Grazie per aver confermato la presenza, {{guest_name}}!
+
+Queste sono le tue preferenze:
+TODO
+
+Se hai domande o correzioni da fare contattaci su imartinisisposano@gmail.com o via telefono.

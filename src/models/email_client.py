@@ -18,7 +18,7 @@ class EmailClient:
         message = self._read_template(template_name)
         return Template(message).render(**kwargs)
 
-    def send_booking_notification(self):
+    def send_admin_notification(self):
         template = 'admin_notification'
         return self.client.send_email(
             Source=self.server_address,
@@ -31,13 +31,40 @@ class EmailClient:
                     'Text': {
                         'Data': self._render_message(
                             template_name=f'{template}.txt',
-                            person_name='tizio caio'
+                            guest_name='tizio caio'
                         )
                     },
                     'Html': {
                         'Data': self._render_message(
                             template_name=f'{template}.html',
-                            person_name='tizio caio'
+                            guest_name='tizio caio'
+                        )
+                    },
+                },
+            }
+        )
+
+    def send_guest_notification(self, guest_email=None):
+        template = 'guest_notification'
+
+        return self.client.send_email(
+            Source=self.admin_address,
+            Destination={'ToAddresses': [guest_email]},
+            Message={
+                'Subject': {
+                    'Data': 'Ping'
+                },
+                'Body': {
+                    'Text': {
+                        'Data': self._render_message(
+                            template_name=f'{template}.txt',
+                            guest_name='tizio caio'
+                        )
+                    },
+                    'Html': {
+                        'Data': self._render_message(
+                            template_name=f'{template}.html',
+                            guest_name='tizio caio'
                         )
                     },
                 },
@@ -45,8 +72,7 @@ class EmailClient:
         )
 
 
-
 # debug
 client = EmailClient()
-res = client.send_booking_notification()
+res = client.send_guest_notification('imartinisisposano@gmail.com')
 print(res)
