@@ -43,6 +43,10 @@ class EmailClient:
             }
         )
 
+    def _sanitise_dictionary(dictionary):
+        allowed_keys = ['guest_name', 'guest_note', 'menu_choice']
+        return {k:v for k,v in dictionary if k in allowed_keys}
+
     def send_admin_notification(self, template_dictionary):
         guest_name = template_dictionary.get('guest_name', None)
 
@@ -51,7 +55,7 @@ class EmailClient:
             from_email=self.server_address,
             to_email=self.admin_address,
             subject=f'Nuova conferma RSVP da {guest_name}!',
-            template_dictionary=template_dictionary
+            template_dictionary=self._sanitise_dictionary(template_dictionary)
         )
 
     def send_guest_notification(self, to_email, template_dictionary):
@@ -62,5 +66,5 @@ class EmailClient:
             from_email=self.admin_address,
             to_email=to_email,
             subject=f'Grazie per la conferma {guest_name}!',
-            template_dictionary=template_dictionary
+            template_dictionary=self._sanitise_dictionary(template_dictionary)
         )

@@ -8,10 +8,12 @@
 
 <body>
 	<section class="martini-email" style="background-color: palevioletred;" >
-        <h2 style="background-color: green;">Ricevuta una conferma da {{guest_name}}</h2>
-        <div>scelte menu: TODO</div>
-        <div>note: TODO</div>
-        <div>guests: TODO</div>
+        <h2 style="background-color: green;">Ricevuta una conferma da {{guest_name|escape}}</h2>
+        <ul>
+            <li>scelte menu: {{menu_choice|escape}}</li>
+            <li>note: {{guest_note|escape}}</li>
+            <li>guests: TODO</li>
+        </ul>
     </section>
 </body>
 
