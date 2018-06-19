@@ -59,7 +59,7 @@ class DBManager(object):
             return False
         # se +1 salvo anche il nome
         if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(conf.row, conf.col, self.clean_string(target)
+            self.sheet_confirmation.update_cell(conf.row, conf.col, self.clean_string(target))
             #TODO: aggiornare anche il foglio con le famiglie?????
             ref = self.sheet_family.find("p1_" + is_plusone_of)
             self.sheet_family.update_cell(ref.row, ref.col, self.clean_string(target))

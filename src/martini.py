@@ -3,9 +3,11 @@ import random
 import json
 
 from models.rspv import DBManager
+from models.email_client import EmailClient
 
 from flask import *  # lazy.
 app = Flask(__name__)
+
 
 STATIC_ROOT_NAMES = {
     'local': '//127.0.0.1:8000/static',
@@ -54,7 +56,10 @@ def login():
 @app.route('/get_family')
 def get_family():
     dbman = DBManager()
-    guest = ' '.join([request.args.get('nome', ''), request.args.get('cognome', '')])
+    guest = ' '.join([
+        request.args.get('nome', ''),
+        request.args.get('cognome', '')
+    ])
 
     return jsonify(dbman.get_family(guest))
 
@@ -62,6 +67,7 @@ def get_family():
 @app.route('/confirmation', methods=['POST', ])
 def confirmation():
     dbman = DBManager()
+    email_client = EmailClient()
     family = request.json['family']
     main_nome = request.json['main_nome']
     main_note = request.json['main_note']
@@ -83,4 +89,12 @@ def confirmation():
                 main_nome,
                 None
             )
+    email_client.send_guest_notification(  # TODO, hardcoded test
+        to_email='imartinisisposano@gmail.com',
+        template_dictionary={
+            'guest_name': main_nome,
+            'guest_note': main_note,
+            'menu_choice': family[0].get('menu', 'menu choice missing')
+        }
+    )
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}

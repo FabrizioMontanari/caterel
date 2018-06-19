@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section class="martini-email">
+        <h1 class="martini-email__title">Grazie per aver confermato la presenza, {{guest_name|escape}}!</h1>
+        <h2 class="martini-email__subtitle">Subtitle: TODO</h2>
+        <div class="martini-email__recap">
+            <strong>Queste sono le tue preferenze:</strong>
+            <ul>
+                <li>scelte menu: {{menu_choice|escape}}</li>
+                <li>note: {{guest_note|escape}}</li>
+                <li>guests: TODO</li>
+            </ul>
+        </div>
+        <p>Se hai domande o correzioni da fare contattaci su imartinisisposano@gmail.com o via telefono.</p>
+    </section>
+</body>
+
+</html>
