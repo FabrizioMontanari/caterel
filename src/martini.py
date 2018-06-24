@@ -2,7 +2,7 @@ import os
 import random
 import json
 
-from models.rspv import DBManager
+from models.db_manager import DBManager
 from models.email_client import EmailClient
 
 from flask import *  # lazy.
@@ -21,10 +21,10 @@ LOGIN_COOKIE_NAME = 'is_logged_in'
 
 
 def set_cookie_and_redirect(request):
-        base_host = request.host.replace('km.', '')
-        res = make_response(redirect(f'http://{base_host}'))
-        res.set_cookie(LOGIN_COOKIE_NAME, 'True', domain=f'{base_host}')
-        return res
+    base_host = request.host.replace('km.', '')
+    res = make_response(redirect(f'http://{base_host}'))
+    res.set_cookie(LOGIN_COOKIE_NAME, 'True', domain=f'{base_host}')
+    return res
 
 
 @app.route('/')
@@ -89,12 +89,18 @@ def confirmation():
                 main_nome,
                 None
             )
-    email_client.send_guest_notification(  # TODO, hardcoded test
-        to_email='imartinisisposano@gmail.com',
-        template_dictionary={
+
+    template_dictionary = {
             'guest_name': main_nome,
             'guest_note': main_note,
             'menu_choice': family[0].get('menu', 'menu choice missing')
         }
+
+    email_client.send_guest_notification(  # TODO, hardcoded test
+        to_email='imartinisisposano@gmail.com',
+        template_dictionary=template_dictionary
     )
+
+    email_client.send_admin_notification(template_dictionary)
+
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}

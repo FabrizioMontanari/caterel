@@ -8,8 +8,26 @@
         "s3_bucket": "www.imartinisisposano.it",
         "keep_warm": false,
         "memory_size": 128,
-        "timeout_seconds": 10,
-        "xray_tracing": false
+        "timeout_seconds": 20,
+        "xray_tracing": false,
+        "extra_permissions": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "ses:SendEmail",
+                    "ses:SendRawEmail"
+                ],
+                "Resource": "*",
+                "Condition": {
+                    "StringEquals": {
+                        "ses:FromAddress": [
+                            "imartinisisposano@gmail.com",
+                            "no-reply@imartinisisposano.it"
+                        ]
+                    }
+                }
+            }
+        ]
     },
     "prod": {
         "app_function": "martini.app",
@@ -20,7 +38,25 @@
         "s3_bucket": "www.imartinisisposano.it",
         "keep_warm": false,
         "memory_size": 128,
-        "timeout_seconds": 10,
-        "xray_tracing": false
+        "timeout_seconds": 20,
+        "xray_tracing": false,
+        "extra_permissions": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "ses:SendEmail",
+                    "ses:SendRawEmail"
+                ],
+                "Resource": "*",
+                "Condition": {
+                    "StringEquals": {
+                        "ses:FromAddress": [
+                            "imartinisisposano@gmail.com",
+                            "no-reply@imartinisisposano.it"
+                        ]
+                    }
+                }
+            }
+        ]
     }
 }
