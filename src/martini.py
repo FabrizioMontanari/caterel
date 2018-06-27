@@ -66,6 +66,7 @@ def get_family():
 
 @app.route('/confirmation', methods=['POST', ])
 def confirmation():
+    print('stuff', request.json)
     dbman = DBManager()
     email_client = EmailClient()
     family = request.json['family']

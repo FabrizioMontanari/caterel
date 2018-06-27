@@ -143,6 +143,7 @@ function onUserNomeCognomeEntered(){
  */
 function onConfermaClick(){
 	main_nome = escape($('input[name=main_nome]').val()).toLowerCase() + ' ' + escape($('input[name=main_cognome]').val()).toLowerCase();
+	main_email = escape($('input[name=main_email]').val()).toLowerCase();
 	main_menu = $('select[name=main_menu]').val();
 	main_note = $('textarea[name=note]').val();
 	family = [{'nome':main_nome,'menu':main_menu}];
@@ -164,6 +165,7 @@ function onConfermaClick(){
 
 	var dati_prenotazione = {
 								'main_nome':main_nome,
+								'main_email':main_email,
 								'main_note':main_note,
 								'family':family
 							};

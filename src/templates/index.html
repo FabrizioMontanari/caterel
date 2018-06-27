@@ -175,12 +175,14 @@
 			<!--<p>Conferma la tua presenza<br class="d-inline d-sm-none"> a partire dal primo luglio</p>-->
 			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
 			<div class="martini-confirm__container__main-guest row">
-				<input class="col-sm" type="text" name="main_nome" placeholder="Nome">
-				<input class="col-sm" type="text" name="main_cognome" placeholder="Cognome">
+				<input class="col-sm" type="text" name="main_nome" placeholder="Nome" required />
+				<input class="col-sm" type="text" name="main_cognome" placeholder="Cognome" required />
 				<div id="checkbox_main" class="checkbox" onclick="onUserNomeCognomeEntered();">&nbsp;</div>
 			</div>
 			<p id="not_invited" class="hide" id="error-not-invited">Nominativo non trovato!</p>
 			<p id="select_your_menu_text" class="hide">scegli il tuo menu</p>
+			<label for="main_email">Se vuoi, lascia il tuo indirizzo email per una conferma</label>
+			<input class="col-sm" type="email" name="main_email" id="main-email" placeholder="Email">
 			<select id="select_main_menu" class="hide" name="main_menu">
 				<option>regular</option>
 				<option>vegetariano</option>
