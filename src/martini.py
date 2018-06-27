@@ -74,22 +74,7 @@ def confirmation():
     email_client = EmailClient()
 
     # TODO filter/clean
-    db_manager.update_rsvp(family_data)
-    # email_client.send_confirmation(family_data)
-
-    # template_dictionary = {
-    #     'guest_name': main_nome,
-    #     'guest_email': main_email,
-    #     'guest_note': main_note,
-    #     'family': family
-    # }
-
-    # email_client.send_admin_notification(template_dictionary)
-    # if main_email:
-    #     email_client.send_guest_notification(
-    #         to_email=main_email,
-    #         template_dictionary=template_dictionary
-    #     )
-
+    # db_manager.update_rsvp(family_data)
+    email_client.send_rsvp_notifications(family_data)
 
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}

@@ -50,7 +50,7 @@ class EmailClient:
         allowed_keys = ['guest_name', 'guest_note', 'menu_choice']
         return {k: v for k, v in dictionary.items() if k in allowed_keys}
 
-    def send_admin_notification(self, template_dictionary):
+    def _send_admin_notification(self, template_dictionary):
         guest_name = template_dictionary.get('guest_name', None)
 
         return self._send_message(
@@ -61,7 +61,7 @@ class EmailClient:
             template_dictionary=self._sanitise_dictionary(template_dictionary)
         )
 
-    def send_guest_notification(self, to_email, template_dictionary):
+    def _send_guest_notification(self, to_email, template_dictionary):
         guest_name = template_dictionary.get('guest_name', None)
 
         return self._send_message(
@@ -71,3 +71,35 @@ class EmailClient:
             subject=f'Grazie per la conferma {guest_name}!',
             template_dictionary=self._sanitise_dictionary(template_dictionary)
         )
+
+    def _extract_guest_data(self, guest):
+        return
+
+    def _build_template_dictionary(self, family_data):
+        main_guest = family_data[0]
+
+        return {
+            'name': main_guest.get('nome'),
+            'email': main_guest.get('email'),
+            'note': main_guest.get('nota'),
+            'family': [
+                {
+                    'name': guest.get('nome'),
+                    'menu': guest.get('menu')
+                }
+                for guest
+                in family_data
+            ]
+        }
+
+    def send_rsvp_notifications(self, family_data):
+        template_dictionary = self._build_template_dictionary(family_data)
+
+        print('template_dictionary', template_dictionary)
+
+        self._send_admin_notification(template_dictionary)
+        # if template_dictionary['email']:
+        #     self._send_guest_notification(
+        #         to_email=template_dictionary['email'],
+        #         template_dictionary=template_dictionary
+        #     )
