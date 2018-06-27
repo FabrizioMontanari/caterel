@@ -57,15 +57,15 @@ class EmailClient:
             template_dictionary=template_dictionary
         )
 
-    def _send_guest_notification(self, to_email, template_dictionary):
-        guest_name = template_dictionary.get('guest_name', None)
+    def _send_guest_notification(self, template_dictionary):
+        main_guest = template_dictionary['name']
 
         return self._send_message(
             template_name='guest_notification',
             from_email=self.admin_address,
-            to_email=to_email,
-            subject=f'Grazie per la conferma {guest_name}!',
-            template_dictionary=self._sanitise_dictionary(template_dictionary)
+            to_email=template_dictionary['email'],
+            subject=f'Grazie per la conferma {main_guest}!',
+            template_dictionary=template_dictionary
         )
 
     def _build_template_dictionary(self, family_data):
@@ -89,8 +89,5 @@ class EmailClient:
         template_dictionary = self._build_template_dictionary(family_data)
 
         self._send_admin_notification(template_dictionary)
-        # if template_dictionary['email']:
-        #     self._send_guest_notification(
-        #         to_email=template_dictionary['email'],
-        #         template_dictionary=template_dictionary
-        #     )
+        if template_dictionary['email']:
+            self._send_guest_notification(template_dictionary)

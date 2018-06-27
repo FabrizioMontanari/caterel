@@ -1,6 +1,13 @@
-Grazie per aver confermato la presenza, {{guest_name}}!
+Grazie per aver confermato la presenza, {{name|escape|capitalize}}!
 
-Queste sono le tue preferenze:
-TODO
+{% if note %}
+Hai lasciato agli sposi la seguente nota:
+{{note|escape}}
+{% endif %}
 
-Se hai domande o correzioni da fare contattaci su imartinisisposano@gmail.com o via telefono.
+Hai confermato la presenza per le seguenti persone:
+{% for guest in family %}
+    * {{guest.name|escape|capitalize}}  -  {{guest.menu|escape|capitalize}}
+{% endfor %}
+
+Se hai domande o correzioni da fare puoi ricompilare la partecipazione sul sito, contattarci su imartinisisposano@gmail.com o via telefono.

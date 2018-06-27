@@ -72,8 +72,8 @@ def confirmation():
 
     # TODO filter/clean
 
-    # db_manager = DBManager()
-    # db_manager.update_rsvp(family_data)
+    db_manager = DBManager()
+    db_manager.update_rsvp(family_data)
 
     email_client = EmailClient()
     email_client.send_rsvp_notifications(family_data)

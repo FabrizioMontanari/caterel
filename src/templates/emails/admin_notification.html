@@ -8,26 +8,26 @@
 
 <body>
     <section class="martini-email">
-        <h2>Ricevuta una conferma da {{name|escape}}</h2>
+        <h1>Ricevuta una conferma da {{name|escape}}</h1>
 
         {% if email %}
         <div>
-            <h3>
+            <h2>
                 Email:
                 <a href="mailto:{{email|escape}}">{{email|escape}}</a>
-            </h3>
+            </h2>
         </div>
         {% endif %}
         
         {% if note %}
         <div>
-            <h3>Nota da parte dell'invitato:</h3>
+            <h2>Nota da parte dell'invitato:</h2>
             <p>{{note|escape}}</p>
         </div>
         {% endif %}
 
         <div>
-            <h3>Invitati confermati e menu:</h3>
+            <h2>Invitati confermati e menu:</h2>
             <table>
                 <tr>
                     <th>Nome</th>

@@ -7,18 +7,34 @@
 </head>
 
 <body>
-    <section class="martini-email">
-        <h1 class="martini-email__title">Grazie per aver confermato la presenza, {{guest_name|escape}}!</h1>
-        <h2 class="martini-email__subtitle">Subtitle: TODO</h2>
-        <div class="martini-email__recap">
-            <strong>Queste sono le tue preferenze:</strong>
-            <ul>
-                <li>scelte menu: {{menu_choice|escape}}</li>
-                <li>note: {{guest_note|escape}}</li>
-                <li>guests: TODO</li>
-            </ul>
+    <section class="martini-email" style="color: black;">
+        <h1>Grazie per aver confermato la presenza, {{name|escape|capitalize}}!</h1>
+
+        {% if note %}
+        <div>
+            <h2>Hai lasciato agli sposi la seguente nota:</h2>
+            <p>{{note|escape}}</p>
         </div>
-        <p>Se hai domande o correzioni da fare contattaci su imartinisisposano@gmail.com o via telefono.</p>
+        {% endif %}
+
+        <div>
+            <h2>Hai confermato la presenza per le seguenti persone:</h2>
+            <table style="border: 1px solid black; font-size: 1.4rem; min-width: 50%; text-align: center;">
+                <tr>
+                    <th>Nome</th>
+                    <th>Menu</th>
+                </tr>
+
+                {% for guest in family %}
+                <tr>
+                    <td>{{guest.name|escape|capitalize}}</td>
+                    <td>{{guest.menu|escape|capitalize}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <h3>Se hai domande o correzioni da fare puoi ricompilare la partecipazione sul sito, contattarci su imartinisisposano@gmail.com o via telefono.</h3>
     </section>
 </body>
 
