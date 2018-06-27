@@ -2,18 +2,46 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-	<section class="martini-email" style="background-color: palevioletred;" >
-        <h2 style="background-color: green;">Ricevuta una conferma da {{guest_name|escape}}</h2>
-        <ul>
-            <li>scelte menu: {{menu_choice|escape}}</li>
-            <li>note: {{guest_note|escape}}</li>
-            <li>guests: TODO</li>
-        </ul>
+    <section class="martini-email">
+        <h2>Ricevuta una conferma da {{name|escape}}</h2>
+
+        {% if email %}
+        <div>
+            <h3>
+                Email:
+                <a href="mailto:{{email|escape}}">{{email|escape}}</a>
+            </h3>
+        </div>
+        {% endif %}
+        
+        {% if note %}
+        <div>
+            <h3>Nota da parte dell'invitato:</h3>
+            <p>{{note|escape}}</p>
+        </div>
+        {% endif %}
+
+        <div>
+            <h3>Invitati confermati e menu:</h3>
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Menu</th>
+                </tr>
+
+                {% for guest in family %}
+                <tr>
+                    <td>{{guest.name|escape}}</td>
+                    <td>{{guest.menu|escape}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </section>
 </body>
 

@@ -70,11 +70,12 @@ def confirmation():
     if type(family_data) != list:
         return 'Malformed Data', 400
 
-    db_manager = DBManager()
-    email_client = EmailClient()
-
     # TODO filter/clean
+
+    # db_manager = DBManager()
     # db_manager.update_rsvp(family_data)
+
+    email_client = EmailClient()
     email_client.send_rsvp_notifications(family_data)
 
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}

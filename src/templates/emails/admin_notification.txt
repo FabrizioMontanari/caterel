@@ -1,1 +1,14 @@
-{{guest_name}} ha confermato la presenza
+Ricevuta una conferma da {{name|escape}}.
+
+{% if email %}
+Email: {{email|escape}}
+{% endif %}
+{% if note %}
+Nota da parte dell'invitato:
+{{note|escape}}
+{% endif %}
+
+Invitati confermati e menu:
+{% for guest in family %}
+    * {{guest.name|escape}}  -  {{guest.menu|escape}}
+{% endfor %}
