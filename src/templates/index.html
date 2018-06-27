@@ -48,7 +48,7 @@
 			</ul>
 		</div>
 	</nav>
-	
+
 	<section class="martini-intro martini-intro--{{background_version}}" id="martini-intro">
 		<div class="martini-intro__container">
 			<h1 class="martini-intro__title">
@@ -108,7 +108,8 @@
 				<br>
 				<span class="martini-location__container__duration__end">fino a sera</span>
 			</p>
-			<p class="martini-location__container__dcode">se ti fa piacere indossa come noi un dettaglio<br class="d-md-none">
+			<p class="martini-location__container__dcode">se ti fa piacere indossa come noi un dettaglio
+				<br class="d-md-none">
 				<span class="martini-location__container__dcode__y">giallo</span>
 				o
 				<span class="martini-location__container__dcode__b">bordeaux</span>
@@ -119,7 +120,9 @@
 
 	<section class="martini-gift" id="martini-hm">
 		<div class="container">
-			<h2 class="martini-gift__title">Viaggio <span>di nozze</span></h2>
+			<h2 class="martini-gift__title">Viaggio
+				<span>di nozze</span>
+			</h2>
 			<!--<p style="padding-bottom:20px;">A breve troverete tutte le informazioni<br class="d-inline d-sm-none"> sul nostro viaggio di nozze</p>-->
 			<div class="martini-gift__controls row">
 				<div class="martini-gift__controls__btn col-lg-2" data-step="1" onclick="MapChange(this)">day1</div>
@@ -170,19 +173,19 @@
 
 	<section class="martini-confirm" id="martini-RSVP">
 		<form class="martini-confirm__container container">
-			<h1 class="martini-confirm__container__title">
-				unisciti <span>alla nostra festa</span></h1>
-			<!--<p>Conferma la tua presenza<br class="d-inline d-sm-none"> a partire dal primo luglio</p>-->
+			<h2 class="martini-confirm__container__title">
+				unisciti
+				<span>alla nostra festa</span>
+			</h2>
+
 			<p>al fine di organizzare al meglio la festa, conferma la tua presenza entro il 15 settembre</p>
 			<div class="martini-confirm__container__main-guest row">
-				<input class="col-sm" type="text" name="main_nome" placeholder="Nome" required />
-				<input class="col-sm" type="text" name="main_cognome" placeholder="Cognome" required />
+				<input class="martini-confirm__container__nome col-sm" type="text" name="main_nome" placeholder="Nome" required />
+				<input class="martini-confirm__container__cognome col-sm" type="text" name="main_cognome" placeholder="Cognome" required />
 				<div id="checkbox_main" class="checkbox" onclick="onUserNomeCognomeEntered();">&nbsp;</div>
 			</div>
-			<p id="not_invited" class="hide" id="error-not-invited">Nominativo non trovato!</p>
+
 			<p id="select_your_menu_text" class="hide">scegli il tuo menu</p>
-			<label for="main_email">Se vuoi, lascia il tuo indirizzo email per una conferma</label>
-			<input class="col-sm" type="email" name="main_email" id="main-email" placeholder="Email">
 			<select id="select_main_menu" class="hide" name="main_menu">
 				<option>regular</option>
 				<option>vegetariano</option>
@@ -190,13 +193,19 @@
 				<option>celiaco</option>
 				<option>vegano</option>
 			</select>
+
 			<p id="conferma_cari_text" class="hide" style="margin-bottom:10px;">conferma anche per i tuoi cari:</p>
-			<div class="martini-confirm__container__family row hide" id="martini-confirm__container__family">
-			</div>
+			<div class="martini-confirm__container__family row hide" id="martini-confirm__container__family"></div>
+
 			<textarea id="notes" class="martini-confirm__container__notes hide" rows="5" name="note" placeholder="note"></textarea>
+
+			<label for="main_email" id="main-email-label" class="hide">Se vuoi, lascia il tuo indirizzo email per una conferma</label>
+			<input class="martini-confirm__container__email hide" type="email" name="main_email" id="main-email" placeholder="Email">
+
 			<div class="martini-confirm__container__submit hide" id="confirm-be-there" onclick="onCiSaroClick();">CI SARÒ!</div>
-			<div class="martini-confirm__container__overlay hide" id="confirm-overlay">
-			</div>
+
+			<p id="not_invited" class="hide" id="error-not-invited">Nominativo non trovato!</p>
+			<div class="martini-confirm__container__overlay hide" id="confirm-overlay"></div>
 		</form>
 	</section>
 	<section class="martini-preloader"></section>

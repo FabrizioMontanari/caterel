@@ -498,15 +498,6 @@ body {
 		@media (min-width: 992px) { font-size:20px; }
 		@media (min-width: 1200px) { font-size:20px; }
 	}
-	input{
-		font-family:museo;
-		font-size:14px;
-		margin-bottom:5px;
-		@media (min-width: 576px) { font-size:16px; margin-bottom:5px; }
-		@media (min-width: 768px) { font-size:20px; margin-bottom:0px; }
-		@media (min-width: 992px) { font-size:20px; margin-bottom:0px; }
-		@media (min-width: 1200px) { font-size:20px; margin-bottom:0px; }
-	}
 	textarea{
 		font-family:museo;
 		font-size:14px;
@@ -568,6 +559,23 @@ body {
 			
 			input{margin-right:10px;}
 		}
+
+		&__nome,
+		&__cognome,
+		&__email {
+			font-family:museo;
+			font-size:14px;
+			margin-bottom:5px;
+			@media (min-width: 576px) { font-size:16px; margin-bottom:5px; }
+			@media (min-width: 768px) { font-size:20px; margin-bottom:0px; }
+			@media (min-width: 992px) { font-size:20px; margin-bottom:0px; }
+			@media (min-width: 1200px) { font-size:20px; margin-bottom:0px; }
+		}
+
+		&__email{
+			margin-bottom: 30px;
+		}
+	
 		&__family{
 			justify-content: space-evenly;
 			width:100%;
@@ -596,6 +604,7 @@ body {
 		&__notes{
 			margin-bottom:30px;
 		}
+
 		&__submit{
 			background-color:$martini-bordeaux;
 			color:white;
@@ -696,9 +705,6 @@ easter egg
 	animation-iteration-count: infinite;
 }
 
-#heart1 {
-	
-}
 #heart2 {
 	animation-delay:2s;
 }

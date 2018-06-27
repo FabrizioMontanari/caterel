@@ -1,6 +1,7 @@
 import os
 import random
 import json
+import traceback
 
 from models.db_manager import DBManager
 from models.email_client import EmailClient
@@ -66,16 +67,20 @@ def get_family():
 
 @app.route('/confirmation', methods=['POST', ])
 def confirmation():
-    family_data = request.json.get('family')
-    if type(family_data) != list:
-        return 'Malformed Data', 400
+    try:
+        family_data = request.json.get('family')
 
-    # TODO filter/clean
+        db_manager = DBManager()
+        db_manager.update_rsvp(family_data)
 
-    db_manager = DBManager()
-    db_manager.update_rsvp(family_data)
+        email_client = EmailClient()
+        email_client.send_rsvp_notifications(family_data)
 
-    email_client = EmailClient()
-    email_client.send_rsvp_notifications(family_data)
+        return 'Success', 200
+    except:
+        # dump trace and request to cloudwatch and recover.
+        traceback.print_exc()
+        print(request.json)
+        
+        return json.dumps({'received_request': request.json, 'status': 'Server Error' }), 500 , {'ContentType': 'application/json'}
 
-    return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}

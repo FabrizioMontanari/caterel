@@ -85,6 +85,7 @@ function onBackClick() {
 function onUserNomeCognomeEntered() {
 	var nome = escape($('input[name=main_nome]').val());
 	var cognome = escape($('input[name=main_cognome]').val());
+
 	//prevent request when empty
 	if (nome === '' || cognome === '') {
 		return;
@@ -93,14 +94,17 @@ function onUserNomeCognomeEntered() {
 		enableHearts();
 		return;
 	}
+	
 	//prevent request when already checked
 	if ($('#checkbox_main').hasClass('checked') || $('#checkbox_main').hasClass('checking')) {
 		return;
 	}
+
 	$('#checkbox_main').addClass('checking');
 	$.get('/get_family', { nome: nome, cognome: cognome })
 		.done(function (data) {
-			console.log('OK; data=%o', data);
+			// console.log('OK; data=%o', data);
+
 			if (!data.guestAllowed) {
 				//remove checking status
 				$('#checkbox_main').removeClass('checking');
@@ -110,10 +114,14 @@ function onUserNomeCognomeEntered() {
 				$('#select_main_menu').addClass('hide');
 				$('#conferma_cari_text').addClass('hide');
 				$('#martini-confirm__container__family').addClass('hide');
+				$('#main-email-label').addClass('hide');
+				$('#main-email').addClass('hide');
 				$('#notes').addClass('hide');
 				$('#confirm-be-there').addClass('hide');
+
 				return;
 			}
+
 			//lock curent user
 			$('input[name=main_nome]').prop('readonly', true);
 			$('input[name=main_cognome]').prop('readonly', true);
@@ -128,13 +136,16 @@ function onUserNomeCognomeEntered() {
 			$('#select_main_menu').removeClass('hide');
 			$('#conferma_cari_text').removeClass('hide');
 			$('#martini-confirm__container__family').removeClass('hide');
+			$('#main-email-label').removeClass('hide');
+			$('#main-email').removeClass('hide');
 			$('#notes').removeClass('hide');
 			$('#confirm-be-there').removeClass('hide');
 			fillFamily(data.guestFamily);
-			return;
 		}).fail(function (jqXHR, textStatus) {
-			console.log('FAILURE: %o', jqXHR);
-			console.log('FAILURE: %o', textStatus);
+			displayOverlayMessage('Errore durante il caricamento della lista invitati!<br />Prova più tardi, o contattaci direttamente!');
+
+			// console.log('FAILURE: %o', jqXHR);
+			// console.log('FAILURE: %o', textStatus);
 		});
 }
 
