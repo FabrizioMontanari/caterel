@@ -58,7 +58,6 @@ class DBManager(object):
             self._confirmation_shim(guest, author=family_data[0].get('nome'))
 
     def _confirmation_shim(self, guest, author=None):
-        print('shim for', guest)
         self.set_confirmation(
             target=guest.get('nome', ''),
             menu=guest.get('menu', ''),
@@ -72,31 +71,23 @@ class DBManager(object):
         conf = (self.sheet_confirmation.find('p1 ' + is_plusone_of)
                 if is_plusone_of else self.sheet_confirmation.find(target))
 
-        # se +1 salvo anche il nome
-        # if is_plusone_of is not None:
-        #     self.sheet_confirmation.update_cell(
-        #         conf.row, conf.col, self.clean_string(target))
-
-            # foglio famiglie non aggiornato per preservare referenze
-            # ref = self.sheet_family.find("p1 " + is_plusone_of)
-            # self.sheet_family.update_cell(
-            #     ref.row, ref.col, self.clean_string(target))
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+1, self.clean_string(target))
 
         self.sheet_confirmation.update_cell(
-            conf.row, conf.col+1, self.clean_string(menu))
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+2, self.clean_string(notes))
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+3, author)
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+4, datetime.now().strftime("%Y-%m-%d %H:%M"))
+            conf.row, conf.col+2, self.clean_string(menu))
 
-        # se +1 salvo il riferimento di quello che ha dato il +1
-        if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(
-                conf.row, conf.col+5, self.clean_string(is_plusone_of))
         self.sheet_confirmation.update_cell(
-                    conf.row, conf.col+6, self.clean_string(email))
+            conf.row, conf.col+3, self.clean_string(email))
+
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+4, author)
+
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+5, datetime.now().strftime("%Y-%m-%d %H:%M"))
+
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+6, self.clean_string(notes))
 
     def clean_string(self, s):
         return s.replace('=', '\'=')

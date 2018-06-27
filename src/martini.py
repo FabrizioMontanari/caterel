@@ -77,25 +77,6 @@ def confirmation():
     db_manager.update_rsvp(family_data)
     # email_client.send_confirmation(family_data)
 
-    # for member in family:
-    #     #update target confirmation on db
-    #     if 'is_plusone_of' in member.keys():
-    #         dbman.set_confirmation(
-    #             member['nome'],
-    #             member['menu'],
-    #             main_note if main_nome == member['nome'] else '',
-    #             main_nome,
-    #             member['is_plusone_of']
-    #         )
-    #     else:
-    #         dbman.set_confirmation(
-    #             member['nome'],
-    #             member['menu'],
-    #             main_note if main_nome == member['nome'] else '',
-    #             main_nome,
-    #             None
-    #         )
-
     # template_dictionary = {
     #     'guest_name': main_nome,
     #     'guest_email': main_email,
