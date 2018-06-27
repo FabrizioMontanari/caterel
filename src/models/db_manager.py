@@ -51,36 +51,52 @@ class DBManager(object):
                 if self._is_guest_allowed(sanitised_guest)
                 else {'guestAllowed': False})
 
-    def set_confirmation(self, target, menu, notes, author, is_plusone_of):
-        try:
-            conf = self.sheet_confirmation.find(
-                target) if is_plusone_of is None else self.sheet_confirmation.find("p1_" + is_plusone_of)
-        except gspread.exceptions.CellNotFound as e:
-            return False
-        # se +1 salvo anche il nome
-        if is_plusone_of is not None:
-            self.sheet_confirmation.update_cell(conf.row, conf.col, self.clean_string(target))
-            #TODO: aggiornare anche il foglio con le famiglie?????
-            ref = self.sheet_family.find("p1_" + is_plusone_of)
-            self.sheet_family.update_cell(ref.row, ref.col, self.clean_string(target))
+    def update_rsvp(self, family_data):
+        self._confirmation_shim(family_data[0])  # main guest
 
-        self.sheet_confirmation.update_cell(conf.row, conf.col+1, self.clean_string(menu))
-        self.sheet_confirmation.update_cell(conf.row, conf.col+2, self.clean_string(notes))
+        for guest in family_data[1:]:
+            self._confirmation_shim(guest, author=family_data[0].get('nome'))
+
+    def _confirmation_shim(self, guest, author=None):
+        print('shim for', guest)
+        self.set_confirmation(
+            target=guest.get('nome', ''),
+            menu=guest.get('menu', ''),
+            notes=guest.get('nota', ''),
+            author=author or guest.get('nome'),
+            is_plusone_of=guest.get('is_plusone_of', ''),
+            email=guest.get('email', '')
+        )
+
+    def set_confirmation(self, target, menu, notes, author, is_plusone_of, email):
+        conf = (self.sheet_confirmation.find('p1 ' + is_plusone_of)
+                if is_plusone_of else self.sheet_confirmation.find(target))
+
+        # se +1 salvo anche il nome
+        # if is_plusone_of is not None:
+        #     self.sheet_confirmation.update_cell(
+        #         conf.row, conf.col, self.clean_string(target))
+
+            # foglio famiglie non aggiornato per preservare referenze
+            # ref = self.sheet_family.find("p1 " + is_plusone_of)
+            # self.sheet_family.update_cell(
+            #     ref.row, ref.col, self.clean_string(target))
+
         self.sheet_confirmation.update_cell(
-            conf.row, conf.col+3, author+" made it")
+            conf.row, conf.col+1, self.clean_string(menu))
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+2, self.clean_string(notes))
+        self.sheet_confirmation.update_cell(
+            conf.row, conf.col+3, author)
         self.sheet_confirmation.update_cell(
             conf.row, conf.col+4, datetime.now().strftime("%Y-%m-%d %H:%M"))
+
         # se +1 salvo il riferimento di quello che ha dato il +1
         if is_plusone_of is not None:
             self.sheet_confirmation.update_cell(
                 conf.row, conf.col+5, self.clean_string(is_plusone_of))
-        return True
+        self.sheet_confirmation.update_cell(
+                    conf.row, conf.col+6, self.clean_string(email))
 
     def clean_string(self, s):
-        if len(s)<=2:
-            return s
-        
-        if s[0] == "=":
-            return "haking?" + s[1:]
-        
-        return s
+        return s.replace('=', '\'=')

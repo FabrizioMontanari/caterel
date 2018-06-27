@@ -66,42 +66,49 @@ def get_family():
 
 @app.route('/confirmation', methods=['POST', ])
 def confirmation():
-    print('stuff', request.json)
-    dbman = DBManager()
+    family_data = request.json.get('family')
+    if type(family_data) != list:
+        return 'Malformed Data', 400
+
+    db_manager = DBManager()
     email_client = EmailClient()
-    family = request.json['family']
-    main_nome = request.json['main_nome']
-    main_note = request.json['main_note']
-    for member in family:
-        #update target confirmation on db
-        if 'is_plusone_of' in member.keys():
-            dbman.set_confirmation(
-                member['nome'],
-                member['menu'],
-                main_note if main_nome == member['nome'] else '',
-                main_nome,
-                member['is_plusone_of']
-            )
-        else:
-            dbman.set_confirmation(
-                member['nome'],
-                member['menu'],
-                main_note if main_nome == member['nome'] else '',
-                main_nome,
-                None
-            )
 
-    template_dictionary = {
-            'guest_name': main_nome,
-            'guest_note': main_note,
-            'menu_choice': family[0].get('menu', 'menu choice missing')
-        }
+    # TODO filter/clean
+    db_manager.update_rsvp(family_data)
+    # email_client.send_confirmation(family_data)
 
-    email_client.send_guest_notification(  # TODO, hardcoded test
-        to_email='imartinisisposano@gmail.com',
-        template_dictionary=template_dictionary
-    )
+    # for member in family:
+    #     #update target confirmation on db
+    #     if 'is_plusone_of' in member.keys():
+    #         dbman.set_confirmation(
+    #             member['nome'],
+    #             member['menu'],
+    #             main_note if main_nome == member['nome'] else '',
+    #             main_nome,
+    #             member['is_plusone_of']
+    #         )
+    #     else:
+    #         dbman.set_confirmation(
+    #             member['nome'],
+    #             member['menu'],
+    #             main_note if main_nome == member['nome'] else '',
+    #             main_nome,
+    #             None
+    #         )
 
-    email_client.send_admin_notification(template_dictionary)
+    # template_dictionary = {
+    #     'guest_name': main_nome,
+    #     'guest_email': main_email,
+    #     'guest_note': main_note,
+    #     'family': family
+    # }
+
+    # email_client.send_admin_notification(template_dictionary)
+    # if main_email:
+    #     email_client.send_guest_notification(
+    #         to_email=main_email,
+    #         template_dictionary=template_dictionary
+    #     )
+
 
     return json.dumps({'data': request.json, }), 200, {'ContentType': 'application/json'}

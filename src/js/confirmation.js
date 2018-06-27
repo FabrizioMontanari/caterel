@@ -146,7 +146,7 @@ function onConfermaClick(){
 	main_email = escape($('input[name=main_email]').val()).toLowerCase();
 	main_menu = $('select[name=main_menu]').val();
 	main_note = $('textarea[name=note]').val();
-	family = [{'nome':main_nome,'menu':main_menu}];
+	family = [{'nome':main_nome,'menu':main_menu, 'email':main_email, 'nota':main_note}];
 
 	$('div[id*="familiare_"][id$="_confirmed"]').each(function(i){
 		if ($( this ).hasClass('checked')){
