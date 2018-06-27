@@ -30,6 +30,9 @@ class DBManager(object):
             scopes=required_scopes
         )
 
+    def _clean_string(self, s):
+        return s.replace('=', '\'=')
+
     def _is_guest_allowed(self, guest):
         try:
             return guest and self.sheet_family.find(guest)
@@ -42,7 +45,34 @@ class DBManager(object):
         for person in self.sheet_family.row_values(guest_cell.row):
             if person != guest:
                 guest_list.append('' if 'p1' in person else person)
+
         return guest_list
+
+    def _set_confirmation(self, guest, author=None):
+        cell_mapping = {
+            1: guest.get('nome', ''),
+            2: guest.get('menu', ''),
+            3: guest.get('email', ''),
+            4: author or guest.get('nome'),
+            5: datetime.now().strftime("%Y-%m-%d %H:%M"),
+            6: guest.get('nota', '')
+        }
+
+        plus_one_ref = guest.get('is_plusone_of', '')
+        booking_reference = f'P1 {plus_one_ref}' if plus_one_ref else guest.get('nome', '')
+        booking_row = self.sheet_confirmation.find(booking_reference)
+
+        cell_range = self.sheet_confirmation.range(
+            booking_row.row,
+            booking_row.col+1,
+            booking_row.row,
+            booking_row.col+7
+        )
+
+        for col_offset, value in cell_mapping.items():
+            cell_range[col_offset].value = self._clean_string(value)
+
+        self.sheet_confirmation.update_cells(cell_range)
 
     def get_family(self, guest):
         sanitised_guest = guest.lower()
@@ -52,42 +82,7 @@ class DBManager(object):
                 else {'guestAllowed': False})
 
     def update_rsvp(self, family_data):
-        self._confirmation_shim(family_data[0])  # main guest
+        self._set_confirmation(family_data[0])  # main guest
 
         for guest in family_data[1:]:
-            self._confirmation_shim(guest, author=family_data[0].get('nome'))
-
-    def _confirmation_shim(self, guest, author=None):
-        self.set_confirmation(
-            target=guest.get('nome', ''),
-            menu=guest.get('menu', ''),
-            notes=guest.get('nota', ''),
-            author=author or guest.get('nome'),
-            is_plusone_of=guest.get('is_plusone_of', ''),
-            email=guest.get('email', '')
-        )
-
-    def set_confirmation(self, target, menu, notes, author, is_plusone_of, email):
-        conf = (self.sheet_confirmation.find('p1 ' + is_plusone_of)
-                if is_plusone_of else self.sheet_confirmation.find(target))
-
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+1, self.clean_string(target))
-
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+2, self.clean_string(menu))
-
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+3, self.clean_string(email))
-
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+4, author)
-
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+5, datetime.now().strftime("%Y-%m-%d %H:%M"))
-
-        self.sheet_confirmation.update_cell(
-            conf.row, conf.col+6, self.clean_string(notes))
-
-    def clean_string(self, s):
-        return s.replace('=', '\'=')
+            self._set_confirmation(guest, author=family_data[0].get('nome'))
