@@ -6,6 +6,8 @@
 "5":["Arrivo","Questo giro panoramico ci fa vistare tutti i villaggini."],
 }*/
 
+var current_step = 0;
+
 var map_image_map = {
 	"1":"1",
 	"2":"2-3",
@@ -34,7 +36,12 @@ function createImgUrl(step){
 		return '//static.imartinisisposano.it/img/map/JMap-Day'+map_image_map[step]+'.png';
 }
 function MapChange(btn){
+	doMapChange(btn);
+}
+
+function doMapChange(btn){
 	var step = $(btn).data("step");
+	current_step = step;
 	if ( step !=0 && $("#martini-gift__map__map").css('background-image').indexOf("JMap-Day0.png") !== -1){
 		$("#martini-gift__map__map").addClass("zoomin");
 		$("#martini-gift__map__map").removeClass("zoomout");
@@ -52,6 +59,9 @@ function MapChange(btn){
 	}
 	$("#martini-gift__map__title").text(map_text_data[step][0]);
 	$("#martini-gift__map__txt").text(map_text_data[step][1]);
+
+	$(".martini-gift__controls__btn").removeClass("selected_day");
+	$(btn).addClass("selected_day");
 }
 
 
@@ -72,3 +82,10 @@ $(document).ready(function () {
 							$(".martini-preloader").addClass("hide");
 						}, 500);
 });
+
+function onMapClick(){
+	if (current_step <18) current_step++; 
+	btn = $(".martini-gift__controls__btn[data-step=" + current_step + "]");
+	console.log(btn);
+	doMapChange(btn);
+}
