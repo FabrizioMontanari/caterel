@@ -83,9 +83,15 @@ $(document).ready(function () {
 						}, 500);
 });
 
-function onMapClick(){
-	if (current_step <18) current_step++; 
+function onForwardClick(){
+	if (current_step <18) current_step++;
+	else return;
 	btn = $(".martini-gift__controls__btn[data-step=" + current_step + "]");
-	console.log(btn);
+	doMapChange(btn);
+}
+function onBackwardClick(){
+	if (current_step >1) current_step--;
+	else return; 
+	btn = $(".martini-gift__controls__btn[data-step=" + current_step + "]");
 	doMapChange(btn);
 }
