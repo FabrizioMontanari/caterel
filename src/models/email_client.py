@@ -53,7 +53,7 @@ class EmailClient:
             template_name='admin_notification',
             from_email=self.server_address,
             to_email=self.admin_address,
-            subject=f'Nuova conferma RSVP da {main_guest}!',
+            subject=f'Nuova conferma RSVP da {main_guest.title()}!',
             template_dictionary=template_dictionary
         )
 
@@ -64,7 +64,7 @@ class EmailClient:
             template_name='guest_notification',
             from_email=self.admin_address,
             to_email=template_dictionary['email'],
-            subject=f'Grazie per la conferma {main_guest}!',
+            subject=f'Grazie per la conferma {main_guest.title()}!',
             template_dictionary=template_dictionary
         )
 
