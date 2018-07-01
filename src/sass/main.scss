@@ -152,6 +152,11 @@ body {
 			align-self: center;
 			border:1px solid black;
 			padding: 0 15px;
+
+			&:hover{
+				color:$martini-yellow;
+				text-decoration:none;
+			}
 		}
 		
 		
@@ -398,6 +403,11 @@ body {
 			&.selected_day{
 				color: $martini-bordeaux;
 			}
+
+			&:hover{
+				color:$martini-bordeaux-light;
+				text-decoration:none;
+			}
 		}
 	}
 	&__map{
@@ -459,6 +469,11 @@ body {
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-clip: padding-box;
+
+		&:hover{
+			color:$martini-bordeaux;
+			text-decoration:none;
+		}
 		
 		@media (min-width: 576px) { font-size:25px; margin:32px auto 16px auto; width:220px; padding: 2px 0 8px 0;}
 		@media (min-width: 768px) { font-size:40px; margin:40px auto 20px auto; width:363px;padding: 5px 0 10px 0;}
