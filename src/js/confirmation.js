@@ -51,7 +51,7 @@ function fillFamily(family) {
 	var container = $('#martini-confirm__container__family');
 	container.empty();
 	family.forEach(function (member, i) {
-		var name_input = member ? '<input type="text" name="familiare_' + i + '_nome" value="' + member + '" readonly>' :
+		var name_input = member ? '<input type="text" name="familiare_' + i + '_nome" value="' + toTitleCase(member) + '" readonly>' :
 			'<input type="text" name="familiare_' + i + '_nome" value="" placeholder="Nome e Cognome">\
 								   <input type="hidden" name="plus_one" value="plus_one_' + i + '">'
 
