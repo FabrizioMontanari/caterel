@@ -59,7 +59,7 @@ class DBManager(object):
         }
 
         plus_one_ref = guest.get('is_plusone_of', '')
-        booking_reference = f'P1 {plus_one_ref}' if plus_one_ref else guest.get('nome', '')
+        booking_reference = f'P1 {plus_one_ref}'.lower() if plus_one_ref else guest.get('nome', '').lower()
         booking_row = self.sheet_confirmation.find(booking_reference)
 
         cell_range = self.sheet_confirmation.range(

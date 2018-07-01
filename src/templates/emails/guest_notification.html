@@ -8,7 +8,13 @@
 
 <body>
     <section class="martini-email" style="color: black;">
-        <h1>Grazie per aver confermato la presenza, {{name|escape|capitalize}}!</h1>
+        <h1>Grazie {{name|escape|capitalize}} per aver confermato la presenza per:</h1>
+
+        <div>
+            {% for guest in family %}
+                <p style="border: 0px solid black;">{{guest.name|escape|title}}, menu {{guest.menu|escape}}</p>
+            {% endfor %}
+        </div>
 
         {% if note %}
         <div>
@@ -17,24 +23,18 @@
         </div>
         {% endif %}
 
-        <div>
-            <h2>Hai confermato la presenza per le seguenti persone:</h2>
-            <table style="border: 1px solid black; font-size: 1.4rem; min-width: 50%; text-align: center;">
-                <tr>
-                    <th>Nome</th>
-                    <th>Menu</th>
-                </tr>
+        <h2>Ti aspettiamo sabato 22 Settembre alle 12 in Sala Rossa, Palazzo d’Accursio, Bologna
+            <br>e a pranzo al Boccone del Prete, in via Siepelunga 56, Bologna.
+        </h2>
 
-                {% for guest in family %}
-                <tr>
-                    <td>{{guest.name|escape|capitalize}}</td>
-                    <td>{{guest.menu|escape|capitalize}}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-
-        <h3>Se hai domande o correzioni da fare puoi ricompilare la partecipazione sul sito, contattarci su imartinisisposano@gmail.com o via telefono.</h3>
+        <p>Se hai <span style="font-weight:bold;">domande o correzioni</span> da fare puoi:<br>
+            <ul>
+                <li>ricompilare la partecipazione sul sito</li>
+                <li>contattarci su questa mail (imartinisisposano@gmail.com)</li>
+                <li>telefonarci</li>
+            </ul>
+        </p>
+        <h2>Ti aspettiamo alla nostra festa il 22 Settembre!<br>Matteo e Karin</h2>
     </section>
 </body>
 
