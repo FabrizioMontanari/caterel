@@ -62,11 +62,12 @@ function fillFamily(family) {
 					</div>\
 					<p>menu</p>\
 					<select name="familiare_'+ i + '_menu">\
-						<option>regular</option>\
-						<option>vegetariano</option>\
-						<option>intollerante al lattosio</option>\
-						<option>celiaco</option>\
-						<option>vegano</option>\
+						<option>Normale</option>\
+						<option>Celiaco</option>\
+						<option>Intollerante al Lattosio</option>\
+						<option>Bimbi</option>\
+						<option>Vegetariano</option>\
+						<option>Vegano</option>\
 					</select>\
 				</div>';
 		container.append(new_element);
