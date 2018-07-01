@@ -567,7 +567,9 @@ body {
 		background-size:contain;
 		background-repeat:no-repeat;
 		width:34px;
+		line-height:24px;
 		cursor:pointer;
+		align-self: center;
 		@media (min-width: 576px) { width:34px; }
 		@media (min-width: 768px) { width:42px; }
 		@media (min-width: 992px) { width:42px; }
@@ -643,6 +645,12 @@ body {
 				&__name{
 					width:100%;
 					cursor:default;
+					font-family:museo;
+					font-size:14px;
+					@media (min-width: 576px) { font-size:16px; }
+					@media (min-width: 768px) { font-size:20px; }
+					@media (min-width: 992px) { font-size:20px; }
+					@media (min-width: 1200px) { font-size:20px; }
 					input{
 						width:80%;
 						margin-right:0px;

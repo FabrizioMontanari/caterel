@@ -214,3 +214,11 @@ function onConfermaClick() {
 function enableHearts() {
 	$("body").append("<div id='heart1' class='heart'></div><div id='heart2' class='heart'></div><div id='heart3' class='heart'></div><div id='heart4' class='heart'></div>");
 }
+
+$(document).ready(function(){
+	$(".martini-confirm__container__cognome").keypress(function(e) {
+		if(e.which == 13) {
+			onUserNomeCognomeEntered();
+		}
+	});
+});
