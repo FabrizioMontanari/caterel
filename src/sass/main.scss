@@ -46,26 +46,27 @@ body {
 	display:flex;
 	height: 100vh;
 
-	&--1 {
-		background-image: url("../img/intro-background-1.png");
-	}
+	&--1 { background-image: url("../img/intro-background-1.png"); }
+	&--2 { background-image: url("../img/intro-background-2.png"); }
 
-	&--2 {
-		background-image: url("../img/intro-background-2.png");
+	@media screen and (max-aspect-ratio: 1/1) {
+		&--1 { background-image: url("../img/intro-background-2--vertical.png"); }  // TODO! 2 -> 1
+		&--2 { background-image: url("../img/intro-background-2--vertical.png"); }	
 	}
 	
 	background-position: center;
 	background-repeat: no-repeat;
 
-	@media screen and (min-height: 700px) { background-size: cover; }  // hd screens, portrait tall phone
-	@media screen and (max-height: 700px) and (max-width: 500px) { background-size: 340%; }  // portrait mid phone
-	@media screen and (max-height: 570px) and (max-width: 500px) { background-size: 330%; }  // portrait short phone
+	@media screen and (min-width: $bp-s) { background-size: cover; }  // hd screens
 
-	@media screen and (max-height: 450px) { background-size: 140%; }  // landscape Android
-	@media screen and (max-height: 380px) { background-size: 170%; }  // landscape iPhone
+	@media screen and (max-width: $bp-s) and (min-height: 570px) { background-size: 135%; }  // portrait phone
+	@media screen and (max-width: $bp-s) and (max-height: 570px) { background-size: 150%; }  // portrait short phone
+
+	@media screen and (max-height: 450px) { background-size: 135%; }  // landscape Android
+	@media screen and (max-height: 380px) { background-size: 150%; }  // landscape iPhone
 
     &__container {
-		padding:200px;
+		padding:180px;
 		@media screen and (max-width: $bp-m) { padding: 180px 140px; }
 		@media screen and (max-width: $bp-s) { padding: 160px 100px; }
 		@media screen and (max-width: $bp-xs) { padding: 100px 70px; }
