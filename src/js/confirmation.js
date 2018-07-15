@@ -114,6 +114,7 @@ function onUserNomeCognomeEntered() {
 				$('#select_your_menu_text').addClass('hide');
 				$('#select_main_menu').addClass('hide');
 				$('#conferma_cari_text').addClass('hide');
+				$('#extra_notes_text').addClass('hide');
 				$('#martini-confirm__container__family').addClass('hide');
 				$('#main-email-label').addClass('hide');
 				$('#main-email').addClass('hide');
@@ -136,6 +137,7 @@ function onUserNomeCognomeEntered() {
 			$('#select_your_menu_text').removeClass('hide');
 			$('#select_main_menu').removeClass('hide');
 			$('#conferma_cari_text').removeClass('hide');
+			$('#extra_notes_text').removeClass('hide');
 			$('#martini-confirm__container__family').removeClass('hide');
 			$('#main-email-label').removeClass('hide');
 			$('#main-email').removeClass('hide');
