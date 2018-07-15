@@ -50,7 +50,7 @@ body {
 	&--2 { background-image: url("../img/intro-background-2.png"); }
 
 	@media screen and (max-aspect-ratio: 1/1) {
-		&--1 { background-image: url("../img/intro-background-2--vertical.png"); }  // TODO! 2 -> 1
+		&--1 { background-image: url("../img/intro-background-1--vertical.png"); }
 		&--2 { background-image: url("../img/intro-background-2--vertical.png"); }	
 	}
 	
