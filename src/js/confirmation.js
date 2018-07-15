@@ -60,7 +60,7 @@ function fillFamily(family) {
 						'+ name_input + '\
 						<div id="familiare_'+ i + '_confirmed" class="checkbox" onclick="$(this).toggleClass(\'checked\')">&nbsp;</div>\
 					</div>\
-					<p>menu</p>\
+					<p>Menu</p>\
 					<select name="familiare_'+ i + '_menu">\
 						<option>Normale</option>\
 						<option>Celiaco</option>\
