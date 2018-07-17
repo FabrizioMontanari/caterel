@@ -1,14 +1,12 @@
-/*utilities*/
 function escape(txt) {
 	return $('<div>').text(txt).html();
 }
+
 function toTitleCase(str) {
 	return str.replace(/\w\S*/g, function (txt) {
 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 	});
 }
-
-/*fine utilities*/
 
 /**
  * Preparo il contenuto e mostro l'overlay
@@ -17,6 +15,7 @@ function onCiSaroClick() {
 	fillConfirmation();
 	$('#confirm-overlay').removeClass('hide');
 }
+
 /**
  * Costruisco tutti gli elementi dell'overlay leggendo i campi compilati dall'utente
  */
@@ -25,7 +24,6 @@ function fillConfirmation() {
 	overlay.empty();
 	var overlay_content = '<h1 class="martini-confirm__container__overlay__title">confermi la presenza di</h1>\n';
 	overlay_content += '<p class="martini-confirm__container__overlay__member">' + toTitleCase(escape($('input[name=main_nome]').val())) + ' ' + toTitleCase(escape($('input[name=main_cognome]').val())) + ', menu ' + $('select[name=main_menu]').val() + '</p>\n';
-
 
 	$('div[id*="familiare_"][id$="_confirmed"]').each(function (i) {
 		if ($(this).hasClass('checked')) {
@@ -36,18 +34,14 @@ function fillConfirmation() {
 	overlay_content += '<div class="martini-confirm__container__overlay__submit" onclick="onConfermaClick();">CONFERMA</div>\
 						<div class="martini-confirm__container__overlay__back" onclick="onBackClick();">MODIFICA</div>';
 	overlay.append(overlay_content);
-	return
 }
+
 /**
  * Riempe la sezione famiglia.
  * acceta una array di nomi dei familiari es: ["Marco Baldo", "Bella Lui", "Topo Gigio"]
  * In caso di +1 viene aggiunto un solo membro e si inserisce un inputfield hidden
  */
 function fillFamily(family) {
-	// if(!Array.isArray(family)){
-	// 	console.log("Errore: l'argomento non è un array");
-	// 	return;
-	// }
 	var container = $('#martini-confirm__container__family');
 	container.empty();
 	family.forEach(function (member, i) {
@@ -95,7 +89,7 @@ function onUserNomeCognomeEntered() {
 		enableHearts();
 		return;
 	}
-	
+
 	//prevent request when already checked
 	if ($('#checkbox_main').hasClass('checked') || $('#checkbox_main').hasClass('checking')) {
 		return;
@@ -104,8 +98,6 @@ function onUserNomeCognomeEntered() {
 	$('#checkbox_main').addClass('checking');
 	$.get('/get_family', { nome: nome, cognome: cognome })
 		.done(function (data) {
-			// console.log('OK; data=%o', data);
-
 			if (!data.guestAllowed) {
 				//remove checking status
 				$('#checkbox_main').removeClass('checking');
@@ -136,19 +128,20 @@ function onUserNomeCognomeEntered() {
 			$('#not_invited').addClass('hide');
 			$('#select_your_menu_text').removeClass('hide');
 			$('#select_main_menu').removeClass('hide');
-			$('#conferma_cari_text').removeClass('hide');
 			$('#extra_notes_text').removeClass('hide');
 			$('#martini-confirm__container__family').removeClass('hide');
 			$('#main-email-label').removeClass('hide');
 			$('#main-email').removeClass('hide');
 			$('#notes').removeClass('hide');
 			$('#confirm-be-there').removeClass('hide');
+
+			if(data.guestFamily.length) {
+				$('#conferma_cari_text').removeClass('hide');
+			}
+
 			fillFamily(data.guestFamily);
 		}).fail(function (jqXHR, textStatus) {
 			displayOverlayMessage('Errore durante il caricamento della lista invitati!<br />Prova più tardi, o contattaci direttamente!');
-
-			// console.log('FAILURE: %o', jqXHR);
-			// console.log('FAILURE: %o', textStatus);
 		});
 }
 
@@ -198,17 +191,13 @@ function onConfermaClick() {
 	$.ajax({
 		type: 'POST',
 		url: '/confirmation',
-		/*beforeSend: function(xhr){},*/
 		cache: false,
 		data: JSON.stringify({ family: family }),
 		contentType: 'application/json; charset=utf-8',
 	}).done(function (data) {
 		displayOverlayMessage('Fatto il misfatto!');
-		// console.log('OK; data=%o', data);
 	}).fail(function (jqXHR, textStatus) {
 		displayOverlayMessage('Conferma Fallita!<br />Prova più tardi, o contattaci direttamente!');
-		// console.log('FAILURE: %o', jqXHR);
-		// console.log('FAILURE: %o', textStatus);
 	});
 }
 
@@ -217,9 +206,9 @@ function enableHearts() {
 	$("body").append("<div id='heart1' class='heart'></div><div id='heart2' class='heart'></div><div id='heart3' class='heart'></div><div id='heart4' class='heart'></div>");
 }
 
-$(document).ready(function(){
-	$(".martini-confirm__container__cognome").keypress(function(e) {
-		if(e.which == 13) {
+$(document).ready(function () {
+	$(".martini-confirm__container__cognome").keypress(function (e) {
+		if (e.which == 13) {
 			onUserNomeCognomeEntered();
 		}
 	});
