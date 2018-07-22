@@ -1,4 +1,4 @@
-const countDownDate = new Date("Sep 18, 2018 12:00:00").getTime();
+const countDownDate = new Date("Sep 22, 2018 12:00:00").getTime();
 
 const getClassName = name => `.martini-countdown__banner-element__central__clock${name}`;
 
