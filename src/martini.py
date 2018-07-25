@@ -58,8 +58,8 @@ def login():
 def get_family():
     dbman = DBManager()
     guest = ' '.join([
-        request.args.get('nome', ''),
-        request.args.get('cognome', '')
+        request.args.get('nome', '').strip(),
+        request.args.get('cognome', '').strip()
     ])
 
     return jsonify(dbman.get_family(guest))
