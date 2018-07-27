@@ -1,5 +1,14 @@
+# python
 env
 __pycache__
+
+# secret!
+src/secret_key.json
+
+# compile output
 backend
 static
-src/secret_key.json
+
+# logging
+logs
+dump.txt
