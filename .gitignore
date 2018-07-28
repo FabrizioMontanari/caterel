@@ -11,4 +11,5 @@ static
 
 # logging
 logs
-dump.txt
+dump*.txt
+dump*.csv

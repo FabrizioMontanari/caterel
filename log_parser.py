@@ -8,6 +8,10 @@ Lo script legge tutti i file di questo nome sotto una cartella /logs e li proces
 
 import os
 import gzip
+import csv
+
+from ast import literal_eval
+from base64 import b64decode
 
 
 def read_log(path):
@@ -15,25 +19,46 @@ def read_log(path):
         return file.readlines()
 
 
-def process_line(log):  # TODO
-    from ast import literal_eval
+def process_log(event):
+    event_data = event.split('\t')
+    event_details = literal_eval(event_data[3].replace('Zappa Event: ', ''))
 
-    event = log.split(b'Zappa Event: ')[1].replace(b'\n', b'')
-    print(type(event))
-    str_event = str(event)
-    print(type(literal_eval(str_event)))
-    return literal_eval(str_event)
+    return {
+        'time': event_data[1],
+        'uuid': event_data[2],
+        'path': event_details['path'],
+        'body': b64decode(event_details['body']) if event_details['isBase64Encoded'] else event_details['body'],
+        'full_event': event_details,
+    }
 
 
-def dump_to_file(log_list):
-    with open('dump.txt', 'w') as output:
+def dump_to_file(log_list, file_name='dump.txt'):
+    with open(file_name, 'w') as output:
         for log in log_list:
-            output.write(str(log))
+            output.write(str(log)+'\n')
 
 
+def dump_to_csv(log_list, file_name='dump.csv'):
+    with open(file_name, 'w') as output:
+        writer = csv.writer(output,  delimiter=';')
+        
+        writer.writerow(['time', 'uuid', 'path', 'body', 'full_event'])
+        for log in log_list:
+            writer.writerow(log.values())
+
+
+
+# read and flatten
 log_list = []
 for log in (read_log(directory) for directory in os.listdir('logs')):
     log_list += log
 
-zappa_events = [log for log in log_list if 'Zappa Event' in str(log)]
-dump_to_file(zappa_events)
+# convert and filter
+zappa_logs = [log.decode('utf-8')
+              for log in log_list if 'Zappa Event' in log.decode('utf-8')]
+
+# process and dump
+processed_logs = [process_log(log) for log in zappa_logs]
+
+confirmation_logs = [log for log in processed_logs]
+dump_to_csv(confirmation_logs)
