@@ -12,6 +12,7 @@ import csv
 
 from ast import literal_eval
 from base64 import b64decode
+from dateutil import parser
 
 
 def read_log(path):
@@ -26,7 +27,9 @@ def process_log(event):
     return {
         'time': event_data[1],
         'uuid': event_data[2],
+        'ip':  event_details['requestContext']['identity']['sourceIp'],
         'path': event_details['path'],
+        'query': event_details['queryStringParameters'],
         'body': b64decode(event_details['body']) if event_details['isBase64Encoded'] else event_details['body'],
         'full_event': event_details,
     }
@@ -41,8 +44,9 @@ def dump_to_file(log_list, file_name='dump.txt'):
 def dump_to_csv(log_list, file_name='dump.csv'):
     with open(file_name, 'w') as output:
         writer = csv.writer(output,  delimiter=';')
-        
-        writer.writerow(['time', 'uuid', 'path', 'body', 'full_event'])
+
+        writer.writerow(['time', 'uuid', 'ip', 'path',
+                         'query', 'body', 'full_event'])
         for log in log_list:
             writer.writerow(log.values())
 
@@ -59,6 +63,6 @@ zappa_logs = [log.decode('utf-8')
 
 # process and dump
 processed_logs = [process_log(log) for log in zappa_logs]
+sorted_log = sorted(processed_logs, key=lambda x: parser.parse(x['time']))
 
-confirmation_logs = [log for log in processed_logs]
-dump_to_csv(confirmation_logs)
+dump_to_csv(sorted_log)
