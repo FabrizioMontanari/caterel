@@ -111,7 +111,11 @@ body {
     
     &__banner-element {
         display: inline-block;
-    }
+	}
+	
+	&__banner-separator-wrapper {
+		text-align: center;
+	}
 	
 	&__banner-element__central {
 		display: inline-flex;
@@ -129,12 +133,10 @@ body {
 				@media (max-width: 576px) { font-size: 6.6vmax; margin-bottom:3vmax;}
 			}
 		}
-		&__separator-1{
-			object-fit: contain;
-		}
+
+		
 		&__directive{
 			font-family:museo;
-			/*font-weight:bold;*/
 			text-align:center;
 			
 			line-height: 90%;
@@ -143,11 +145,11 @@ body {
 				font-size:75%;
 			}
 		}
+
 		&__RSVP-link{
 			color:white;
 			background-color:$martini-bordeaux;
 			font-family:museoBold;
-			/*font-weight:bold;*/
 			text-align:center;
 			
 			align-self: center;
@@ -159,8 +161,7 @@ body {
 				text-decoration:none;
 			}
 		}
-		
-		
+			
 		&__clock {
 			display:flex;
 			justify-content: center;
@@ -177,42 +178,23 @@ body {
 		}
 
 		&__clock-separator-1 {
-			
-			background-image:url("../img/sezione2_fiore1.png");
-			background-size:contain;
-			background-repeat:no-repeat;
-			background-position-y:55%;
+			background-image: url("../img/sezione2_fiore1.png");
+			background-repeat: no-repeat;
+			background-position-y: center;
 		}
 		&__clock-separator-2 {
-			
 			background-image:url("../img/sezione2_fiore2.png");
-			background-size:contain;
-			background-repeat:no-repeat;
-			background-position-y:55%;
+			background-repeat: no-repeat;
+			background-position-y: center;
 		}
-		
-		&__separator-2{
-			object-fit: contain;
-		}
-		
 	}
 	
 	&__banner-element__bimba{
-		/*background-image:url("../img/sezione2_Karin.png");
-		background-size:contain;
-		background-repeat:no-repeat;
-		background-position:50%;
-		padding-top:20vh;*/
 		object-fit: contain;
 		padding:0px;
 		@media (max-width: 576px) { width: 65%;};
 	}
 	&__banner-element__bimbo{
-		/*background-image:url("../img/sezione2_Matteo.png");
-		background-size:contain;
-		background-repeat:no-repeat;
-		background-position:50%;
-		padding-top:20vh;*/
 		object-fit: contain;
 		padding:0px;
 		@media (max-width: 576px) { width: 65%;};
@@ -241,8 +223,6 @@ body {
 	}
     &__container {
         text-align: center;
-        /*padding-top: 40px;
-		padding-bottom: 30px;*/
 		height:100%;
 		
 		position:relative;
@@ -287,7 +267,6 @@ body {
 			img{
 				object-fit: contain;
 				border-radius:10px;
-				/*border: 4px solid white;*/
 				padding:5px 10px;
 			}
 		}
@@ -373,25 +352,16 @@ body {
 		
 	}
 	&__controls{
-		/*display:flex;
-		flex-flow: row wrap;
-		justify-content: flex-start;
-		align-items: center;
-		width:100%;
-		height: 50vw;*/
 		margin-bottom:10px;
 		
 		&__btn{
 			font-family:amatic;
-			/*font-size:3vh;*/
 			font-size:4.2vw;
 			background-color:transparent;
 			background-image:url("../img/sezione4_corniceHighRes.png");
 			background-size: contain;
 			background-repeat: no-repeat;
 			cursor: pointer;
-			/*height: 45px;
-			width:170px;*/
 			height:7.857vw;
 			width:32vw;
 			padding:0;
@@ -462,7 +432,7 @@ body {
 			width: 100%;
 			height: 100%;
 			-webkit-transition: background-image 0.5s ease-in-out,-webkit-transform 0.5s ease-in-out;
-			transition: background-image 0.5s ease-in-out,transform  0.5s ease-in-out;/*-webkit-transform 0.5s ease-in-out;*/
+			transition: background-image 0.5s ease-in-out,transform  0.5s ease-in-out;
 			background-position: 50%;
 			background-size: contain;
 			background-repeat: no-repeat;
