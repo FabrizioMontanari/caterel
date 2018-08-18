@@ -56,13 +56,21 @@ def login():
 
 @app.route('/get_family')
 def get_family():
-    dbman = DBManager()
-    guest = ' '.join([
-        request.args.get('nome', '').strip(),
-        request.args.get('cognome', '').strip()
-    ])
+    try:
+        guest_data = request.args.get('guestFullName')
 
-    return jsonify(dbman.get_family(guest))
+        db_manager = DBManager()
+        guest_data = db_manager.get_family(guest_data)
+        
+        return jsonify(guest_data)
+    except:
+        # dump trace and request to cloudwatch and recover.
+        traceback.print_exc()
+        print(request.json)
+        
+        return json.dumps({'received_request': request.json, 'status': 'Server Error' }), 500 , {'ContentType': 'application/json'}
+
+
 
 
 @app.route('/confirmation', methods=['POST', ])

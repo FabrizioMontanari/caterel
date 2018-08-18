@@ -8,6 +8,12 @@ function toTitleCase(str) {
 	});
 }
 
+
+function getFieldValue(fieldName, type) {
+	var fieldType = type || 'input';
+	return escape($(fieldType + '[name=' + fieldName + ']').val().trim());
+}
+
 /**
  * Preparo il contenuto e mostro l'overlay
  */
@@ -78,8 +84,9 @@ function onBackClick() {
  * Se l'utente esiste si mostrano le opzioni da compilare e gli eventuali familiari
  */
 function onUserNomeCognomeEntered() {
-	var nome = escape($('input[name=main_nome]').val());
-	var cognome = escape($('input[name=main_cognome]').val());
+	var nome = getFieldValue('main_nome');
+	var cognome = getFieldValue('main_cognome');
+	var guestFullName = nome + ' ' + cognome;
 
 	//prevent request when empty
 	if (nome === '' || cognome === '') {
@@ -95,8 +102,9 @@ function onUserNomeCognomeEntered() {
 		return;
 	}
 
+
 	$('#checkbox_main').addClass('checking');
-	$.get('/get_family', { nome: nome, cognome: cognome })
+	$.get('/get_family', { guestFullName: guestFullName })
 		.done(function (data) {
 			if (!data.guestAllowed) {
 				//remove checking status
@@ -135,7 +143,7 @@ function onUserNomeCognomeEntered() {
 			$('#notes').removeClass('hide');
 			$('#confirm-be-there').removeClass('hide');
 
-			if(data.guestFamily.length) {
+			if (data.guestFamily.length) {
 				$('#conferma_cari_text').removeClass('hide');
 			}
 
@@ -149,12 +157,6 @@ function onUserNomeCognomeEntered() {
 /**
  * invia i dati della prenotazione
  */
-
-function getFieldValue(fieldName, type) {
-	var fieldType = type || 'input';
-	return escape($(fieldType + '[name=' + fieldName + ']').val());
-}
-
 function displayOverlayMessage(message) {
 	var overlay = $('#confirm-overlay');
 
